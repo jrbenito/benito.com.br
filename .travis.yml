@@ -1,0 +1,23 @@
+language: node_js
+node_js:
+  - "4.4.3"
+branches:
+  only:
+  - development
+before_install:
+- npm install -g hexo
+- npm install
+install:
+- hexo generate
+before_script:
+- git config --global user.name 'Josenivaldo Benito Jr'
+- git config --global user.email 'jrbenito@benito.qsl.br'
+- sed -i'' "s~git@github.com:jrbenito/benito.com.br.git~https://${GH_TOKEN}:x-oauth-basic@github.com/jrbenito/benito.com.br.git~" _config.yml
+script:
+- hexo deploy --silent
+after_success: 
+env:
+  global:
+  - secure: O5f2zGaXraEVUOIkoo1FpaXfrjoRpeJAz7YbDhqeWvhg/TP3KDZdE3Te3pFh9i6VaSJqPTWQIqxcCRQn0kQpz592xLmMxENmCyD8hMhJW5NN4bCgbemUzCx6Enk4fPCc7+r8iclzgAF/XbbwKRZ/u/sgBDnBW7epSixFrRXIZ+Nuvq2RqzPxUEkvfsvn/RpA6WjA+xdVXk/je1Fjr2GxlI6YENq35gVPFLub1vD/mxTCW6TqLwVfZbaGCICm6aOUxZWiiGJ6nEqThDoyQXu8+TsyBMAP+VdJdBoPLLzydhBvmOda7ctzSXX4eMU6CIFp0WuIQr3xKi3ZljylafF6NIGb1LBkLVrbC/jO0lK9kNGjvJIGllyPl1hqrLttNmCeYKM9uktZ8C0VFhcxo0bT2LkM5QAcizMomz1bDJ92S9Cr2R+vKD9kGk17ScJLBGJb2jpUfWWDMrN4q+YVg/JOgeQUCuC4x6tmbhHF++Dx7LbR7Sd12a7X4Kf2juAdjEnO828Mz49EG0uHfKR1CcOumRBzNcEEUs17Kuy6pTQK+eFXEh2gDWpbcuoz+F89x1RoJ2BIeusfAOHuXBsFlChIvDPmIRPW2l9pglnTSFWqgjcfhLWIvIDMeNleq5clWuNjloHk/eg+Fz2qPq6LmSIdOhoEH/xRGyb8DZ34hJLKW/Q=
+  - secure: bsmjzMqApTjofgAcAKDWNRSUMlglhV8EHR8FD+wGStLFx6sfdkAYTodCvLB2gajtJb/R4S9gL7UabTX57WfLyTj9y8EdR9l2EbmuF5/lpWeQxvFM8yocxL0kznHpX+OnDLzJ/Afea8W+fFoMGN+82TfkrKPY8ppO+KjSpMCEK9HK77etmdr9jyAtndjYjMZFMzcHWaTscadu4feq1eqdoKy2OV6q9gqyAtgOw1itDoqXzh82HPC4MGpGQtvFBTeFIIqviHWYytSAVlVkh0/g3ZgTU6jQJ4EeWgayDauSs4/tsaDAvKM9Imw6+upH3VDptidp/D16IchrHJ5dzm9y3yuUyI22kI1f8HRfcMxmuFqUOzwzpl9HMB7noPR95HM9yu2udX6N1D8lp6JHriKfdfG2WyTdaqO2a0EMBwNxP0FQH/BeRtKy0uVI3I93jI+JCycUGYOnXbByCUCBC4V8XdA2KFH0nDiPHSDEoc+RsUiRK3zptzTk9Bf2l2bdZP3fNov7k6DInS8D1YjWOATkgVp1DgEOtQYXHI5T0cpk/oDgFhXDmwBoNQyTpDgfRpFqNfWodUsV72jIuVM1ahrI7sPuz3S+v6WwF8KQL/iH4lupDB4OlCCcqZDWeQzLGS/zXB6WfyHAoLBEz2KdVLChNqbXCtVY0W75H1br0IZn/gs=
+  - secure: A84t9ASnL11WFrqLjV9K7/Q+9fbkfOxqz7MiLauK9iYoyredcKqj5Jp7yh8ybt2VbibYDUB/Mo7vmGmi7LsiAdTbzkmGcjyfHcd2AQh52sWlTZOCX3GedqVsWeyq44TdDAFtfUCwIerKHCEGMyLKRC/NWjcpRzrT4hfgQ6yeACtYLIletzrOWKOcfbSGL5YaZ6yY5V3kDWzzTqWElAR7ROCDIzDH4CtIydRflDUNSK3y8Xvbu/i2LAjPrxUv9LeSFz0vvzbu/WO23jZZFti3vRqZG/iAqcWZTBY3j+87g6+DvevzhmotnwIodZgd7MO+/YSdvL8PzBwVfiVISWdq53nG5PPOyQzxY6sS76dt+09KLEYp1FpinjMbEqNWjvCohszj0VdfdfDYLMTYTDcj5RVOM+wcaCU53zLp9qQdYuF+Mhg0QFn3kJurkbp3l6QJDaX9WBZH9r7dBZLqDna8JV+9PPI/e+5+CHXRlsDF8VLR8d63/oOFmHlmd/lHv5Uo+596eqSfwp16RvHpiO96nqQgD+SYhoPoGbWfn7E4fwXUCiD+TNPo5WZwWyjC3qzQowlcZ6nAGRLQu+Q8V/MfpRc2Kf3kFpKjISBodUv6YivUSVhM1Dr2NJK7u+NFa+N/R3XCiAuEkYtMrPX85P8mmH0MqeghkXusKu4cX+gktgQ=
