@@ -4,6 +4,8 @@ node_js:
 branches:
   only:
   - development
+git:
+  depth: 1
 before_install:
 - npm install -g hexo
 - npm install
