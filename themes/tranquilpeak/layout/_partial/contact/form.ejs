@@ -1,0 +1,23 @@
+<form class="form-control" action="//formspree.io/<%= theme.author.email %>" method="POST">
+ <fieldset class="form-control">
+    <label for="name">Seu nome</label><br>
+    <input type="text" name="name" placeholder="Nome" required>
+ </fieldset>
+ <fieldset class="form-control">
+    <label for="_replyto">Seu email</label><br>
+    <input type="email" name="_replyto" placeholder="examplo@dominio.com.br" required>
+ </fieldset>
+ <fieldset class="form-control">
+    <label for="message">Mensagem</label><br>
+    <textarea name="message" cols="30" rows="10" placeholder="Mensagem" required></textarea>
+ </fieldset>
+ 
+ <input class="hide" type="text" name="_gotcha">
+ <input type="hidden" name="_subject" value="Message via Blog do Benito">
+ <input type="hidden" name="_next" value="/contact/thanks.html" />
+ 
+ <fieldset class="form-control">
+    <input class="btn" type="submit" value="Enviar">
+ </fieldset>
+</form>
+

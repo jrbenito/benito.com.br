@@ -1,1 +1,5 @@
-<%- partial('_partial/post', {post: page}) %>
+<% if (page.path.indexOf('contact') > -1){ %>
+    <%- partial('_partial/contact', {post: page}) %>
+<% } else { %>
+    <%- partial('_partial/post', {post: page}) %>
+<% } %>

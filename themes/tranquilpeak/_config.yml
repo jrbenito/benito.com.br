@@ -84,7 +84,7 @@ sidebar:
         #     icon: linkedin
          mail:
              title: global.mail
-             url: /contact 
+             url: /contact
              icon: envelope-o
     rss:
         rss:
@@ -112,7 +112,7 @@ header:
 # Author
 # Your biography and your job is editable in each languages files in `languages` folder
 author:
-    email: jrbenito@benito.com.br
+    email: jrbenito+blog@benito.com.br
     location: Campinas / Brasil
     # Your profile picture located in folder `source/_images/` (development)
     # or in `source/assets/images/` (production)

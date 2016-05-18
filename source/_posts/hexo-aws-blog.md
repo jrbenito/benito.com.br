@@ -1,6 +1,6 @@
 ---
 title: "Hexo + AWS = Blog!"
-data: 2016-05-06 20:00:00
+date: 2016-05-06 20:00:00
 tags:
    - AWS
    - Hexo

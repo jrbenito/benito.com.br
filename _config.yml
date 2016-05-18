@@ -82,6 +82,7 @@ robotstxt:
   disallow:
     - /404.html
     - /404/*
+    - /contact/thanks.html
   allow: 
     - "*"
   sitemap: https://www.benito.com.br/sitemap.xml

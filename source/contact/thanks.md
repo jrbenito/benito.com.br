@@ -1,5 +1,6 @@
 title: Contato
 layout: page
-comments: false
+form: false
 ---
-Sua mensagem foi recebida com sucesso.
+## Sua mensagem foi recebida com sucesso. ## 
+## Breve responderei. ##
