@@ -1,2 +1,2 @@
 # benito.com.br
-My personal blog, check it on https://benito.com.br
+My personal blog source file. Visit it at https://benito.com.br
