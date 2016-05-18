@@ -82,10 +82,10 @@ sidebar:
         #     title: global.linkedin
         #     url: https://www.linkedin.com/profile/
         #     icon: linkedin
-        # mail:
-        #     title: global.mail
-        #     url: mailto:
-        #     icon: envelope-o
+         mail:
+             title: global.mail
+             url: /contact 
+             icon: envelope-o
     rss:
         rss:
             title: global.rss

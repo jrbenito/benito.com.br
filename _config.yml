@@ -76,6 +76,16 @@ feed:
 sitemap:
     path: sitemap.xml
 
+# robots.txt
+robotstxt:
+  useragent: "*"
+  disallow:
+    - /404.html
+    - /404/*
+  allow: 
+    - "*"
+  sitemap: https://www.benito.com.br/sitemap.xml
+
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:

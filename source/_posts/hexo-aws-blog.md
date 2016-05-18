@@ -41,7 +41,7 @@ Também através dessas pesquisas eu conheci o [Hexo][hx] um gerador de sites es
 
 Inspirado pela pesquisa e satisfazendo um desejo antigo estou iniciando esse blog utilizando:
 + [Amazon AWS][aws] como _backend_
-+ [Hexo][hs] para gerar o site
++ [Hexo][hx] para gerar o site
 + [Draftin][draf] para escrever esse post
 
 Além de um nome pouco criativo para o blog.
