@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Blog do Benito</title>
+  <subtitle>Mais um blog com nome genial</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://www.benito.com.br/"/>
+  <updated>2016-05-20T21:59:37.410Z</updated>
+  <id>http://www.benito.com.br/</id>
+  
+  <author>
+    <name>JrBenito</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo+Aws=Blog! - Hexo para leigos (parte 1)</title>
+    <link href="http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/"/>
+    <id>http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/</id>
+    <published>2016-05-19T02:45:23.000Z</published>
+    <updated>2016-05-20T21:59:37.410Z</updated>
+    
+    <content type="html">&lt;p&gt;No &lt;a href=&quot;/2016/05/hexo-aws-blog&quot;&gt;primeiro artigo&lt;/a&gt; deste blog expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do &lt;a href=&quot;//aws.amazon.com&quot;&gt;Amazon Web Services&lt;/a&gt;. Nesta primeira parte da série vamos abordar o básico: &lt;a href=&quot;//hexo.io&quot;&gt;Hexo&lt;/a&gt;!&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;O Hexo é um &lt;em&gt;framework&lt;/em&gt; para desenvolvimento de blogs estáticos com diversos &lt;a href=&quot;//hexo.io/plugins/&quot;&gt;plugins&lt;/a&gt; que o tornam ainda mais poderoso. Ele é desenvolvido utilizando o &lt;a href=&quot;//nodejs.org/en/&quot;&gt;Node.js&lt;/a&gt;, um interpretador javascript desenvolvido com base no &lt;a href=&quot;//developers.google.com/v8/&quot;&gt;&lt;em&gt;motor&lt;/em&gt; javascript Chrome V8&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Se você já conhece e utiliza o Node.js, basta instalar o Hexo. Eu precisei instalar o Node.js em meu Ubuntu, e a maneira mais prática que encontrei para fazê-lo foi através do &lt;em&gt;nvm&lt;/em&gt;; a forma também descrita na documentação do Hexo. No terminal do Ubuntu, como usuário normal (não root) fiz:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;E em seguida usei o &lt;code&gt;nvm&lt;/code&gt; para instalar o Node.js.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ nvm install 4.4.3&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Muitos tutoriais na internet utilizam a versão 0.12 do Node.js com o Hexo, mas alguns plugins e módulos do próprio Node.js requerem a versão mais nova. Então preferi instalar a versão LTS, v4.4.3 enquanto escrevo esse artigo. Também poderia baixar o instalador no site do &lt;a href=&quot;//nodejs.org/en/&quot;&gt;Node.js&lt;/a&gt;. Caso tenha usado o &lt;code&gt;nvm&lt;/code&gt;, em novas sessões do terminal é importante ativar o Node.js rodando &lt;code&gt;nvm use 4.4.3&lt;/code&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Instalando-o-Hexo-e-iniciando-o-blog&quot;&gt;&lt;a href=&quot;#Instalando-o-Hexo-e-iniciando-o-blog&quot; class=&quot;headerlink&quot; title=&quot;Instalando o Hexo e iniciando o blog&quot;&gt;&lt;/a&gt;Instalando o Hexo e iniciando o blog&lt;/h2&gt;&lt;p&gt;Depois foi só instalar o &lt;a href=&quot;//hexo.io&quot;&gt;Hexo&lt;/a&gt;. No momento em que esse artigo é escrito a versão mais recente é a 3.2.0.&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ npm install hexo-cli -g&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Para iniciar o blog&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;figcaption&gt;&lt;span&gt;Iniciar o novo blog&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;$ hexo init meuB&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; meuB&lt;span class=&quot;built_in&quot;&gt;log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;$ npm install&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;O último comando é responsável por instalar os pacotes Node.js dos quais o hexo depende para gerar o blog. Para quem já trabalha com Node.js não é novidade, mas é importante saber que o diretório do blog é como uma espécie de sistema desenvolvido em Node.js. O Hexo e todas os pacotes dos quais eles dependente são instalados dentro do diretório do blog.&lt;/p&gt;
+&lt;p&gt;Para ver o blog rodando, o Hexo possui um mini servidor:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ hexo server&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Acesse o conteúdo apontando seu navegador para &lt;a href=&quot;http://localhost:4000&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://localhost:4000&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&quot;Controlando-seu-blog-com-Git&quot;&gt;&lt;a href=&quot;#Controlando-seu-blog-com-Git&quot; class=&quot;headerlink&quot; title=&quot;Controlando seu blog com Git&quot;&gt;&lt;/a&gt;Controlando seu blog com &lt;a href=&quot;//git-scm.com&quot; title=&quot;Git&quot;&gt;Git&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Esse passo é opcional mas muito recomendado. Como alterações nas configurações, testes, novos artigos são operações freqüentes no blog, o versionamento do conteúdo é uma excelente maneira de manter registro dessas modificações e, de quebra, adicionar um pouco de proteção a desastres (sem dispensar o backup). Após inicializar o blog com Hexo, inicializei um repositório &lt;a href=&quot;//git-scm.com&quot; title=&quot;Git&quot;&gt;Git&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ git init&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Coloquei um arquivo &lt;code&gt;.gitignore&lt;/code&gt; no repositório para instruir o git a ignorar arquivos que não devem ser rastreados.&lt;/p&gt;
+&lt;figure class=&quot;highlight stylus&quot;&gt;&lt;figcaption&gt;&lt;span&gt;.gitignore&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;selector-class&quot;&gt;.DS_Store&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Thumbs&lt;span class=&quot;selector-class&quot;&gt;.db&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;db&lt;span class=&quot;selector-class&quot;&gt;.json&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*&lt;span class=&quot;selector-class&quot;&gt;.log&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;node_modules/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;public/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;.deploy*/&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;*~&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;E adicionei os arquivos ao repositório:&lt;/p&gt;
+&lt;figure class=&quot;highlight elixir&quot;&gt;&lt;figcaption&gt;&lt;span&gt;adicionar arquivos ao repositório&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$ &lt;/span&gt;git add *&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;variable&quot;&gt;$ &lt;/span&gt;git commit -m &lt;span class=&quot;string&quot;&gt;&quot;Blog: estado inicial&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;A cada alteração importante eu gravo um &lt;em&gt;snapshot&lt;/em&gt; no repositório com um novo &lt;em&gt;commit&lt;/em&gt;. Dessa forma posso retroceder a qualquer momento no tempo e restaurar um estado funcional do site.&lt;/p&gt;
+&lt;h2 id=&quot;Arquivos-do-site&quot;&gt;&lt;a href=&quot;#Arquivos-do-site&quot; class=&quot;headerlink&quot; title=&quot;Arquivos do site&quot;&gt;&lt;/a&gt;Arquivos do site&lt;/h2&gt;&lt;p&gt;Um site recém gerado com Hexo contém:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;th&gt;&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;_config.yml&lt;/td&gt;
+&lt;td&gt;Configuração do blog e &lt;a href=&quot;//hexo.io/plugins/&quot;&gt;plugins&lt;/a&gt; do Hexo&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;package.json&lt;/td&gt;
+&lt;td&gt;Lista de npm packages necessários para o blog&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;scaffolds&lt;/td&gt;
+&lt;td&gt;Modelo dos layouts disponíveis (&lt;code&gt;draft&lt;/code&gt;, &lt;code&gt;post&lt;/code&gt;, &lt;code&gt;page&lt;/code&gt;)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;source&lt;/td&gt;
+&lt;td&gt;Arquivos dos posts, páginas e conteúdo do site&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;themes&lt;/td&gt;
+&lt;td&gt;Temas instalados, por padrão o Hexo traz o tema Landscape, esse site usa o &lt;a href=&quot;//github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/&quot;&gt;Tranquilpeak&lt;/a&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Veja a listagem deste blog.&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;figcaption&gt;&lt;span&gt;Hexo file structure&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;drwxrwxr-x 6 jrbenito jrbenito 4096 Mai 19 00:43 .&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;drwxrwxr-x 5 jrbenito jrbenito 4096 Mai 19 00:43 ..&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-rw-rw-r-- 1 jrbenito jrbenito 2203 Mai 19 00:43 _config.yml&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;drwxrwxr-x 8 jrbenito jrbenito 4096 Mai 19 00:43 .git&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-rw-rw-r-- 1 jrbenito jrbenito   71 Mai 19 00:43 .gitignore&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-rw-rw-r-- 1 jrbenito jrbenito  727 Mai 19 00:43 package.json&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;drwxrwxr-x 2 jrbenito jrbenito 4096 Mai 19 00:43 scaffolds&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;drwxrwxr-x 7 jrbenito jrbenito 4096 Mai 19 00:43 &lt;span class=&quot;built_in&quot;&gt;source&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;drwxrwxr-x 4 jrbenito jrbenito 4096 Mai 19 00:43 themes&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;-rw-rw-r-- 1 jrbenito jrbenito 2590 Mai 19 00:43 .travis.yml&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Os arquivos &lt;code&gt;.git&lt;/code&gt; e &lt;code&gt;.gitignore&lt;/code&gt; são específicos dos repositório &lt;a href=&quot;//git-scm.com&quot; title=&quot;Git&quot;&gt;git&lt;/a&gt;; o &lt;code&gt;.travis·yml&lt;/code&gt; também não pertence ao Hexo e sua função é assunto para outro post.&lt;/p&gt;
+&lt;h2 id=&quot;Feito&quot;&gt;&lt;a href=&quot;#Feito&quot; class=&quot;headerlink&quot; title=&quot;Feito!&quot;&gt;&lt;/a&gt;Feito!&lt;/h2&gt;&lt;p&gt;Pronto, agora é só personalizar o blog através das configurações e temas.&lt;/p&gt;
+&lt;p&gt;Dentre os geradores de sites que conheci, escolhi o hexo por sua simplicidade e por rodar em diversas plataformas sem problemas de compatibilidade possibilitando que eu edite esse blog em casa no Linux ou em uma máquina windows &lt;em&gt;on the go&lt;/em&gt;. Continuando minha saga escreverei ainda sobre como hospedar o blog no &lt;a href=&quot;//aws.amazon.com&quot;&gt;AWS S3&lt;/a&gt; e configurar uma CDN para acelerar o acesso ao site.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;No &lt;a href=&quot;/2016/05/hexo-aws-blog&quot;&gt;primeiro artigo&lt;/a&gt; deste blog expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do &lt;a href=&quot;//aws.amazon.com&quot;&gt;Amazon Web Services&lt;/a&gt;. Nesta primeira parte da série vamos abordar o básico: &lt;a href=&quot;//hexo.io&quot;&gt;Hexo&lt;/a&gt;!&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="AWS" scheme="http://www.benito.com.br/tags/aws/"/>
+    
+      <category term="Hexo" scheme="http://www.benito.com.br/tags/hexo/"/>
+    
+      <category term="Nodejs" scheme="http://www.benito.com.br/tags/nodejs/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hexo + AWS = Blog!</title>
+    <link href="http://www.benito.com.br/2016/05/hexo-aws-blog/"/>
+    <id>http://www.benito.com.br/2016/05/hexo-aws-blog/</id>
+    <published>2016-05-06T23:00:00.000Z</published>
+    <updated>2016-05-20T21:59:37.410Z</updated>
+    
+    <content type="html">&lt;h1 id=&quot;Introducao&quot;&gt;&lt;a href=&quot;#Introducao&quot; class=&quot;headerlink&quot; title=&quot;Introdução&quot;&gt;&lt;/a&gt;Introdução&lt;/h1&gt;&lt;p&gt;Recentemente meu irmão iniciou um &lt;a href=&quot;http://counsellor.life&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;projeto&lt;/a&gt; para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um esboço do trabalho e estava hospedando junto ao site de um amigo apenas para teste. Começamos a conversar sobre qual domínio registrar, qual hospedagem contratar, qual tamanho da demanda e claro: preço! &lt;/p&gt;
+&lt;p&gt;Já há algum tempo que eu venho maturando a ideia de iniciar um blog com o objetivo de documentar meus projetos pessoais, compartilhar informação e manter organizado aquele conhecimento resultado de horas na Internet tentando resolver algum problema (geralmente simples). A discussão sobre o projeto para minha cunhada foi a faísca para que eu mergulhasse em uma pesquisa sobre sites, hospedagem, custos, tecnologias e acabasse por escrever esse primeiro post.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Estatico-vs-Dinamico&quot;&gt;&lt;a href=&quot;#Estatico-vs-Dinamico&quot; class=&quot;headerlink&quot; title=&quot;Estático vs. Dinâmico&quot;&gt;&lt;/a&gt;Estático vs. Dinâmico&lt;/h1&gt;&lt;p&gt;O modelo mais comum de website contém uma mistura de páginas com conteúdo estático e páginas de conteúdo dinâmico que se alteram de acordo com a interação entre o usuário e o sistema. Por exemplo, uma oficina mecânica teria em seu site páginas de informações estáticas como endereço, serviços prestados, fotos do local e um sistema para confecção de orçamentos via internet que gera conteúdo dinamicamente.&lt;/p&gt;
+&lt;p&gt;Sistemas web necessitam que seu código fonte seja executado no servidor, também costumam depender de bancos de dados e essa estrutura pode ser bem grande e depender de vários computadores para funcionar. Um bom provedor de hospedagem oferece pacotes que alocam recursos computacionais de acordo com a necessidade dos usuários.&lt;/p&gt;
+&lt;p&gt;Já o conteúdo estático precisa apenas ser transmitido de um servidor para o cliente, geralmente um navegador web. Esse processo não envolve grande poder computacional e ainda há a possibilidade de cache diminuindo o tráfego de dados sendo possível a utilização de pacotes de serviços mais baratos e com menos recursos computacionais.&lt;/p&gt;
+&lt;p&gt;Para o projeto de minha cunhada, meu irmão e eu chegamos a conclusão que um conjunto de páginas estáticas em HTML5, CSS e Javascript seria suficiente. &lt;/p&gt;
+&lt;h1 id=&quot;Hospedagem&quot;&gt;&lt;a href=&quot;#Hospedagem&quot; class=&quot;headerlink&quot; title=&quot;Hospedagem&quot;&gt;&lt;/a&gt;Hospedagem&lt;/h1&gt;&lt;p&gt;Na pesquisa por hospedagem eu encontrei nos serviços &lt;a href=&quot;https://aws.amazon.com&quot; title=&quot;Amazon Web Services&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AWS da Amazon&lt;/a&gt; uma alternativa muito interessante. O [Amazon Web Services] é o nome comercial de um dos maiores serviços de computação em nuvem do planeta. Eles comercializam serviços com preços atrativos e faixas de consumo que se adaptam ao tipo do usuário.&lt;/p&gt;
+&lt;p&gt;O serviço &lt;a href=&quot;https://aws.amazon.com/s3&quot; title=&quot;Amazon Simple Storage  Service&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;S3&lt;/a&gt; é uma espécie de disco rígido virtual onde se pode armazenar quantidades absurdas de dados com garantias de durabilidade, versionamento e preços atrativos. O &lt;a href=&quot;https://aws.amazon.com/s3&quot; title=&quot;Amazon Simple Storage  Service&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;S3&lt;/a&gt; é capaz de servir o conteúdo armazenado em forma de site estático, o custo por GB é baixo, ele oferece um &lt;em&gt;free tier&lt;/em&gt; para novos clientes que é suficiente para acomodar sem custos o projeto de minha cunhada nos primeiros meses. Problema resolvido.&lt;/p&gt;
+&lt;p&gt;Também através dessas pesquisas eu conheci o &lt;a href=&quot;http://hexo.io/&quot; title=&quot;Hexo.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt; um gerador de sites estáticos escrito em &lt;a href=&quot;http://nodejs.org&quot; title=&quot;NodeJs.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Node.js&lt;/a&gt;, cheio de plugins e de fácil automação. Perfeito para iniciar meu blog e hospedá-lo no &lt;a href=&quot;https://aws.amazon.com&quot; title=&quot;Amazon Web Services&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AWS&lt;/a&gt;.&lt;/p&gt;
+&lt;h1 id=&quot;Nasce-mais-um-blog&quot;&gt;&lt;a href=&quot;#Nasce-mais-um-blog&quot; class=&quot;headerlink&quot; title=&quot;Nasce mais um blog&quot;&gt;&lt;/a&gt;Nasce mais um blog&lt;/h1&gt;&lt;p&gt;Inspirado pela pesquisa e satisfazendo um desejo antigo estou iniciando esse blog utilizando:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://aws.amazon.com&quot; title=&quot;Amazon Web Services&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Amazon AWS&lt;/a&gt; como &lt;em&gt;backend&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://hexo.io/&quot; title=&quot;Hexo.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt; para gerar o site&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://draftin.com&quot; title=&quot;WRITE BETTER WITH DRAFT&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Draftin&lt;/a&gt; para escrever esse post&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Além de um nome pouco criativo para o blog.&lt;/p&gt;
+&lt;p&gt;Nos próximos artigos eu farei um passo à passo de como coloquei esse blog no ar, a configuração do Hexo, Node.js, dos plugins e dos serviços AWS. Fique ligado.&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Introducao&quot;&gt;&lt;a href=&quot;#Introducao&quot; class=&quot;headerlink&quot; title=&quot;Introdução&quot;&gt;&lt;/a&gt;Introdução&lt;/h1&gt;&lt;p&gt;Recentemente meu irmão iniciou um &lt;a href=&quot;http://counsellor.life&quot;&gt;projeto&lt;/a&gt; para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um esboço do trabalho e estava hospedando junto ao site de um amigo apenas para teste. Começamos a conversar sobre qual domínio registrar, qual hospedagem contratar, qual tamanho da demanda e claro: preço! &lt;/p&gt;
+&lt;p&gt;Já há algum tempo que eu venho maturando a ideia de iniciar um blog com o objetivo de documentar meus projetos pessoais, compartilhar informação e manter organizado aquele conhecimento resultado de horas na Internet tentando resolver algum problema (geralmente simples). A discussão sobre o projeto para minha cunhada foi a faísca para que eu mergulhasse em uma pesquisa sobre sites, hospedagem, custos, tecnologias e acabasse por escrever esse primeiro post.&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="AWS" scheme="http://www.benito.com.br/tags/aws/"/>
+    
+      <category term="Hexo" scheme="http://www.benito.com.br/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>

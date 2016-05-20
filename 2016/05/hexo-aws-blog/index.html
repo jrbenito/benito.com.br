@@ -1,0 +1,509 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Blog do Benito">
+    <title>Hexo + AWS = Blog! - Blog do Benito</title>
+    <meta name="author" content="JrBenito">
+    
+        <meta name="keywords" content="hexo,Amazon AWS,AWS,Blog,Static website">
+    
+    
+        <link rel="icon" href="http://www.benito.com.br/assets/images/favicon.ico">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="IntroduçãoRecentemente meu irmão iniciou um projeto para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um es">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Hexo + AWS = Blog!">
+<meta property="og:url" content="http://www.benito.com.br/2016/05/hexo-aws-blog/index.html">
+<meta property="og:site_name" content="Blog do Benito">
+<meta property="og:description" content="IntroduçãoRecentemente meu irmão iniciou um projeto para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um es">
+<meta property="og:updated_time" content="2016-05-20T21:59:37.410Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo + AWS = Blog!">
+<meta name="twitter:description" content="IntroduçãoRecentemente meu irmão iniciou um projeto para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um es">
+<meta name="twitter:creator" content="@jjbenito">
+    
+        <meta rel="publisher" content="https://plus.google.com/+JosenivaldoBenitoJunior"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-27vrduj1jopliavvnzi7ibndpmbvg7lzo4a2uswrsi4m5vwauf2qi8s1v3or.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-77337156-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Blog do Benito</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="4">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">JrBenito</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/jrbenito" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2726840" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/jjbenito" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://plus.google.com/+JosenivaldoBenitoJunior" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-google-plus"></i>
+                    <span class="sidebar-button-desc">Google Plus</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/contact"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Hexo + AWS = Blog!
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Fri May 06 2016 23:00:00 GMT+0000">
+	
+		    06/05/2016
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <h1 id="Introducao"><a href="#Introducao" class="headerlink" title="Introdução"></a>Introdução</h1><p>Recentemente meu irmão iniciou um <a href="http://counsellor.life" target="_blank" rel="external">projeto</a> para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um esboço do trabalho e estava hospedando junto ao site de um amigo apenas para teste. Começamos a conversar sobre qual domínio registrar, qual hospedagem contratar, qual tamanho da demanda e claro: preço! </p>
+<p>Já há algum tempo que eu venho maturando a ideia de iniciar um blog com o objetivo de documentar meus projetos pessoais, compartilhar informação e manter organizado aquele conhecimento resultado de horas na Internet tentando resolver algum problema (geralmente simples). A discussão sobre o projeto para minha cunhada foi a faísca para que eu mergulhasse em uma pesquisa sobre sites, hospedagem, custos, tecnologias e acabasse por escrever esse primeiro post.<br><a id="more"></a></p>
+<h1 id="Estatico-vs-Dinamico"><a href="#Estatico-vs-Dinamico" class="headerlink" title="Estático vs. Dinâmico"></a>Estático vs. Dinâmico</h1><p>O modelo mais comum de website contém uma mistura de páginas com conteúdo estático e páginas de conteúdo dinâmico que se alteram de acordo com a interação entre o usuário e o sistema. Por exemplo, uma oficina mecânica teria em seu site páginas de informações estáticas como endereço, serviços prestados, fotos do local e um sistema para confecção de orçamentos via internet que gera conteúdo dinamicamente.</p>
+<p>Sistemas web necessitam que seu código fonte seja executado no servidor, também costumam depender de bancos de dados e essa estrutura pode ser bem grande e depender de vários computadores para funcionar. Um bom provedor de hospedagem oferece pacotes que alocam recursos computacionais de acordo com a necessidade dos usuários.</p>
+<p>Já o conteúdo estático precisa apenas ser transmitido de um servidor para o cliente, geralmente um navegador web. Esse processo não envolve grande poder computacional e ainda há a possibilidade de cache diminuindo o tráfego de dados sendo possível a utilização de pacotes de serviços mais baratos e com menos recursos computacionais.</p>
+<p>Para o projeto de minha cunhada, meu irmão e eu chegamos a conclusão que um conjunto de páginas estáticas em HTML5, CSS e Javascript seria suficiente. </p>
+<h1 id="Hospedagem"><a href="#Hospedagem" class="headerlink" title="Hospedagem"></a>Hospedagem</h1><p>Na pesquisa por hospedagem eu encontrei nos serviços <a href="https://aws.amazon.com" title="Amazon Web Services" target="_blank" rel="external">AWS da Amazon</a> uma alternativa muito interessante. O [Amazon Web Services] é o nome comercial de um dos maiores serviços de computação em nuvem do planeta. Eles comercializam serviços com preços atrativos e faixas de consumo que se adaptam ao tipo do usuário.</p>
+<p>O serviço <a href="https://aws.amazon.com/s3" title="Amazon Simple Storage  Service" target="_blank" rel="external">S3</a> é uma espécie de disco rígido virtual onde se pode armazenar quantidades absurdas de dados com garantias de durabilidade, versionamento e preços atrativos. O <a href="https://aws.amazon.com/s3" title="Amazon Simple Storage  Service" target="_blank" rel="external">S3</a> é capaz de servir o conteúdo armazenado em forma de site estático, o custo por GB é baixo, ele oferece um <em>free tier</em> para novos clientes que é suficiente para acomodar sem custos o projeto de minha cunhada nos primeiros meses. Problema resolvido.</p>
+<p>Também através dessas pesquisas eu conheci o <a href="http://hexo.io/" title="Hexo.io" target="_blank" rel="external">Hexo</a> um gerador de sites estáticos escrito em <a href="http://nodejs.org" title="NodeJs.org" target="_blank" rel="external">Node.js</a>, cheio de plugins e de fácil automação. Perfeito para iniciar meu blog e hospedá-lo no <a href="https://aws.amazon.com" title="Amazon Web Services" target="_blank" rel="external">AWS</a>.</p>
+<h1 id="Nasce-mais-um-blog"><a href="#Nasce-mais-um-blog" class="headerlink" title="Nasce mais um blog"></a>Nasce mais um blog</h1><p>Inspirado pela pesquisa e satisfazendo um desejo antigo estou iniciando esse blog utilizando:</p>
+<ul>
+<li><a href="https://aws.amazon.com" title="Amazon Web Services" target="_blank" rel="external">Amazon AWS</a> como <em>backend</em></li>
+<li><a href="http://hexo.io/" title="Hexo.io" target="_blank" rel="external">Hexo</a> para gerar o site</li>
+<li><a href="https://draftin.com" title="WRITE BETTER WITH DRAFT" target="_blank" rel="external">Draftin</a> para escrever esse post</li>
+</ul>
+<p>Além de um nome pouco criativo para o blog.</p>
+<p>Nos próximos artigos eu farei um passo à passo de como coloquei esse blog no ar, a configuração do Hexo, Node.js, dos plugins e dos serviços AWS. Fique ligado.</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/aws/">AWS</a> <a class="tag tag--primary tag--small t-link" href="/tags/hexo/">Hexo</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/"  data-tooltip="Hexo+Aws=Blog! - Hexo para leigos (parte 1)">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/hexo-aws-blog/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/hexo-aws-blog/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/hexo-aws-blog/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 JrBenito. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/"  data-tooltip="Hexo+Aws=Blog! - Hexo para leigos (parte 1)">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/hexo-aws-blog/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/hexo-aws-blog/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/hexo-aws-blog/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/hexo-aws-blog/">
+                <i class="fa fa-google-plus"></i><span class="">Partilhar no Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/hexo-aws-blog/">
+                <i class="fa fa-facebook-official"></i><span>SPartilhar no Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/hexo-aws-blog/">
+                <i class="fa fa-twitter"></i><span>Partilhar no Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=110"/>
+        
+            <h4 id="about-card-name">JrBenito</h4>
+        
+            <h5 id="about-card-bio"><p>Formado em Ciência da Computação trabalha com sistemas embarcados Linux e Android. Fotógrafo amador e apaixonado por mergulho também pratica corrida. Sua maior aventura é ser pai.</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Engenheiro de Sistemas / Samsung</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Campinas / Brasil
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-tu4ziscb5jrkjxubeugdgizktyuugflfq5jvgz4agzzmwifuq01g1lmq8giw.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://www.benito.com.br/2016/05/hexo-aws-blog/';
+                 
+                    this.page.identifier = '2016/05/hexo-aws-blog/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'blogdobenito';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>
