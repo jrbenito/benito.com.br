@@ -15,6 +15,7 @@ before_script:
 - git config --global user.name 'Josenivaldo Benito Jr'
 - git config --global user.email 'jrbenito@benito.qsl.br'
 - sed -i'' "s~git@github.com:jrbenito/benito.com.br.git~https://${GH_TOKEN}:x-oauth-basic@github.com/jrbenito/benito.com.br.git~" _config.yml
+- git clone https://github.com/jrbenito/benito.com.br.git .deploy_git -b conteudo
 script:
 - hexo deploy --silent
 after_success: 
