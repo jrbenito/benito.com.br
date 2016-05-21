@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.benito.com.br/"/>
-  <updated>2016-05-20T21:59:37.410Z</updated>
+  <updated>2016-05-21T02:15:05.562Z</updated>
   <id>http://www.benito.com.br/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/"/>
     <id>http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/</id>
     <published>2016-05-19T02:45:23.000Z</published>
-    <updated>2016-05-20T21:59:37.410Z</updated>
+    <updated>2016-05-21T02:15:05.562Z</updated>
     
     <content type="html">&lt;p&gt;No &lt;a href=&quot;/2016/05/hexo-aws-blog&quot;&gt;primeiro artigo&lt;/a&gt; deste blog expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do &lt;a href=&quot;//aws.amazon.com&quot;&gt;Amazon Web Services&lt;/a&gt;. Nesta primeira parte da série vamos abordar o básico: &lt;a href=&quot;//hexo.io&quot;&gt;Hexo&lt;/a&gt;!&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;O Hexo é um &lt;em&gt;framework&lt;/em&gt; para desenvolvimento de blogs estáticos com diversos &lt;a href=&quot;//hexo.io/plugins/&quot;&gt;plugins&lt;/a&gt; que o tornam ainda mais poderoso. Ele é desenvolvido utilizando o &lt;a href=&quot;//nodejs.org/en/&quot;&gt;Node.js&lt;/a&gt;, um interpretador javascript desenvolvido com base no &lt;a href=&quot;//developers.google.com/v8/&quot;&gt;&lt;em&gt;motor&lt;/em&gt; javascript Chrome V8&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Se você já conhece e utiliza o Node.js, basta instalar o Hexo. Eu precisei instalar o Node.js em meu Ubuntu, e a maneira mais prática que encontrei para fazê-lo foi através do &lt;em&gt;nvm&lt;/em&gt;; a forma também descrita na documentação do Hexo. No terminal do Ubuntu, como usuário normal (não root) fiz:&lt;/p&gt;
@@ -101,7 +101,7 @@
     <link href="http://www.benito.com.br/2016/05/hexo-aws-blog/"/>
     <id>http://www.benito.com.br/2016/05/hexo-aws-blog/</id>
     <published>2016-05-06T23:00:00.000Z</published>
-    <updated>2016-05-20T21:59:37.410Z</updated>
+    <updated>2016-05-21T02:15:05.562Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introducao&quot;&gt;&lt;a href=&quot;#Introducao&quot; class=&quot;headerlink&quot; title=&quot;Introdução&quot;&gt;&lt;/a&gt;Introdução&lt;/h1&gt;&lt;p&gt;Recentemente meu irmão iniciou um &lt;a href=&quot;http://counsellor.life&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;projeto&lt;/a&gt; para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um esboço do trabalho e estava hospedando junto ao site de um amigo apenas para teste. Começamos a conversar sobre qual domínio registrar, qual hospedagem contratar, qual tamanho da demanda e claro: preço! &lt;/p&gt;
 &lt;p&gt;Já há algum tempo que eu venho maturando a ideia de iniciar um blog com o objetivo de documentar meus projetos pessoais, compartilhar informação e manter organizado aquele conhecimento resultado de horas na Internet tentando resolver algum problema (geralmente simples). A discussão sobre o projeto para minha cunhada foi a faísca para que eu mergulhasse em uma pesquisa sobre sites, hospedagem, custos, tecnologias e acabasse por escrever esse primeiro post.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
