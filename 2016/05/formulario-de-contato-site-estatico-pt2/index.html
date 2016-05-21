@@ -1,0 +1,512 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Blog do Benito">
+    <title>Criando um formulário de contato para um site estático - Parte 2 - Blog do Benito</title>
+    <meta name="author" content="JrBenito">
+    
+        <meta name="keywords" content="hexo,Blog,Static website,contact form,fomulário,layout">
+    
+    
+        <link rel="icon" href="http://www.benito.com.br/assets/images/favicon.ico">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="Na parte 1 desse artigo nós criamos um formulário HTML dentro de uma página Hexo. O formulário envia os dados para um e-mail através do serviço Formspree.
+Hoje iremos integrar o formulário ao tema e a">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Criando um formulário de contato para um site estático - Parte 2">
+<meta property="og:url" content="http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/index.html">
+<meta property="og:site_name" content="Blog do Benito">
+<meta property="og:description" content="Na parte 1 desse artigo nós criamos um formulário HTML dentro de uma página Hexo. O formulário envia os dados para um e-mail através do serviço Formspree.
+Hoje iremos integrar o formulário ao tema e a">
+<meta property="og:updated_time" content="2016-05-21T02:46:00.934Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Criando um formulário de contato para um site estático - Parte 2">
+<meta name="twitter:description" content="Na parte 1 desse artigo nós criamos um formulário HTML dentro de uma página Hexo. O formulário envia os dados para um e-mail através do serviço Formspree.
+Hoje iremos integrar o formulário ao tema e a">
+<meta name="twitter:creator" content="@jjbenito">
+    
+        <meta rel="publisher" content="https://plus.google.com/+JosenivaldoBenitoJunior"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-27vrduj1jopliavvnzi7ibndpmbvg7lzo4a2uswrsi4m5vwauf2qi8s1v3or.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-77337156-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Blog do Benito</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="4">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">JrBenito</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/jrbenito" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2726840" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/jjbenito" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://plus.google.com/+JosenivaldoBenitoJunior" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-google-plus"></i>
+                    <span class="sidebar-button-desc">Google Plus</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/contact"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Criando um formulário de contato para um site estático - Parte 2
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Sat May 21 2016 02:30:25 GMT+0000">
+	
+		    21/05/2016
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Na <a href="/2016/05/formulario-de-contato-site-estatico">parte 1</a> desse artigo nós criamos um formulário HTML dentro de uma página <a href="https://hexo.io" target="_blank" rel="external">Hexo</a>. O formulário envia os dados para um e-mail através do serviço <a href="https://formspree.io" target="_blank" rel="external">Formspree</a>.</p>
+<p>Hoje iremos integrar o formulário ao tema e assim ganhar controle da apresentação do formulário podendo adicionar estilos e scripts e aproveitar as facilidades que seu tema disponibiliza. O tema que escolhi para meu blog é o <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="external">Tranquilpeak</a> e os exemplo abaixo serão baseados em sua estrutura. Porém, é fácil extrapolar isso para o tema de sua escolha.<br><a id="more"></a></p>
+<h2 id="Layout"><a href="#Layout" class="headerlink" title="Layout"></a>Layout</h2><p>As páginas <code>source/contato/index.md</code> e <code>source/contato/sucesso.md</code> criadas na <a href="/2016/05/formulario-de-contato-site-estatico">parte 1</a> utilizam o layout <em>page</em>. Esse layout é obrigatório em todos os temas Hexo. Como o nome sugere ele difere do layout <em>post</em> e é voltado para criação de páginas do site. No <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="external">Tranquilpeak</a> v1.7.1 (mais atual enquanto escrevo esse artigo), o layout page contém:</p>
+<figure class="highlight erb"><figcaption><span>layout/page.ejs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> partial(<span class="string">'_partial/post'</span>, &#123;<span class="symbol">post:</span> page&#125;) </span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>A função <code>partial</code> carrega um outro arquivo passando o objeto JSON <code>{post: page}</code>. Esse modelo de carga de arquivos parciais é bastante poderoso como veremos a seguir. Alteraremos o arquivo acima para ficar assim:</p>
+<figure class="highlight erb"><figcaption><span>layout/page.ejs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> <span class="keyword">if</span> (page.path.indexOf(<span class="string">'contato'</span>) &gt; -<span class="number">1</span>)&#123; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> partial(<span class="string">'_partial/contact'</span>, &#123;<span class="symbol">post:</span> page&#125;) </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> &#125; <span class="keyword">else</span> &#123; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> partial(<span class="string">'_partial/post'</span>, &#123;<span class="symbol">post:</span> page&#125;) </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> &#125; </span><span class="xml"><span class="tag">%&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>Nessa nova versão, toda página com layout page poderá ter carregado o layout <code>layout/_partial/post.ejs</code>ou o layout <code>layout/_partial/contact.ejs</code> dependendo do caminho na URL do site. Toda página cujo endereço contiver a palavra <em>contato</em> carregará o layout específico para páginas de contato, todas as outras continuam como antes. O arquivo <code>layout/_partial/contact.ejs</code> não existe no tema <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="external">Tranquilpeak</a> e devemos criá-lo:</p>
+<figure class="highlight erb"><figcaption><span>layout/_partial/contact.ejs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">article</span> <span class="attr">class</span>=<span class="string">"post"</span> <span class="attr">itemscope</span> <span class="attr">itemType</span>=<span class="string">"http://schema.org/BlogPosting"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> <span class="keyword">if</span> (post.coverCaption) &#123; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"post-header-cover-caption caption"</span>&gt;</span><span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby"> post.coverCaption </span><span class="xml"><span class="tag">%&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> &#125; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> <span class="keyword">if</span> (!post.coverImage <span class="params">||</span> post.coverMeta === <span class="string">'out'</span>) &#123; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> partial(<span class="string">'contact/header'</span>)</span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> &#125; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-content markdown"</span> <span class="attr">itemprop</span>=<span class="string">"articleBody"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"main-content-wrap"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> post.content </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> <span class="keyword">if</span> (post.form) &#123; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">%-</span></span></span><span class="ruby"> partial(<span class="string">'contact/form'</span>) </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> &#125; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">article</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>O conteúdo foi extraído, com pouca modificação, do <code>layout/_partial/post.ejs</code>, assim a formatação fica similar. Utilizando um <code>&lt;DIV&gt;</code>com classe <em>“main-content-wrap”</em>, herdamos a formatação da área de conteúdo do site. E a linha <code>&lt;%- post.content %&gt;</code> é responsável por preencher o <code>&lt;DIV&gt;</code> com o conteúdo do arquivo <code>.md</code> já traduzido de <em>markdown</em> para HTML. Através da condição <code>&lt;% if (post.form) { %&gt;</code>, a variável <code>form</code> controla a inserção do conteúdo do arquivo <code>layout/_partial/contact/form</code>. </p>
+<figure class="highlight accesslog"><figcaption><span>layout/_partial/contact/form.ejs</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">"https://formspree.io/&lt;%= theme.author.email %&gt;"</span> method=<span class="string">"<span class="keyword">POST</span>"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"text"</span> name=<span class="string">"name"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"email"</span> name=<span class="string">"_replyto"</span>&gt;</span><br><span class="line">    &lt;input type=<span class="string">"submit"</span> value=<span class="string">"Send"</span>&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+<p>Repare na utilização da variável provida pelo tema <code>theme.author.email</code> para preencher o action do formulário. Dessa forma a solução fica mais portável. Os arquivo <code>source/contato/index.md</code> e <code>source/contato/sucesso.md</code> alterados estão abaixo. O formulário migrou do arquivo de markdown <code>contato/index.md</code> para o layout <code>form.ejs</code> e foi acrescentada a variável form ao <em>front-matter</em>.</p>
+<figure class="highlight yaml"><figcaption><span>source/contato/index.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> Contato</span><br><span class="line"><span class="attr">layout:</span> page</span><br><span class="line"><span class="attr">form:</span> <span class="literal">true</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line">Deixa sua mensagem!</span><br></pre></td></tr></table></figure>
+<figure class="highlight yaml"><figcaption><span>source/contato/sucesso.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">title:</span> Contato</span><br><span class="line"><span class="attr">layout:</span> page</span><br><span class="line"><span class="attr">form:</span> <span class="literal">false</span></span><br><span class="line"><span class="meta">---</span></span><br><span class="line">Obrigado por nos enviar uma mensagem!</span><br></pre></td></tr></table></figure>
+<p>Eu particularmente não gosto que a data de postagem seja incluída junto ao título da página de contato. Retirei ela criando um novo cabeçalho para as páginas de contato em <code>layout/_partial/contact/header</code>.</p>
+<figure class="highlight erb"><figcaption><span>layout/_partial/contact/header</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"post-header main-content-wrap &lt;%=</span></span></span><span class="ruby"> (post.metaAlignment ? <span class="string">'text-'</span> + post.metaAlignment : <span class="string">'text-left'</span>) </span><span class="xml"><span class="tag"><span class="string">%&gt;"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> <span class="keyword">if</span> (post.link) &#123; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">itemprop</span>=<span class="string">"headline"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">a</span> <span class="attr">class</span>=<span class="string">"link"</span> <span class="attr">href</span>=<span class="string">"&lt;%-</span></span></span><span class="ruby"> url_for(post.link) </span><span class="xml"><span class="tag"><span class="string">%&gt;"</span> <span class="attr">target</span>=<span class="string">"_blank"</span> <span class="attr">itemprop</span>=<span class="string">"url"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby"> post.title <span class="params">||</span> <span class="string">'('</span> + _<span class="number">_</span>(<span class="string">'post.no_title'</span>) + <span class="string">')'</span> </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> &#125; <span class="keyword">else</span> &#123; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"post-title"</span> <span class="attr">itemprop</span>=<span class="string">"headline"</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">%=</span></span></span><span class="ruby"> post.title <span class="params">||</span> <span class="string">'('</span> + _<span class="number">_</span>(<span class="string">'post.no_title'</span>) + <span class="string">')'</span> </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">%</span></span></span><span class="ruby"> &#125; </span><span class="xml"><span class="tag">%&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h3><p>O que foi apresentado até aqui integra o formulário HTML ao conteúdo do site, permite que os arquivo <code>.md</code> controlem o conteúdo das páginas mas delega o layout do formulário ao tema. Ainda é preciso criar alguns estilos <code>CSS</code> para os campos e legendas pois o <a href="https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak" target="_blank" rel="external">Tranquilpeak</a> não prevê o uso de campos de formulário. Porém, utilizando o tema dessa forma fica simples reaproveitar o que o tema oferece e ainda acrescentar estilos e scripts ao formulário.</p>
+<p><strong>Edição:</strong> Após terminar de escrever, revisar esse artigo, já com ele pronto para publicação percebi que seria mais elegante, ao invés de editar o layout <em>page</em> para escolher entre os arquivos parciais, criar um novo layout chamado contato e declará-lo no <code>front-matter</code>do arquivo <code>.md</code>. Apesar de mais elegante essa solução demanda mais alterações no tema ficando, então, para outra oportunidade.</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/hexo/">Hexo</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/formulario-de-contato-site-estatico/" data-tooltip="Criando um formulário de contato para um site estático">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 JrBenito. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/formulario-de-contato-site-estatico/" data-tooltip="Criando um formulário de contato para um site estático">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/">
+                <i class="fa fa-google-plus"></i><span class="">Partilhar no Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/">
+                <i class="fa fa-facebook-official"></i><span>SPartilhar no Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/">
+                <i class="fa fa-twitter"></i><span>Partilhar no Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=110"/>
+        
+            <h4 id="about-card-name">JrBenito</h4>
+        
+            <h5 id="about-card-bio"><p>Formado em Ciência da Computação trabalha com sistemas embarcados Linux e Android. Fotógrafo amador e apaixonado por mergulho também pratica corrida. Sua maior aventura é ser pai.</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Engenheiro de Sistemas / Samsung</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Campinas / Brasil
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-tu4ziscb5jrkjxubeugdgizktyuugflfq5jvgz4agzzmwifuq01g1lmq8giw.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/';
+                 
+                    this.page.identifier = '2016/05/formulario-de-contato-site-estatico-pt2/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'blogdobenito';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>

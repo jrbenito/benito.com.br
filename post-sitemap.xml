@@ -7,8 +7,16 @@
     </url>
 
     <url>
+        <loc>http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/</loc>
+        <lastmod>2016-05-21T02:46:00.934Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
         <loc>http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/</loc>
-        <lastmod>2016-05-21T02:29:52.623Z</lastmod>
+        <lastmod>2016-05-21T02:46:00.934Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -16,7 +24,7 @@
 
     <url>
         <loc>http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/</loc>
-        <lastmod>2016-05-21T02:29:52.623Z</lastmod>
+        <lastmod>2016-05-21T02:46:00.934Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -24,7 +32,7 @@
 
     <url>
         <loc>http://www.benito.com.br/2016/05/hexo-aws-blog/</loc>
-        <lastmod>2016-05-21T02:29:52.623Z</lastmod>
+        <lastmod>2016-05-21T02:46:00.934Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
