@@ -6,10 +6,10 @@
     <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="generator" content="Blog do Benito">
-    <title>Hexo+Aws=Blog! - Hexo para leigos (parte 1) - Blog do Benito</title>
+    <title>Criando um formulário de contato para um site estático - Blog do Benito</title>
     <meta name="author" content="JrBenito">
     
-        <meta name="keywords" content="hexo,Amazon AWS,AWS,Blog,Static website">
+        <meta name="keywords" content="hexo,Blog,Static website,contact form,fomulário">
     
     
         <link rel="icon" href="http://www.benito.com.br/assets/images/favicon.ico">
@@ -17,16 +17,16 @@
     
         <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
     
-    <meta name="description" content="No primeiro artigo deste blog expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do Amazon Web Services. Nesta primei">
+    <meta name="description" content="Sites estáticos são legais por muitos motivos. São rápidos, seguros já que não há interação com o servidor, são fáceis de gerenciar e criar com ferramentas como Hexo e Jekyll. Mas todas essas benesses">
 <meta property="og:type" content="blog">
-<meta property="og:title" content="Hexo+Aws=Blog! - Hexo para leigos (parte 1)">
-<meta property="og:url" content="http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/index.html">
+<meta property="og:title" content="Criando um formulário de contato para um site estático">
+<meta property="og:url" content="http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/index.html">
 <meta property="og:site_name" content="Blog do Benito">
-<meta property="og:description" content="No primeiro artigo deste blog expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do Amazon Web Services. Nesta primei">
+<meta property="og:description" content="Sites estáticos são legais por muitos motivos. São rápidos, seguros já que não há interação com o servidor, são fáceis de gerenciar e criar com ferramentas como Hexo e Jekyll. Mas todas essas benesses">
 <meta property="og:updated_time" content="2016-05-21T02:29:52.623Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo+Aws=Blog! - Hexo para leigos (parte 1)">
-<meta name="twitter:description" content="No primeiro artigo deste blog expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do Amazon Web Services. Nesta primei">
+<meta name="twitter:title" content="Criando um formulário de contato para um site estático">
+<meta name="twitter:description" content="Sites estáticos são legais por muitos motivos. São rápidos, seguros já que não há interação com o servidor, são fáceis de gerenciar e criar com ferramentas como Hexo e Jekyll. Mas todas essas benesses">
 <meta name="twitter:creator" content="@jjbenito">
     
         <meta rel="publisher" content="https://plus.google.com/+JosenivaldoBenitoJunior"/>
@@ -233,13 +233,13 @@
         <div class="post-header main-content-wrap text-left">
     
         <h1 class="post-title" itemprop="headline">
-            Hexo+Aws=Blog! - Hexo para leigos (parte 1)
+            Criando um formulário de contato para um site estático
         </h1>
     
     <div class="post-meta">
-    <time itemprop="datePublished" content="Thu May 19 2016 02:45:23 GMT+0000">
+    <time itemprop="datePublished" content="Fri May 20 2016 22:31:42 GMT+0000">
 	
-		    19/05/2016
+		    20/05/2016
     	
     </time>
     
@@ -248,64 +248,27 @@
     
     <div class="post-content markdown" itemprop="articleBody">
         <div class="main-content-wrap">
-            <p>No <a href="/2016/05/hexo-aws-blog">primeiro artigo</a> deste blog expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do <a href="//aws.amazon.com">Amazon Web Services</a>. Nesta primeira parte da série vamos abordar o básico: <a href="//hexo.io">Hexo</a>!<br><a id="more"></a><br>O Hexo é um <em>framework</em> para desenvolvimento de blogs estáticos com diversos <a href="//hexo.io/plugins/">plugins</a> que o tornam ainda mais poderoso. Ele é desenvolvido utilizando o <a href="//nodejs.org/en/">Node.js</a>, um interpretador javascript desenvolvido com base no <a href="//developers.google.com/v8/"><em>motor</em> javascript Chrome V8</a>.</p>
-<p>Se você já conhece e utiliza o Node.js, basta instalar o Hexo. Eu precisei instalar o Node.js em meu Ubuntu, e a maneira mais prática que encontrei para fazê-lo foi através do <em>nvm</em>; a forma também descrita na documentação do Hexo. No terminal do Ubuntu, como usuário normal (não root) fiz:</p>
-<p><code>$ wget -qO- https://raw.github.com/creationix/nvm/master/install.sh | sh</code></p>
-<p>E em seguida usei o <code>nvm</code> para instalar o Node.js.</p>
-<p><code>$ nvm install 4.4.3</code></p>
-<p>Muitos tutoriais na internet utilizam a versão 0.12 do Node.js com o Hexo, mas alguns plugins e módulos do próprio Node.js requerem a versão mais nova. Então preferi instalar a versão LTS, v4.4.3 enquanto escrevo esse artigo. Também poderia baixar o instalador no site do <a href="//nodejs.org/en/">Node.js</a>. Caso tenha usado o <code>nvm</code>, em novas sessões do terminal é importante ativar o Node.js rodando <code>nvm use 4.4.3</code>.</p>
-<h2 id="Instalando-o-Hexo-e-iniciando-o-blog"><a href="#Instalando-o-Hexo-e-iniciando-o-blog" class="headerlink" title="Instalando o Hexo e iniciando o blog"></a>Instalando o Hexo e iniciando o blog</h2><p>Depois foi só instalar o <a href="//hexo.io">Hexo</a>. No momento em que esse artigo é escrito a versão mais recente é a 3.2.0.</p>
-<p><code>$ npm install hexo-cli -g</code></p>
-<p>Para iniciar o blog</p>
-<figure class="highlight bash"><figcaption><span>Iniciar o novo blog</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ hexo init meuB<span class="built_in">log</span></span><br><span class="line">$ <span class="built_in">cd</span> meuB<span class="built_in">log</span></span><br><span class="line">$ npm install</span><br></pre></td></tr></table></figure>
-<p>O último comando é responsável por instalar os pacotes Node.js dos quais o hexo depende para gerar o blog. Para quem já trabalha com Node.js não é novidade, mas é importante saber que o diretório do blog é como uma espécie de sistema desenvolvido em Node.js. O Hexo e todas os pacotes dos quais eles dependente são instalados dentro do diretório do blog.</p>
-<p>Para ver o blog rodando, o Hexo possui um mini servidor:</p>
-<p><code>$ hexo server</code></p>
-<p>Acesse o conteúdo apontando seu navegador para <a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a>.</p>
-<h2 id="Controlando-seu-blog-com-Git"><a href="#Controlando-seu-blog-com-Git" class="headerlink" title="Controlando seu blog com Git"></a>Controlando seu blog com <a href="//git-scm.com" title="Git">Git</a></h2><p>Esse passo é opcional mas muito recomendado. Como alterações nas configurações, testes, novos artigos são operações freqüentes no blog, o versionamento do conteúdo é uma excelente maneira de manter registro dessas modificações e, de quebra, adicionar um pouco de proteção a desastres (sem dispensar o backup). Após inicializar o blog com Hexo, inicializei um repositório <a href="//git-scm.com" title="Git">Git</a>:</p>
-<p><code>$ git init</code></p>
-<p>Coloquei um arquivo <code>.gitignore</code> no repositório para instruir o git a ignorar arquivos que não devem ser rastreados.</p>
-<figure class="highlight stylus"><figcaption><span>.gitignore</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.DS_Store</span></span><br><span class="line">Thumbs<span class="selector-class">.db</span></span><br><span class="line">db<span class="selector-class">.json</span></span><br><span class="line">*<span class="selector-class">.log</span></span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br><span class="line">*~</span><br></pre></td></tr></table></figure>
-<p>E adicionei os arquivos ao repositório:</p>
-<figure class="highlight elixir"><figcaption><span>adicionar arquivos ao repositório</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$ </span>git add *</span><br><span class="line"><span class="variable">$ </span>git commit -m <span class="string">"Blog: estado inicial"</span></span><br></pre></td></tr></table></figure>
-<p>A cada alteração importante eu gravo um <em>snapshot</em> no repositório com um novo <em>commit</em>. Dessa forma posso retroceder a qualquer momento no tempo e restaurar um estado funcional do site.</p>
-<h2 id="Arquivos-do-site"><a href="#Arquivos-do-site" class="headerlink" title="Arquivos do site"></a>Arquivos do site</h2><p>Um site recém gerado com Hexo contém:</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>_config.yml</td>
-<td>Configuração do blog e <a href="//hexo.io/plugins/">plugins</a> do Hexo</td>
-</tr>
-<tr>
-<td>package.json</td>
-<td>Lista de npm packages necessários para o blog</td>
-</tr>
-<tr>
-<td>scaffolds</td>
-<td>Modelo dos layouts disponíveis (<code>draft</code>, <code>post</code>, <code>page</code>)</td>
-</tr>
-<tr>
-<td>source</td>
-<td>Arquivos dos posts, páginas e conteúdo do site</td>
-</tr>
-<tr>
-<td>themes</td>
-<td>Temas instalados, por padrão o Hexo traz o tema Landscape, esse site usa o <a href="//github.com/LouisBarranqueiro/hexo-theme-tranquilpeak/">Tranquilpeak</a></td>
-</tr>
-</tbody>
-</table>
-<p>Veja a listagem deste blog.</p>
-<figure class="highlight bash"><figcaption><span>Hexo file structure</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">drwxrwxr-x 6 jrbenito jrbenito 4096 Mai 19 00:43 .</span><br><span class="line">drwxrwxr-x 5 jrbenito jrbenito 4096 Mai 19 00:43 ..</span><br><span class="line">-rw-rw-r-- 1 jrbenito jrbenito 2203 Mai 19 00:43 _config.yml</span><br><span class="line">drwxrwxr-x 8 jrbenito jrbenito 4096 Mai 19 00:43 .git</span><br><span class="line">-rw-rw-r-- 1 jrbenito jrbenito   71 Mai 19 00:43 .gitignore</span><br><span class="line">-rw-rw-r-- 1 jrbenito jrbenito  727 Mai 19 00:43 package.json</span><br><span class="line">drwxrwxr-x 2 jrbenito jrbenito 4096 Mai 19 00:43 scaffolds</span><br><span class="line">drwxrwxr-x 7 jrbenito jrbenito 4096 Mai 19 00:43 <span class="built_in">source</span></span><br><span class="line">drwxrwxr-x 4 jrbenito jrbenito 4096 Mai 19 00:43 themes</span><br><span class="line">-rw-rw-r-- 1 jrbenito jrbenito 2590 Mai 19 00:43 .travis.yml</span><br></pre></td></tr></table></figure>
-<p>Os arquivos <code>.git</code> e <code>.gitignore</code> são específicos dos repositório <a href="//git-scm.com" title="Git">git</a>; o <code>.travis·yml</code> também não pertence ao Hexo e sua função é assunto para outro post.</p>
-<h2 id="Feito"><a href="#Feito" class="headerlink" title="Feito!"></a>Feito!</h2><p>Pronto, agora é só personalizar o blog através das configurações e temas.</p>
-<p>Dentre os geradores de sites que conheci, escolhi o hexo por sua simplicidade e por rodar em diversas plataformas sem problemas de compatibilidade possibilitando que eu edite esse blog em casa no Linux ou em uma máquina windows <em>on the go</em>. Continuando minha saga escreverei ainda sobre como hospedar o blog no <a href="//aws.amazon.com">AWS S3</a> e configurar uma CDN para acelerar o acesso ao site.</p>
-
+            <p>Sites estáticos são legais por muitos motivos. São rápidos, seguros já que não há interação com o servidor, são fáceis de gerenciar e criar com ferramentas como <a href="https://hexo.io" target="_blank" rel="external">Hexo</a> e <a href="https://jekyllrb.com" target="_blank" rel="external">Jekyll</a>. Mas todas essas benesses não vêm sem um custo. Um típico formulário de contato é impossível de ser implementado em sites totalmente estáticos. Será?<br><a id="more"></a><br>Com o serviço <a href="https://formspree.io" target="_blank" rel="external">Formspree</a> basta submeter seu formulário para o endereço <a href="https://formspree.io/seu@email.com.br" target="_blank" rel="external">formspree.io/seu@email.com.br</a> e receber os dados do formulário diretamente em sua caixa postal. Simples, fácil e grátis! </p>
+<p>Veja o formulário básico:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"https://formspree.io/your@email.com"</span> <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"_replyto"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Send"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="Integrando-com-o-Hexo"><a href="#Integrando-com-o-Hexo" class="headerlink" title="Integrando com o Hexo"></a>Integrando com o Hexo</h2><h3 id="Modo-rapido-e-feio"><a href="#Modo-rapido-e-feio" class="headerlink" title="Modo rápido (e feio!)"></a>Modo rápido (e feio!)</h3><p>No <a href="https://hexo.io" target="_blank" rel="external">Hexo</a> basta criar uma página (não um post) chamado contato:</p>
+<p><code>$ hexo new page contato</code></p>
+<p>Uma página nova será criada em <code>source/contato/index.md</code>, edite esse arquivo para conter algo similar a:</p>
+<figure class="highlight markdown"><figcaption><span>source/contato/index.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">title: Contato</span><br><span class="line"><span class="section">layout: page</span><br><span class="line">---</span></span><br><span class="line">Deixa sua mensagem!</span><br><span class="line"></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">"https://formspree.io/your@email.com"</span></span><br><span class="line">  <span class="attr">method</span>=<span class="string">"POST"</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">name</span>=<span class="string">"name"</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"email"</span> <span class="attr">name</span>=<span class="string">"_replyto"</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"submit"</span> <span class="attr">value</span>=<span class="string">"Send"</span>&gt;</span></span></span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>Nesse ponto o formulário já funciona e pode ser acessado em <code>http://seu.dominio.com/contato/</code>. Mas vamos melhorar um pouco a experiência do usuário acrescentando uma página personalizada de sucesso após o envio da mensagem. Para isso vamos criar o arquivo <code>source/contato/sucesso.md</code>.</p>
+<figure class="highlight markdown"><figcaption><span>source/contato/sucesso.md</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">title: Contato</span><br><span class="line"><span class="section">layout: page</span><br><span class="line">---</span></span><br><span class="line">Obrigado por nos enviar uma mensagem!</span><br></pre></td></tr></table></figure>
+<p>E acrescentamos um campo escondido ao formulário no arquivo <code>source/contato/index.md</code>.<br><em>(mais detalhes sobre os campos escondidos veja o site <a href="https://formspree.io" target="_blank" rel="external">formspree.io</a>)</em></p>
+<p><code>&lt;input type=&quot;hidden&quot; name=&quot;_next&quot; value=&quot;//seu.dominio.com/contato/sucesso.html&quot; /&gt;</code></p>
+<p>Esse campo não aparece para o usuário e instrui o <a href="https://formspree.io" target="_blank" rel="external">formspree</a> a retornar para a página de sucesso depois de enviar o formulário.</p>
+<p>Pronto! O formulário de contato está integrado ao site.</p>
+<h4 id="Pontos-negativos"><a href="#Pontos-negativos" class="headerlink" title="Pontos negativos"></a>Pontos negativos</h4><ul>
+<li>O endereço e-mail fica aberto à <em>scrappers</em>, porém colocar um <code>mailto:</code> no site teria o mesmo efeito. Também, as ferramentas de e-mail modernas são muito boas em filtrar spam.</li>
+<li>Esse método oferece pouco controle sobre a apresentação do formulário, isso porque o Hexo irá interpretar o arquivo <code>.md</code> como markdown. Isso não altera diretamente o código HTML do formulário mas torna difícil controlar o resultado final.</li>
+<li>O resultado pode variar muito de acordo com o tema utilizado. Essas variações podem não ser agradáveis.</li>
+</ul>
+<p>Uma alternativa para ter mais controle sobre a apresentação do formulário é criar o HTML completo ao invés de um <code>.md</code>. O Hexo vai apenas copiar o HTML para o site final. Mas isso requer cópia da estrutura gerada pelo Hexo para dentro do HTML manualmente afim de fazê-lo se parecer com uma página do site. Manter a sincronia dos arquivos pode se tornar trabalhoso.</p>
+<p>Outra saída é personalizar o tema. Explicarei os detalhes de como fazer isso na <a href="/2016/05/formulario-de-contato-site-estatico-pt2">parte 2</a> desse artigo.</p>
+<h4 id="continua…"><a href="#continua…" class="headerlink" title="continua…"></a><a href="/2016/05/formulario-de-contato-site-estatico-pt2">continua…</a></h4>
             
         </div>
     </div>
@@ -314,7 +277,7 @@
             <div class="post-footer-tags">
                 <span class="text-color-light text-small">ETIQUETADO em</span><br/>
                 
-    <a class="tag tag--primary tag--small t-link" href="/tags/aws/">AWS</a> <a class="tag tag--primary tag--small t-link" href="/tags/hexo/">Hexo</a> <a class="tag tag--primary tag--small t-link" href="/tags/nodejs/">Nodejs</a>
+    <a class="tag tag--primary tag--small t-link" href="/tags/hexo/">Hexo</a>
 
             </div>
         
@@ -323,7 +286,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/formulario-de-contato-site-estatico/"  data-tooltip="Criando um formulário de contato para um site estático">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
@@ -331,7 +294,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/hexo-aws-blog/" data-tooltip="Hexo + AWS = Blog!">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/" data-tooltip="Hexo+Aws=Blog! - Hexo para leigos (parte 1)">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
                     <i class="fa fa-angle-right"></i>
@@ -346,17 +309,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -404,7 +367,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/formulario-de-contato-site-estatico/"  data-tooltip="Criando um formulário de contato para um site estático">
+                    <a class="post-action-btn btn btn--disabled">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
@@ -412,7 +375,7 @@
             </li>
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/hexo-aws-blog/" data-tooltip="Hexo + AWS = Blog!">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/" data-tooltip="Hexo+Aws=Blog! - Hexo para leigos (parte 1)">
                 
                     <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
                     <i class="fa fa-angle-right"></i>
@@ -427,17 +390,17 @@
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/">
                 <i class="fa fa-google-plus"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/">
                 <i class="fa fa-facebook-official"></i>
             </a>
         </li>
         <li class="post-action hide-xs">
-            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/">
                 <i class="fa fa-twitter"></i>
             </a>
         </li>
@@ -463,17 +426,17 @@
                 <div id="share-options-bar" class="share-options-bar" data-behavior="4">
     <ul class="share-options">
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/">
                 <i class="fa fa-google-plus"></i><span class="">Partilhar no Google Plus</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/">
                 <i class="fa fa-facebook-official"></i><span>SPartilhar no Facebook</span>
             </a>
         </li>
         <li class="share-option">
-            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/">
                 <i class="fa fa-twitter"></i><span>Partilhar no Twitter</span>
             </a>
         </li>
@@ -528,9 +491,9 @@
     
         <script>
              var disqus_config = function () {
-                 this.page.url = 'http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/';
+                 this.page.url = 'http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/';
                  
-                    this.page.identifier = '2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/';
+                    this.page.identifier = '2016/05/formulario-de-contato-site-estatico/';
                                   
              };
             (function() {

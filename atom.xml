@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.benito.com.br/"/>
-  <updated>2016-05-21T02:15:05.562Z</updated>
+  <updated>2016-05-21T02:29:52.623Z</updated>
   <id>http://www.benito.com.br/</id>
   
   <author>
@@ -16,11 +16,51 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Criando um formulário de contato para um site estático</title>
+    <link href="http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/"/>
+    <id>http://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/</id>
+    <published>2016-05-20T22:31:42.000Z</published>
+    <updated>2016-05-21T02:29:52.623Z</updated>
+    
+    <content type="html">&lt;p&gt;Sites estáticos são legais por muitos motivos. São rápidos, seguros já que não há interação com o servidor, são fáceis de gerenciar e criar com ferramentas como &lt;a href=&quot;https://hexo.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt; e &lt;a href=&quot;https://jekyllrb.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Jekyll&lt;/a&gt;. Mas todas essas benesses não vêm sem um custo. Um típico formulário de contato é impossível de ser implementado em sites totalmente estáticos. Será?&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;Com o serviço &lt;a href=&quot;https://formspree.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Formspree&lt;/a&gt; basta submeter seu formulário para o endereço &lt;a href=&quot;https://formspree.io/seu@email.com.br&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;formspree.io/seu@email.com.br&lt;/a&gt; e receber os dados do formulário diretamente em sua caixa postal. Simples, fácil e grátis! &lt;/p&gt;
+&lt;p&gt;Veja o formulário básico:&lt;/p&gt;
+&lt;figure class=&quot;highlight html&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;action&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;https://formspree.io/your@email.com&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;method&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;POST&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;email&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;_replyto&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;submit&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Send&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;form&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;h2 id=&quot;Integrando-com-o-Hexo&quot;&gt;&lt;a href=&quot;#Integrando-com-o-Hexo&quot; class=&quot;headerlink&quot; title=&quot;Integrando com o Hexo&quot;&gt;&lt;/a&gt;Integrando com o Hexo&lt;/h2&gt;&lt;h3 id=&quot;Modo-rapido-e-feio&quot;&gt;&lt;a href=&quot;#Modo-rapido-e-feio&quot; class=&quot;headerlink&quot; title=&quot;Modo rápido (e feio!)&quot;&gt;&lt;/a&gt;Modo rápido (e feio!)&lt;/h3&gt;&lt;p&gt;No &lt;a href=&quot;https://hexo.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt; basta criar uma página (não um post) chamado contato:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ hexo new page contato&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Uma página nova será criada em &lt;code&gt;source/contato/index.md&lt;/code&gt;, edite esse arquivo para conter algo similar a:&lt;/p&gt;
+&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;figcaption&gt;&lt;span&gt;source/contato/index.md&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;title: Contato&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;layout: page&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;---&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Deixa sua mensagem!&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;form&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;action&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;https://formspree.io/your@email.com&quot;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &lt;span class=&quot;attr&quot;&gt;method&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;POST&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;text&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;name&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;email&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;name&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;_replyto&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;&lt;span class=&quot;name&quot;&gt;input&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;type&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;submit&quot;&lt;/span&gt; &lt;span class=&quot;attr&quot;&gt;value&lt;/span&gt;=&lt;span class=&quot;string&quot;&gt;&quot;Send&quot;&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;xml&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/&lt;span class=&quot;name&quot;&gt;form&lt;/span&gt;&amp;gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;Nesse ponto o formulário já funciona e pode ser acessado em &lt;code&gt;http://seu.dominio.com/contato/&lt;/code&gt;. Mas vamos melhorar um pouco a experiência do usuário acrescentando uma página personalizada de sucesso após o envio da mensagem. Para isso vamos criar o arquivo &lt;code&gt;source/contato/sucesso.md&lt;/code&gt;.&lt;/p&gt;
+&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;figcaption&gt;&lt;span&gt;source/contato/sucesso.md&lt;/span&gt;&lt;/figcaption&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;title: Contato&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;section&quot;&gt;layout: page&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;---&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Obrigado por nos enviar uma mensagem!&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;E acrescentamos um campo escondido ao formulário no arquivo &lt;code&gt;source/contato/index.md&lt;/code&gt;.&lt;br&gt;&lt;em&gt;(mais detalhes sobre os campos escondidos veja o site &lt;a href=&quot;https://formspree.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;formspree.io&lt;/a&gt;)&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;&amp;lt;input type=&amp;quot;hidden&amp;quot; name=&amp;quot;_next&amp;quot; value=&amp;quot;//seu.dominio.com/contato/sucesso.html&amp;quot; /&amp;gt;&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Esse campo não aparece para o usuário e instrui o &lt;a href=&quot;https://formspree.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;formspree&lt;/a&gt; a retornar para a página de sucesso depois de enviar o formulário.&lt;/p&gt;
+&lt;p&gt;Pronto! O formulário de contato está integrado ao site.&lt;/p&gt;
+&lt;h4 id=&quot;Pontos-negativos&quot;&gt;&lt;a href=&quot;#Pontos-negativos&quot; class=&quot;headerlink&quot; title=&quot;Pontos negativos&quot;&gt;&lt;/a&gt;Pontos negativos&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;O endereço e-mail fica aberto à &lt;em&gt;scrappers&lt;/em&gt;, porém colocar um &lt;code&gt;mailto:&lt;/code&gt; no site teria o mesmo efeito. Também, as ferramentas de e-mail modernas são muito boas em filtrar spam.&lt;/li&gt;
+&lt;li&gt;Esse método oferece pouco controle sobre a apresentação do formulário, isso porque o Hexo irá interpretar o arquivo &lt;code&gt;.md&lt;/code&gt; como markdown. Isso não altera diretamente o código HTML do formulário mas torna difícil controlar o resultado final.&lt;/li&gt;
+&lt;li&gt;O resultado pode variar muito de acordo com o tema utilizado. Essas variações podem não ser agradáveis.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Uma alternativa para ter mais controle sobre a apresentação do formulário é criar o HTML completo ao invés de um &lt;code&gt;.md&lt;/code&gt;. O Hexo vai apenas copiar o HTML para o site final. Mas isso requer cópia da estrutura gerada pelo Hexo para dentro do HTML manualmente afim de fazê-lo se parecer com uma página do site. Manter a sincronia dos arquivos pode se tornar trabalhoso.&lt;/p&gt;
+&lt;p&gt;Outra saída é personalizar o tema. Explicarei os detalhes de como fazer isso na &lt;a href=&quot;/2016/05/formulario-de-contato-site-estatico-pt2&quot;&gt;parte 2&lt;/a&gt; desse artigo.&lt;/p&gt;
+&lt;h4 id=&quot;continua…&quot;&gt;&lt;a href=&quot;#continua…&quot; class=&quot;headerlink&quot; title=&quot;continua…&quot;&gt;&lt;/a&gt;&lt;a href=&quot;/2016/05/formulario-de-contato-site-estatico-pt2&quot;&gt;continua…&lt;/a&gt;&lt;/h4&gt;</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Sites estáticos são legais por muitos motivos. São rápidos, seguros já que não há interação com o servidor, são fáceis de gerenciar e criar com ferramentas como &lt;a href=&quot;https://hexo.io&quot;&gt;Hexo&lt;/a&gt; e &lt;a href=&quot;https://jekyllrb.com&quot;&gt;Jekyll&lt;/a&gt;. Mas todas essas benesses não vêm sem um custo. Um típico formulário de contato é impossível de ser implementado em sites totalmente estáticos. Será?&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="Hexo" scheme="http://www.benito.com.br/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo+Aws=Blog! - Hexo para leigos (parte 1)</title>
     <link href="http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/"/>
     <id>http://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/</id>
     <published>2016-05-19T02:45:23.000Z</published>
-    <updated>2016-05-21T02:15:05.562Z</updated>
+    <updated>2016-05-21T02:29:52.623Z</updated>
     
     <content type="html">&lt;p&gt;No &lt;a href=&quot;/2016/05/hexo-aws-blog&quot;&gt;primeiro artigo&lt;/a&gt; deste blog expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do &lt;a href=&quot;//aws.amazon.com&quot;&gt;Amazon Web Services&lt;/a&gt;. Nesta primeira parte da série vamos abordar o básico: &lt;a href=&quot;//hexo.io&quot;&gt;Hexo&lt;/a&gt;!&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;O Hexo é um &lt;em&gt;framework&lt;/em&gt; para desenvolvimento de blogs estáticos com diversos &lt;a href=&quot;//hexo.io/plugins/&quot;&gt;plugins&lt;/a&gt; que o tornam ainda mais poderoso. Ele é desenvolvido utilizando o &lt;a href=&quot;//nodejs.org/en/&quot;&gt;Node.js&lt;/a&gt;, um interpretador javascript desenvolvido com base no &lt;a href=&quot;//developers.google.com/v8/&quot;&gt;&lt;em&gt;motor&lt;/em&gt; javascript Chrome V8&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Se você já conhece e utiliza o Node.js, basta instalar o Hexo. Eu precisei instalar o Node.js em meu Ubuntu, e a maneira mais prática que encontrei para fazê-lo foi através do &lt;em&gt;nvm&lt;/em&gt;; a forma também descrita na documentação do Hexo. No terminal do Ubuntu, como usuário normal (não root) fiz:&lt;/p&gt;
@@ -88,9 +128,9 @@
     </summary>
     
     
-      <category term="AWS" scheme="http://www.benito.com.br/tags/aws/"/>
-    
       <category term="Hexo" scheme="http://www.benito.com.br/tags/hexo/"/>
+    
+      <category term="AWS" scheme="http://www.benito.com.br/tags/aws/"/>
     
       <category term="Nodejs" scheme="http://www.benito.com.br/tags/nodejs/"/>
     
@@ -101,7 +141,7 @@
     <link href="http://www.benito.com.br/2016/05/hexo-aws-blog/"/>
     <id>http://www.benito.com.br/2016/05/hexo-aws-blog/</id>
     <published>2016-05-06T23:00:00.000Z</published>
-    <updated>2016-05-21T02:15:05.562Z</updated>
+    <updated>2016-05-21T02:29:52.623Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introducao&quot;&gt;&lt;a href=&quot;#Introducao&quot; class=&quot;headerlink&quot; title=&quot;Introdução&quot;&gt;&lt;/a&gt;Introdução&lt;/h1&gt;&lt;p&gt;Recentemente meu irmão iniciou um &lt;a href=&quot;http://counsellor.life&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;projeto&lt;/a&gt; para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um esboço do trabalho e estava hospedando junto ao site de um amigo apenas para teste. Começamos a conversar sobre qual domínio registrar, qual hospedagem contratar, qual tamanho da demanda e claro: preço! &lt;/p&gt;
 &lt;p&gt;Já há algum tempo que eu venho maturando a ideia de iniciar um blog com o objetivo de documentar meus projetos pessoais, compartilhar informação e manter organizado aquele conhecimento resultado de horas na Internet tentando resolver algum problema (geralmente simples). A discussão sobre o projeto para minha cunhada foi a faísca para que eu mergulhasse em uma pesquisa sobre sites, hospedagem, custos, tecnologias e acabasse por escrever esse primeiro post.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -130,9 +170,9 @@
     </summary>
     
     
-      <category term="AWS" scheme="http://www.benito.com.br/tags/aws/"/>
-    
       <category term="Hexo" scheme="http://www.benito.com.br/tags/hexo/"/>
+    
+      <category term="AWS" scheme="http://www.benito.com.br/tags/aws/"/>
     
   </entry>
   
