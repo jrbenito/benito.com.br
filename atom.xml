@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.benito.com.br/"/>
-  <updated>2016-05-31T21:31:13.065Z</updated>
+  <updated>2016-06-01T17:31:49.532Z</updated>
   <id>https://www.benito.com.br/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/"/>
     <id>https://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/</id>
     <published>2016-05-21T02:30:25.000Z</published>
-    <updated>2016-05-31T21:31:13.065Z</updated>
+    <updated>2016-06-01T17:31:49.532Z</updated>
     
     <content type="html">&lt;p&gt;Na &lt;a href=&quot;/2016/05/formulario-de-contato-site-estatico&quot;&gt;parte 1&lt;/a&gt; desse artigo nós criamos um formulário HTML dentro de uma página &lt;a href=&quot;https://hexo.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;. O formulário envia os dados para um e-mail através do serviço &lt;a href=&quot;https://formspree.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Formspree&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Hoje iremos integrar o formulário ao tema e assim ganhar controle da apresentação do formulário podendo adicionar estilos e scripts e aproveitar as facilidades que seu tema disponibiliza. O tema que escolhi para meu blog é o &lt;a href=&quot;https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Tranquilpeak&lt;/a&gt; e os exemplo abaixo serão baseados em sua estrutura. Porém, é fácil extrapolar isso para o tema de sua escolha.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -58,7 +58,7 @@
     <link href="https://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/"/>
     <id>https://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/</id>
     <published>2016-05-20T22:31:42.000Z</published>
-    <updated>2016-05-31T21:31:13.065Z</updated>
+    <updated>2016-06-01T17:31:49.532Z</updated>
     
     <content type="html">&lt;p&gt;Sites estáticos são legais por muitos motivos. São rápidos, seguros já que não há interação com o servidor, são fáceis de gerenciar e criar com ferramentas como &lt;a href=&quot;https://hexo.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt; e &lt;a href=&quot;https://jekyllrb.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Jekyll&lt;/a&gt;. Mas todas essas benesses não vêm sem um custo. Um típico formulário de contato é impossível de ser implementado em sites totalmente estáticos. Será?&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;Com o serviço &lt;a href=&quot;https://formspree.io&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Formspree&lt;/a&gt; basta submeter seu formulário para o endereço &lt;a href=&quot;https://formspree.io/seu@email.com.br&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;formspree.io/seu@email.com.br&lt;/a&gt; e receber os dados do formulário diretamente em sua caixa postal. Simples, fácil e grátis! &lt;/p&gt;
 &lt;p&gt;Veja o formulário básico:&lt;/p&gt;
@@ -98,7 +98,7 @@
     <link href="https://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/"/>
     <id>https://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/</id>
     <published>2016-05-19T02:45:23.000Z</published>
-    <updated>2016-05-31T21:31:13.065Z</updated>
+    <updated>2016-06-01T17:31:49.532Z</updated>
     
     <content type="html">&lt;p&gt;No &lt;a href=&quot;/2016/05/hexo-aws-blog&quot;&gt;primeiro artigo&lt;/a&gt; deste blog expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do &lt;a href=&quot;//aws.amazon.com&quot;&gt;Amazon Web Services&lt;/a&gt;. Nesta primeira parte da série vamos abordar o básico: &lt;a href=&quot;//hexo.io&quot;&gt;Hexo&lt;/a&gt;!&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;br&gt;O Hexo é um &lt;em&gt;framework&lt;/em&gt; para desenvolvimento de blogs estáticos com diversos &lt;a href=&quot;//hexo.io/plugins/&quot;&gt;plugins&lt;/a&gt; que o tornam ainda mais poderoso. Ele é desenvolvido utilizando o &lt;a href=&quot;//nodejs.org/en/&quot;&gt;Node.js&lt;/a&gt;, um interpretador javascript desenvolvido com base no &lt;a href=&quot;//developers.google.com/v8/&quot;&gt;&lt;em&gt;motor&lt;/em&gt; javascript Chrome V8&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Se você já conhece e utiliza o Node.js, basta instalar o Hexo. Eu precisei instalar o Node.js em meu Ubuntu, e a maneira mais prática que encontrei para fazê-lo foi através do &lt;em&gt;nvm&lt;/em&gt;; a forma também descrita na documentação do Hexo. No terminal do Ubuntu, como usuário normal (não root) fiz:&lt;/p&gt;
@@ -179,7 +179,7 @@
     <link href="https://www.benito.com.br/2016/05/hexo-aws-blog/"/>
     <id>https://www.benito.com.br/2016/05/hexo-aws-blog/</id>
     <published>2016-05-06T23:00:00.000Z</published>
-    <updated>2016-05-31T21:31:13.065Z</updated>
+    <updated>2016-06-01T17:31:49.532Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introducao&quot;&gt;&lt;a href=&quot;#Introducao&quot; class=&quot;headerlink&quot; title=&quot;Introdução&quot;&gt;&lt;/a&gt;Introdução&lt;/h1&gt;&lt;p&gt;Recentemente meu irmão iniciou um &lt;a href=&quot;http://counsellor.life&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;projeto&lt;/a&gt; para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um esboço do trabalho e estava hospedando junto ao site de um amigo apenas para teste. Começamos a conversar sobre qual domínio registrar, qual hospedagem contratar, qual tamanho da demanda e claro: preço! &lt;/p&gt;
 &lt;p&gt;Já há algum tempo que eu venho maturando a ideia de iniciar um blog com o objetivo de documentar meus projetos pessoais, compartilhar informação e manter organizado aquele conhecimento resultado de horas na Internet tentando resolver algum problema (geralmente simples). A discussão sobre o projeto para minha cunhada foi a faísca para que eu mergulhasse em uma pesquisa sobre sites, hospedagem, custos, tecnologias e acabasse por escrever esse primeiro post.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
