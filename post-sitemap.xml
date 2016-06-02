@@ -7,24 +7,16 @@
     </url>
 
     <url>
-        <loc>https://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/</loc>
-        <lastmod>2016-06-01T17:31:49.532Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
-        <loc>https://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/</loc>
-        <lastmod>2016-06-01T17:31:49.532Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.6</priority>
-
-    </url>
-
-    <url>
         <loc>https://www.benito.com.br/2016/05/hexo-aws-blog/</loc>
-        <lastmod>2016-06-01T17:31:49.532Z</lastmod>
+        <lastmod>2016-06-02T01:38:42.328Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.benito.com.br/2016/05/formulario-de-contato-site-estatico/</loc>
+        <lastmod>2016-06-02T01:33:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -32,7 +24,15 @@
 
     <url>
         <loc>https://www.benito.com.br/2016/05/formulario-de-contato-site-estatico-pt2/</loc>
-        <lastmod>2016-06-01T17:31:49.532Z</lastmod>
+        <lastmod>2016-06-02T01:30:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.benito.com.br/2016/05/hexo-aws-blog-hexo-para-leigos-parte-1/</loc>
+        <lastmod>2016-06-02T01:24:30.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
