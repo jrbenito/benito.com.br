@@ -1,5 +1,6 @@
 title: "Criando um formulário de contato para um site estático - Parte 2"
 date: 2016-05-20 23:30:25
+updated: 2016-06-01 22:30:00
 tags: 
    - Hexo
 keywords:
@@ -10,13 +11,13 @@ keywords:
    - fomulário
    - layout
 ---
-Na [parte 1][p1] desse artigo nós criamos um formulário HTML dentro de uma página [Hexo][hx]. O formulário envia os dados para um e-mail através do serviço [Formspree][fp].
+Na {% post_link formulario-de-contato-site-estatico parte 1 %} desse artigo nós criamos um formulário HTML dentro de uma página [Hexo][hx]. O formulário envia os dados para um e-mail através do serviço [Formspree][fp].
 
 Hoje iremos integrar o formulário ao tema e assim ganhar controle da apresentação do formulário podendo adicionar estilos e scripts e aproveitar as facilidades que seu tema disponibiliza. O tema que escolhi para meu blog é o [Tranquilpeak][tp] e os exemplo abaixo serão baseados em sua estrutura. Porém, é fácil extrapolar isso para o tema de sua escolha.
 <!-- more -->
 ## Layout ##
 
-As páginas `source/contato/index.md` e `source/contato/sucesso.md` criadas na [parte 1][p1] utilizam o layout *page*. Esse layout é obrigatório em todos os temas Hexo. Como o nome sugere ele difere do layout *post* e é voltado para criação de páginas do site. No [Tranquilpeak][tp] v1.7.1 (mais atual enquanto escrevo esse artigo), o layout page contém:
+As páginas `source/contato/index.md` e `source/contato/sucesso.md` criadas na {% post_link formulario-de-contato-site-estatico parte 1 %} utilizam o layout *page*. Esse layout é obrigatório em todos os temas Hexo. Como o nome sugere ele difere do layout *post* e é voltado para criação de páginas do site. No [Tranquilpeak][tp] v1.7.1 (mais atual enquanto escrevo esse artigo), o layout page contém:
 
 {% codeblock layout/page.ejs %}
     <%- partial('_partial/post', {post: page}) %>
@@ -106,7 +107,6 @@ O que foi apresentado até aqui integra o formulário HTML ao conteúdo do site,
 
 **Edição:** Após terminar de escrever, revisar esse artigo, já com ele pronto para publicação percebi que seria mais elegante, ao invés de editar o layout *page* para escolher entre os arquivos parciais, criar um novo layout chamado contato e declará-lo no `front-matter`do arquivo `.md`. Apesar de mais elegante essa solução demanda mais alterações no tema ficando, então, para outra oportunidade.
 
-[p1]: /2016/05/formulario-de-contato-site-estatico
 [hx]: https://hexo.io
 [fp]: https://formspree.io
 [tp]: https://github.com/LouisBarranqueiro/hexo-theme-tranquilpeak

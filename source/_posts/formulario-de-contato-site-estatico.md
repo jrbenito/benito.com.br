@@ -1,5 +1,6 @@
 title: "Criando um formulário de contato para um site estático"
 date: 2016-05-20 19:31:42
+updated: 2016-06-01 22:33:00
 tags: 
    - Hexo
 keywords:
@@ -73,11 +74,10 @@ Pronto! O formulário de contato está integrado ao site.
 
 Uma alternativa para ter mais controle sobre a apresentação do formulário é criar o HTML completo ao invés de um `.md`. O Hexo vai apenas copiar o HTML para o site final. Mas isso requer cópia da estrutura gerada pelo Hexo para dentro do HTML manualmente afim de fazê-lo se parecer com uma página do site. Manter a sincronia dos arquivos pode se tornar trabalhoso.
 
-Outra saída é personalizar o tema. Explicarei os detalhes de como fazer isso na [parte 2][p2] desse artigo.
+Outra saída é personalizar o tema. Explicarei os detalhes de como fazer isso na {% post_link formulario-de-contato-site-estatico-pt2 parte 2 %} desse artigo.
 
-#### [continua...][p2] ####
+#### {% post_link formulario-de-contato-site-estatico-pt2 continua... %} ####
 
 [hx]: https://hexo.io
 [j]: https://jekyllrb.com
 [fp]: https://formspree.io
-[p2]: /2016/05/formulario-de-contato-site-estatico-pt2

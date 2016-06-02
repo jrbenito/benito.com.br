@@ -1,5 +1,6 @@
 title: Hexo+Aws=Blog! - Hexo para leigos (parte 1)
 date: 2016-05-18 23:45:23
+updated: 2016-06-01 22:24:30
 tags: 
    - AWS
    - Hexo
@@ -11,7 +12,7 @@ keywords:
    - Blog
    - Static website
 ---
-No [primeiro artigo][pa] deste blog expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do [Amazon Web Services][aws]. Nesta primeira parte da série vamos abordar o básico: [Hexo][hx]!
+No {% post_link hexo-aws-blog primeiro artigo %} expliquei as motivações por trás da criação desse blog e porque optei por criar um site estático e armazená-lo utilizando os serviços do [Amazon Web Services][aws]. Nesta primeira parte da série vamos abordar o básico: [Hexo][hx]!
 <!-- more -->
 O Hexo é um *framework* para desenvolvimento de blogs estáticos com diversos [plugins][hplugin] que o tornam ainda mais poderoso. Ele é desenvolvido utilizando o [Node.js][node], um interpretador javascript desenvolvido com base no [*motor* javascript Chrome V8][chv8].
 
@@ -110,7 +111,6 @@ Pronto, agora é só personalizar o blog através das configurações e temas.
 
 Dentre os geradores de sites que conheci, escolhi o hexo por sua simplicidade e por rodar em diversas plataformas sem problemas de compatibilidade possibilitando que eu edite esse blog em casa no Linux ou em uma máquina windows *on the go*. Continuando minha saga escreverei ainda sobre como hospedar o blog no [AWS S3][aws] e configurar uma CDN para acelerar o acesso ao site.
 
-[pa]: /2016/05/hexo-aws-blog
 [aws]: //aws.amazon.com
 [hx]: //hexo.io
 [hplugin]: //hexo.io/plugins/
