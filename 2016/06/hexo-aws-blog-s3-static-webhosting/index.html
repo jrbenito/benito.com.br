@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Blog do Benito">
+    <title>Hexo+Aws=Blog! - S3 static webhosting - Blog do Benito</title>
+    <meta name="author" content="JrBenito">
+    
+        <meta name="keywords" content="hexo,Amazon AWS,AWS,Blog,Static website">
+    
+    
+        <link rel="icon" href="https://www.benito.com.br/assets/images/favicon.ico">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="Chegou a hora de publicar, o comando hexo server abre um mini servidor para o blog mas não é feito para rodar em produção. No primeiro artigo ficou claro que procuramos uma solução onde não precisemos">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="Hexo+Aws=Blog! - S3 static webhosting">
+<meta property="og:url" content="https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/index.html">
+<meta property="og:site_name" content="Blog do Benito">
+<meta property="og:description" content="Chegou a hora de publicar, o comando hexo server abre um mini servidor para o blog mas não é feito para rodar em produção. No primeiro artigo ficou claro que procuramos uma solução onde não precisemos">
+<meta property="og:image" content="https://www.benito.com.br/create-bucket.png">
+<meta property="og:image" content="https://www.benito.com.br/config-bucket.png">
+<meta property="og:updated_time" content="2016-06-09T03:44:51.392Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo+Aws=Blog! - S3 static webhosting">
+<meta name="twitter:description" content="Chegou a hora de publicar, o comando hexo server abre um mini servidor para o blog mas não é feito para rodar em produção. No primeiro artigo ficou claro que procuramos uma solução onde não precisemos">
+<meta name="twitter:image" content="https://www.benito.com.br/create-bucket.png">
+<meta name="twitter:creator" content="@jjbenito">
+    
+        <meta rel="publisher" content="https://plus.google.com/+JosenivaldoBenitoJunior"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-27vrduj1jopliavvnzi7ibndpmbvg7lzo4a2uswrsi4m5vwauf2qi8s1v3or.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-77337156-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Blog do Benito</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="4">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">JrBenito</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/jrbenito" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2726840" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/jjbenito" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://plus.google.com/+JosenivaldoBenitoJunior" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-google-plus"></i>
+                    <span class="sidebar-button-desc">Google Plus</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/contact"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            Hexo+Aws=Blog! - S3 static webhosting
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Thu Jun 09 2016 02:50:58 GMT+0000">
+	
+		    09/06/2016
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Chegou a hora de publicar, o comando <code>hexo server</code> abre um mini servidor para o blog mas não é feito para rodar em produção. No <a href="/2016/05/hexo-aws-blog/" title="primeiro artigo">primeiro artigo</a> ficou claro que procuramos uma solução onde não precisemos nos preocupar com servidores ou coisas como distribuição de carga. Procura-se um <em>static web-hosting</em>.<br><a id="more"></a></p>
+<h2 id="Github-Pages"><a href="#Github-Pages" class="headerlink" title="Github Pages"></a>Github Pages</h2><p>Um serviço gratuito e com boa qualidade é oferecido pelo <a href="https://pages.github.com" target="_blank" rel="external">Github Pages</a>. Sua configuração é muito simples e para quem já está acostumado com o Git o setup pode ser feito em questão de minutos. O <em><a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">plugin</a></em> ‘hexo-deployer-git` automatiza o processo de upload (o termo correto aqui é <em>commit</em>) tornando a manutenção do blog muito simples. Porém o Github pages não dá muito controle sobre como seu conteúdo é servido e sua CDN não permite invalidar o conteúdo do cache.</p>
+<h2 id="Amazon-S3"><a href="#Amazon-S3" class="headerlink" title="Amazon S3"></a>Amazon S3</h2><blockquote class="pullquote right"><p>A nuvem AWS possui várias regiões, utilizar a região mais próxima do público alvo diminui a latência.</p>
+</blockquote>
+<p>O <a href="https://aws.amazon.com/s3/" target="_blank" rel="external">Amazon S3</a> é um serviço de armazenamento de massa na nuvem. Ele trabalha com o conceito de <em>bucket</em> que pode ser entendido como um repositório ou um diretório raiz. O usuário pode ter quantos <em>buckets</em> quiser com nomes distintos e o <a href="https://aws.amazon.com/s3/pricing/" target="_blank" rel="external">custo</a> por Gigabyte armazenado é muito baixo. Além do armazenamento, um bucket pode ser configurado para servir, de forma estática, o conteúdo armazenado. Ainda, a nuvem AWS possui várias regiões e uma delas fica em São Paulo, se o bucket for criado nessa região a latência para usuários brasileiros é bastante baixa quando comparada a serviços de <em>hosting</em> localizados no exterior. Se você ainda não se convenceu, somados os custos de armazenamento e transferência de dados, um blog com 100 mil acessos semanais não custa um BigMac.</p>
+<p>Então mãos à obra?</p>
+<h3 id="Criando-o-bucket"><a href="#Criando-o-bucket" class="headerlink" title="Criando o bucket"></a>Criando o bucket</h3><blockquote class="pullquote right"><p>O nome do bucket não importa mas precisa ser único na região em que está sendo criado.</p>
+</blockquote>
+<p>Abra o <a href="https://console.aws.amazon.com/s3/home" target="_blank" rel="external">console</a> do Amazon S3 para criar o bucket do site. Não reaproveite outro bucket pois iremos configurá-lo para servir o conteúdo através do protocolo HTTP, todo o conteúdo do bucket estará exposto na Internet. Clique no botão <em>Create Bucket</em> e escolha uma região para o bucket. Outro ponto importante é o nome do bucket, o domínio de nomes é compartilhado entre todos os usuários do AWS, então se eu criar um bucket chamado <code>balde</code> e outro usuário tentar criar um bucket com mesmo nome ele terá problemas. Para evitar esses conflitos sugiro podemos:</p>
+<ol>
+<li>Prefixar o nome do bucket com seu nome de usuário Amazon (ideal para buckets privados que não servem conteúdo via HTTP). Exemplo <code>jsilva-balde</code>.</li>
+<li>Prefixar o nome do bucket com o nome de domínio ou nome do domínio mais algum identificador (forma preferida para sites). Exemplos: <code>benito.com.br</code> ou <code>benito.com.br-site</code> e <code>benito.com.br-documentos</code>. Essa última forma ficar organizada se você tiver outros buckets para guardar informações privadas do site ou cliente.</li>
+</ol>
+<p>Coloque o nome e clique no botão <em>Create</em> para finalizar.</p>
+<blockquote><p>Se pretende usar uma CDN para servir o site a região não importará</p>
+</blockquote>
+<div class="figure right" style="width:85%;"><a class="fancybox" href="create-bucket.png" title="Criar um Bucket" data-fancybox-group="bucket"><img class="fig-img" src="create-bucket.png" style="width:85%;" alt="Criar um Bucket"></a><span class="caption">Criar um Bucket</span></div><div style="clear:both;"></div>
+<h3 id="Configurando-o-Bucket"><a href="#Configurando-o-Bucket" class="headerlink" title="Configurando o Bucket"></a>Configurando o Bucket</h3><p>Agora clique no botão <em>Properties</em> direita e depois em <em>Static Website Hosting</em>, selecione <em>Enable website hosting</em>. Indique o nome do arquivo <code>index</code>, esse é o arquivo padrão que o S3 irá procurar em cada diretório. Para Hexo basta preencher com <code>index.html</code>. O Hexo não fornece uma página de erro (<code>404</code>), se você possui uma página de erro informe o nome no campo correspondente. Sempre que o S3 não encontrar algo ele irá apresentar essa página ao invés de uma mensagem de erro críptica que assustará seus leitores para sempre!</p>
+<div class="figure right" style="width:85%;"><a class="fancybox" href="config-bucket.png" title="Configurando o Bucket" data-fancybox-group="bucket"><img class="fig-img" src="config-bucket.png" style="width:85%;" alt="Configurando o Bucket"></a><span class="caption">Configurando o Bucket</span></div><div style="clear:both;"></div>
+<p>Anote o <em>Endpoint</em> mostrado nessa tela, ele é o endereço de acesso do bucket na web.</p>
+<p>O próximo passo é editar as permissões do bucket permitindo acesso público a esse bucket. Ainda nas propriedades, clique no item <em>Permissions</em> e depois no botão <em>Edit bucket policy</em>. No editor que abrirá coloque a política abaixo.</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="attr">"Version"</span>: <span class="string">"2008-10-17"</span>,</span><br><span class="line">	<span class="attr">"Statement"</span>: [</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="attr">"Sid"</span>: <span class="string">"Allow Public Access to All Objects"</span>,</span><br><span class="line">			<span class="attr">"Effect"</span>: <span class="string">"Allow"</span>,</span><br><span class="line">			<span class="attr">"Principal"</span>: &#123;</span><br><span class="line">				<span class="attr">"AWS"</span>: <span class="string">"*"</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="attr">"Action"</span>: <span class="string">"s3:GetObject"</span>,</span><br><span class="line">			<span class="attr">"Resource"</span>: <span class="string">"arn:aws:s3:::benito.com.br/*"</span></span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Altere a linha para refletir o nome do bucket, salve e feche o edito. Está garantido o acesso público de leitura a todos os objetos do bucket.</p>
+<p>Vamos aproveitar o embalo e adicionar a configuração de CORS (<em>Cross-Origin Resource Sharing</em>). Esse passo é importante para garantir que outros sites possam acessar seu conteúdo, por exemplo, uma CDN servindo o conteúdo do seu S3 ou um outro site referenciando um script Javascript servido por este bucket/site. Para isso clique no botão <em>Add CORS configuration</em>, ao lado do botão usado no passo anterior. No editor que se abrirá coloque a configuração abaixo.</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">CORSConfiguration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">CORSRule</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">AllowedOrigin</span>&gt;</span>*<span class="tag">&lt;/<span class="name">AllowedOrigin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">AllowedMethod</span>&gt;</span>GET<span class="tag">&lt;/<span class="name">AllowedMethod</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">MaxAgeSeconds</span>&gt;</span>3000<span class="tag">&lt;/<span class="name">MaxAgeSeconds</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">AllowedHeader</span>&gt;</span>Authorization<span class="tag">&lt;/<span class="name">AllowedHeader</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">CORSRule</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">CORSConfiguration</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Essa configuração é bastante permissiva e não vamos detalhar seu funcionamento agora. No futuro se pode alterar essa política conforme a necessidade do site. A Amazon provê uma vasta documentação a respeito.</p>
+<h2 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h2><p>Para subir suas páginas HTML no bucket, utilize o método que mais lhe convir. Nesse momento sugiro o próprio S3 Console; clique no botão azul <em>upload</em>, agora arraste o arquivos da pasta <code>public</code> do seu Hexo para área cinza demarcada no S3 Console. Espere tudo o upload terminar e teste acessando o <em>endpoint</em> do seu bucket digitando <code>http://&lt;endpoint&gt;</code> no seu navegador.</p>
+<p>Depois instalaremos um <a href="https://www.npmjs.com/package/hexo-deployer-s3-cloudfront" title="hexo-deployer-s3-cloudfront" target="_blank" rel="external">plugin</a> para fazer o upload diretamente do Hexo.</p>
+<h1 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h1><p>Pronto! Apesar do post extenso, executar os passos descritos não levará mais que 15 minutos e seu site já está no ar. Não esqueça de verificar o valor do armazenamento S3 na região que você escolheu e simular o custo mensal na <a href="https://calculator.s3.amazonaws.com/index.html" title="calculadora de custos AWS" target="_blank" rel="external">calculadora AWS</a>. Vale lembrar que Amazon oferece um <em>free tier</em> generoso durante um ano para novos clientes.</p>
+<p>Ah! Quase esqueço, se você tem um domínio e deseja servir o blog deste domínio precisa apontar um <code>CNAME</code> para o <em>endpoint</em> da amazon. Explicarei com mais detalhes quando configurarmos a CDN. Até lá.</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/aws/">AWS</a> <a class="tag tag--primary tag--small t-link" href="/tags/hexo/">Hexo</a> <a class="tag tag--primary tag--small t-link" href="/tags/nodejs/">Nodejs</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/formulario-de-contato-site-estatico-pt2/" data-tooltip="Criando um formulário de contato para um site estático - Parte 2">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 JrBenito. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/05/formulario-de-contato-site-estatico-pt2/" data-tooltip="Criando um formulário de contato para um site estático - Parte 2">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/">
+                <i class="fa fa-google-plus"></i><span class="">Partilhar no Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/">
+                <i class="fa fa-facebook-official"></i><span>SPartilhar no Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/">
+                <i class="fa fa-twitter"></i><span>Partilhar no Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=110"/>
+        
+            <h4 id="about-card-name">JrBenito</h4>
+        
+            <h5 id="about-card-bio"><p>Formado em Ciência da Computação trabalha com sistemas embarcados Linux e Android. Fotógrafo amador e apaixonado por mergulho também pratica corrida. Sua maior aventura é ser pai.</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Engenheiro de Sistemas / Samsung</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Campinas / Brasil
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-tu4ziscb5jrkjxubeugdgizktyuugflfq5jvgz4agzzmwifuq01g1lmq8giw.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/';
+                 
+                    this.page.identifier = '2016/06/hexo-aws-blog-s3-static-webhosting/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'blogdobenito';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>
