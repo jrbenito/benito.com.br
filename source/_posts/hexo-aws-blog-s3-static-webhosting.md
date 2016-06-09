@@ -1,5 +1,5 @@
 title: Hexo+Aws=Blog! - S3 static webhosting
-date: 2016-06-01 22:45:58
+date: 2016-06-08 23:50:58
 tags: 
    - AWS
    - Hexo
@@ -38,14 +38,67 @@ Coloque o nome e clique no botão *Create* para finalizar.
 
 {% blockquote %}Se pretende usar uma CDN para servir o site a região não importará{% endblockquote %}
 
-{% image fancybox right clear group:bucket create-bucket.jpg  85% "Criar um Bucket" %}
+{% image fancybox right clear group:bucket create-bucket.png  85% "Criar um Bucket" %}
 
 ### Configurando o Bucket
-Agora clique no botão *Properties* direita e depois em *Static Website Hosting*, selecione *Enable website hosting*. Indique o nome do arquivo `index`, esse é o arquivo padrão que o S3 irá procurar em cada diretório. Para Hexo basta preencher com `index.html`. O Hexo não fornece uma página de erro (`404`), se você possui uma página de erro informe o nome no campo correspondente. Sempre que o S3 não encontrar algo ele irá apresentar essa página ao invés de uma mensagem de erro críptica que assustará seus leitores para sempre! 
-{% image fancybox right clear group:bucket create-bucket.jpg  85% "Configurando o Bucket" %}
+Agora clique no botão *Properties* direita e depois em *Static Website Hosting*, selecione *Enable website hosting*. Indique o nome do arquivo `index`, esse é o arquivo padrão que o S3 irá procurar em cada diretório. Para Hexo basta preencher com `index.html`. O Hexo não fornece uma página de erro (`404`), se você possui uma página de erro informe o nome no campo correspondente. Sempre que o S3 não encontrar algo ele irá apresentar essa página ao invés de uma mensagem de erro críptica que assustará seus leitores para sempre!
+
+{% image fancybox right clear group:bucket config-bucket.png  85% "Configurando o Bucket" %}
+
+Anote o *Endpoint* mostrado nessa tela, ele é o endereço de acesso do bucket na web.
+
+O próximo passo é editar as permissões do bucket permitindo acesso público a esse bucket. Ainda nas propriedades, clique no item *Permissions* e depois no botão *Edit bucket policy*. No editor que abrirá coloque a política abaixo.
+
+{% codeblock %}
+{
+	"Version": "2008-10-17",
+	"Statement": [
+		{
+			"Sid": "Allow Public Access to All Objects",
+			"Effect": "Allow",
+			"Principal": {
+				"AWS": "*"
+			},
+			"Action": "s3:GetObject",
+			"Resource": "arn:aws:s3:::benito.com.br/*"
+		}
+	]
+}
+{% endcodeblock %}
+
+Altere a linha para refletir o nome do bucket, salve e feche o edito. Está garantido o acesso público de leitura a todos os objetos do bucket.
+
+Vamos aproveitar o embalo e adicionar a configuração de CORS (*Cross-Origin Resource Sharing*). Esse passo é importante para garantir que outros sites possam acessar seu conteúdo, por exemplo, uma CDN servindo o conteúdo do seu S3 ou um outro site referenciando um script Javascript servido por este bucket/site. Para isso clique no botão *Add CORS configuration*, ao lado do botão usado no passo anterior. No editor que se abrirá coloque a configuração abaixo.
+
+{% codeblock %}
+<CORSConfiguration>
+    <CORSRule>
+        <AllowedOrigin>*</AllowedOrigin>
+        <AllowedMethod>GET</AllowedMethod>
+        <MaxAgeSeconds>3000</MaxAgeSeconds>
+        <AllowedHeader>Authorization</AllowedHeader>
+    </CORSRule>
+</CORSConfiguration>
+{% endcodeblock %}
+
+Essa configuração é bastante permissiva e não vamos detalhar seu funcionamento agora. No futuro se pode alterar essa política conforme a necessidade do site. A Amazon provê uma vasta documentação a respeito.
+
+## Upload
+
+Para subir suas páginas HTML no bucket, utilize o método que mais lhe convir. Nesse momento sugiro o próprio S3 Console; clique no botão azul *upload*, agora arraste o arquivos da pasta `public` do seu Hexo para área cinza demarcada no S3 Console. Espere tudo o upload terminar e teste acessando o *endpoint* do seu bucket digitando `http://<endpoint>` no seu navegador.
+
+Depois instalaremos um [plugin][plg] para fazer o upload diretamente do Hexo.
+
+# Conclusão
+
+Pronto! Apesar do post extenso, executar os passos descritos não levará mais que 15 minutos e seu site já está no ar. Não esqueça de verificar o valor do armazenamento S3 na região que você escolheu e simular o custo mensal na [calculadora AWS][awscalc]. Vale lembrar que Amazon oferece um *free tier* generoso durante um ano para novos clientes.
+
+Ah! Quase esqueço, se você tem um domínio e deseja servir o blog deste domínio precisa apontar um `CNAME` para o *endpoint* da amazon. Explicarei com mais detalhes quando configurarmos a CDN. Até lá.
 
 [gh]: https://pages.github.com
 [hdg]: https://hexo.io/docs/deployment.html
 [s3]: https://aws.amazon.com/s3/
 [s3c]: https://aws.amazon.com/s3/pricing/
 [s3con]: https://console.aws.amazon.com/s3/home
+[plg]: https://www.npmjs.com/package/hexo-deployer-s3-cloudfront "hexo-deployer-s3-cloudfront"
+[awscalc]: https://calculator.s3.amazonaws.com/index.html "calculadora de custos AWS"
