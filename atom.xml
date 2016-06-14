@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.benito.com.br/"/>
-  <updated>2016-06-09T03:44:51.392Z</updated>
+  <updated>2016-06-14T19:40:21.976Z</updated>
   <id>https://www.benito.com.br/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/"/>
     <id>https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/</id>
     <published>2016-06-09T02:50:58.000Z</published>
-    <updated>2016-06-09T03:44:51.392Z</updated>
+    <updated>2016-06-14T19:40:21.976Z</updated>
     
     <content type="html">&lt;p&gt;Chegou a hora de publicar, o comando &lt;code&gt;hexo server&lt;/code&gt; abre um mini servidor para o blog mas não é feito para rodar em produção. No &lt;a href=&quot;/2016/05/hexo-aws-blog/&quot; title=&quot;primeiro artigo&quot;&gt;primeiro artigo&lt;/a&gt; ficou claro que procuramos uma solução onde não precisemos nos preocupar com servidores ou coisas como distribuição de carga. Procura-se um &lt;em&gt;static web-hosting&lt;/em&gt;.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;Github-Pages&quot;&gt;&lt;a href=&quot;#Github-Pages&quot; class=&quot;headerlink&quot; title=&quot;Github Pages&quot;&gt;&lt;/a&gt;Github Pages&lt;/h2&gt;&lt;p&gt;Um serviço gratuito e com boa qualidade é oferecido pelo &lt;a href=&quot;https://pages.github.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github Pages&lt;/a&gt;. Sua configuração é muito simples e para quem já está acostumado com o Git o setup pode ser feito em questão de minutos. O &lt;em&gt;&lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;plugin&lt;/a&gt;&lt;/em&gt; ‘hexo-deployer-git` automatiza o processo de upload (o termo correto aqui é &lt;em&gt;commit&lt;/em&gt;) tornando a manutenção do blog muito simples. Porém o Github pages não dá muito controle sobre como seu conteúdo é servido e sua CDN não permite invalidar o conteúdo do cache.&lt;/p&gt;
@@ -233,7 +233,7 @@
     <link href="https://www.benito.com.br/2016/05/hexo-aws-blog/"/>
     <id>https://www.benito.com.br/2016/05/hexo-aws-blog/</id>
     <published>2016-05-06T23:00:00.000Z</published>
-    <updated>2016-06-09T03:44:51.392Z</updated>
+    <updated>2016-06-14T19:40:21.976Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introducao&quot;&gt;&lt;a href=&quot;#Introducao&quot; class=&quot;headerlink&quot; title=&quot;Introdução&quot;&gt;&lt;/a&gt;Introdução&lt;/h1&gt;&lt;p&gt;Recentemente meu irmão iniciou um &lt;a href=&quot;http://counsellor.life&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;projeto&lt;/a&gt; para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um esboço do trabalho e estava hospedando junto ao site de um amigo apenas para teste. Começamos a conversar sobre qual domínio registrar, qual hospedagem contratar, qual tamanho da demanda e claro: preço! &lt;/p&gt;
 &lt;p&gt;Já há algum tempo que eu venho maturando a ideia de iniciar um blog com o objetivo de documentar meus projetos pessoais, compartilhar informação e manter organizado aquele conhecimento resultado de horas na Internet tentando resolver algum problema (geralmente simples). A discussão sobre o projeto para minha cunhada foi a faísca para que eu mergulhasse em uma pesquisa sobre sites, hospedagem, custos, tecnologias e acabasse por escrever esse primeiro post.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
