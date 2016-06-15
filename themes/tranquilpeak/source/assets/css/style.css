@@ -3747,6 +3747,8 @@ a.fancybox {
   width: 100%;
   display: inline-block;
   vertical-align: top; }
+  .postShorten .postShorten-thumbnailimg {
+    overflow: hidden; }
   .postShorten .postShorten-header .postShorten-title {
     margin: 0;
     word-break: initial;
@@ -3820,9 +3822,13 @@ a.fancybox {
   .postShorten.postShorten--thumbnailimg-left .postShorten-wrap {
     float: right;
     width: calc(100% - 140px - 20px); }
+  .postShorten.postShorten--thumbnailimg-top .postShorten-thumbnailimg {
+    margin-top: 5px; }
   .postShorten.postShorten--thumbnailimg-bottom .postShorten-wrap {
     display: block;
     width: 100%; }
+  .postShorten.postShorten--thumbnailimg-bottom .postShorten-excerpt > p {
+    margin-bottom: 0; }
   .postShorten.postShorten--thumbnailimg-bottom .postShorten-thumbnailimg {
     display: block;
     width: 100%;
@@ -4716,10 +4722,8 @@ figure.highlight,
   .codeblock.swift .number,
   .codeblock.swift .type {
     color: #0086b3; }
-  figure.highlight.yml .line
-.attr,
-  .codeblock.yml .line
-.attr {
+  figure.highlight.yml .line .attr,
+  .codeblock.yml .line .attr {
     color: #63a35c; }
   figure.highlight.yml .line,
   figure.highlight.yml .string,
