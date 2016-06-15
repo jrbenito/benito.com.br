@@ -7,16 +7,24 @@
     </url>
 
     <url>
-        <loc>https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/</loc>
-        <lastmod>2016-06-14T19:40:21.976Z</lastmod>
+        <loc>https://www.benito.com.br/2016/05/hexo-aws-blog/</loc>
+        <lastmod>2016-06-15T05:22:28.940Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
     </url>
 
     <url>
-        <loc>https://www.benito.com.br/2016/05/hexo-aws-blog/</loc>
-        <lastmod>2016-06-14T19:40:21.976Z</lastmod>
+        <loc>https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/</loc>
+        <lastmod>2016-06-15T05:00:41.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/</loc>
+        <lastmod>2016-06-15T03:00:58.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

@@ -25,7 +25,7 @@
 <meta property="og:description" content="Chegou a hora de publicar, o comando hexo server abre um mini servidor para o blog mas não é feito para rodar em produção. No primeiro artigo ficou claro que procuramos uma solução onde não precisemos">
 <meta property="og:image" content="https://www.benito.com.br/create-bucket.png">
 <meta property="og:image" content="https://www.benito.com.br/config-bucket.png">
-<meta property="og:updated_time" content="2016-06-14T19:40:21.976Z">
+<meta property="og:updated_time" content="2016-06-15T03:00:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo+Aws=Blog! - S3 static webhosting">
 <meta name="twitter:description" content="Chegou a hora de publicar, o comando hexo server abre um mini servidor para o blog mas não é feito para rodar em produção. No primeiro artigo ficou claro que procuramos uma solução onde não precisemos">
@@ -280,7 +280,7 @@
 <h2 id="Upload"><a href="#Upload" class="headerlink" title="Upload"></a>Upload</h2><p>Para subir suas páginas HTML no bucket, utilize o método que mais lhe convir. Nesse momento sugiro o próprio S3 Console; clique no botão azul <em>upload</em>, agora arraste o arquivos da pasta <code>public</code> do seu Hexo para área cinza demarcada no S3 Console. Espere tudo o upload terminar e teste acessando o <em>endpoint</em> do seu bucket digitando <code>http://&lt;endpoint&gt;</code> no seu navegador.</p>
 <p>Depois instalaremos um <a href="https://www.npmjs.com/package/hexo-deployer-s3-cloudfront" title="hexo-deployer-s3-cloudfront" target="_blank" rel="external">plugin</a> para fazer o upload diretamente do Hexo.</p>
 <h1 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h1><p>Pronto! Apesar do post extenso, executar os passos descritos não levará mais que 15 minutos e seu site já está no ar. Não esqueça de verificar o valor do armazenamento S3 na região que você escolheu e simular o custo mensal na <a href="https://calculator.s3.amazonaws.com/index.html" title="calculadora de custos AWS" target="_blank" rel="external">calculadora AWS</a>. Vale lembrar que Amazon oferece um <em>free tier</em> generoso durante um ano para novos clientes.</p>
-<p>Ah! Quase esqueço, se você tem um domínio e deseja servir o blog deste domínio precisa apontar um <code>CNAME</code> para o <em>endpoint</em> da amazon. Explicarei com mais detalhes quando configurarmos a CDN. Até lá.</p>
+<p>Ah! Quase esqueço, se você tem um domínio e deseja servir o blog deste domínio precisa apontar um <code>CNAME</code> para o <em>endpoint</em> do seu S3 bucket. Explicarei com mais detalhes quando <a href="/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/" title="configurarmos a CDN">configurarmos a CDN</a>. Até lá.</p>
 
             
         </div>
@@ -299,7 +299,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/"  data-tooltip="CDN - Colocando o Blog em velocidade dobra">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
@@ -380,7 +380,7 @@
         <ul class="post-actions post-action-nav">
             <li class="post-action">
                 
-                    <a class="post-action-btn btn btn--disabled">
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/"  data-tooltip="CDN - Colocando o Blog em velocidade dobra">
                 
                     <i class="fa fa-angle-left"></i>
                     <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>

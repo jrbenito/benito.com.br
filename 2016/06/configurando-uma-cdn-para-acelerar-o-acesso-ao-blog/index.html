@@ -1,0 +1,525 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Blog do Benito">
+    <title>CDN - Colocando o Blog em velocidade dobra - Blog do Benito</title>
+    <meta name="author" content="JrBenito">
+    
+        <meta name="keywords" content="hexo,Amazon AWS,AWS,Cloudfront,Static website,CDN">
+    
+    
+        <link rel="icon" href="https://www.benito.com.br/assets/images/favicon.ico">
+    
+    
+        <link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml">
+    
+    <meta name="description" content="Uma Content Delivery Network ou simplesmente CDN, é um serviço que provê cache do seu conteúdo armazenado em pontos estratégicos ao redor do globo. Esses pontos, estão, idealmente, mais próximos do cl">
+<meta property="og:type" content="blog">
+<meta property="og:title" content="CDN - Colocando o Blog em velocidade dobra">
+<meta property="og:url" content="https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/index.html">
+<meta property="og:site_name" content="Blog do Benito">
+<meta property="og:description" content="Uma Content Delivery Network ou simplesmente CDN, é um serviço que provê cache do seu conteúdo armazenado em pontos estratégicos ao redor do globo. Esses pontos, estão, idealmente, mais próximos do cl">
+<meta property="og:image" content="https://www.benito.com.br/origin-settings.png">
+<meta property="og:image" content="https://www.benito.com.br/default-settings.png">
+<meta property="og:image" content="https://www.benito.com.br/distribution-settings.png">
+<meta property="og:image" content="https://www.benito.com.br/distribution.png">
+<meta property="og:image" content="https://www.benito.com.br/edit-origin.png">
+<meta property="og:updated_time" content="2016-06-15T05:00:41.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CDN - Colocando o Blog em velocidade dobra">
+<meta name="twitter:description" content="Uma Content Delivery Network ou simplesmente CDN, é um serviço que provê cache do seu conteúdo armazenado em pontos estratégicos ao redor do globo. Esses pontos, estão, idealmente, mais próximos do cl">
+<meta name="twitter:image" content="https://www.benito.com.br/origin-settings.png">
+<meta name="twitter:creator" content="@jjbenito">
+    
+        <meta rel="publisher" content="https://plus.google.com/+JosenivaldoBenitoJunior"/>
+    
+    
+        
+    
+    
+        <meta property="og:image" content="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=640"/>
+    
+    
+    
+    
+    <!--STYLES-->
+    <link rel="stylesheet" href="/assets/css/style-27vrduj1jopliavvnzi7ibndpmbvg7lzo4a2uswrsi4m5vwauf2qi8s1v3or.min.css">
+    <!--STYLES END-->
+    
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-77337156-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+    
+</head>
+
+    <body>
+        <div id="blog">
+            <!-- Define author's picture -->
+
+
+    
+        
+    
+
+<header id="header" data-behavior="4">
+    <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+    <h1 class="header-title">
+        <a class="header-title-link" href="/ ">Blog do Benito</a>
+    </h1>
+    
+        
+            <a  class="header-right-picture "
+                href="#about">
+        
+        
+            <img class="header-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=90"/>
+        
+        </a>
+    
+</header>
+
+            <!-- Define author's picture -->
+
+
+    
+
+<nav id="sidebar" data-behavior="4">
+    
+        <div class="sidebar-profile">
+            <a href="/#about">
+                    <img class="sidebar-profile-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=110"/>
+            </a>
+            <span class="sidebar-profile-name">JrBenito</span>
+        </div>
+    
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/ "
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+                    <span class="sidebar-button-desc">Início</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-categories"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+                    <span class="sidebar-button-desc">Categorias</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-tags"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+                    <span class="sidebar-button-desc">Tags</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/all-archives"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+                    <span class="sidebar-button-desc">Arquivo</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://github.com/jrbenito" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-github"></i>
+                    <span class="sidebar-button-desc">GitHub</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="http://stackoverflow.com/users/2726840" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-stack-overflow"></i>
+                    <span class="sidebar-button-desc">Stack Overflow</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://twitter.com/jjbenito" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-twitter"></i>
+                    <span class="sidebar-button-desc">Twitter</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link " href="https://plus.google.com/+JosenivaldoBenitoJunior" target="_blank">
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-google-plus"></i>
+                    <span class="sidebar-button-desc">Google Plus</span>
+                </a>
+        </li>
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/contact"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-envelope-o"></i>
+                    <span class="sidebar-button-desc">Mail</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+        <ul class="sidebar-buttons">
+        
+            <li class="sidebar-button">
+                
+                    <a  class="sidebar-button-link "
+                         href="/atom.xml"
+                        
+                    >
+                
+                    <i class="sidebar-button-icon fa fa-lg fa-rss"></i>
+                    <span class="sidebar-button-desc">RSS</span>
+                </a>
+        </li>
+        
+    </ul>
+    
+</nav>
+
+            
+            <div id="main" data-behavior="4"
+                 class="
+                        hasCoverMetaIn
+                        ">
+                
+<article class="post" itemscope itemType="http://schema.org/BlogPosting">
+    
+    
+        <div class="post-header main-content-wrap text-left">
+    
+        <h1 class="post-title" itemprop="headline">
+            CDN - Colocando o Blog em velocidade dobra
+        </h1>
+    
+    <div class="post-meta">
+    <time itemprop="datePublished" content="Wed Jun 15 2016 05:00:41 GMT+0000">
+	
+		    15/06/2016
+    	
+    </time>
+    
+</div>
+</div>
+    
+    <div class="post-content markdown" itemprop="articleBody">
+        <div class="main-content-wrap">
+            <p>Uma <em>Content Delivery Network</em> ou simplesmente CDN, é um serviço que provê cache do seu conteúdo armazenado em pontos estratégicos ao redor do globo. Esses pontos, estão, idealmente, mais próximos do cliente que solicita o conteúdo, portanto, a latência de acesso ao CDN é menor que até seu servidor.<br><a id="more"></a></p>
+<p>O principal objetivo da CDN é diminuir a latência aumentando a velocidade do site, porém as CDN adicionam ainda, disponibilidade e redundância que os provedores mais básicos (<em>e baratos</em>) não conseguem entregar.</p>
+<h2 id="AWS-Cloudfront"><a href="#AWS-Cloudfront" class="headerlink" title="AWS Cloudfront"></a><a href="https://aws.amazon.com/cloudfront/" title="Cloudfront page" target="_blank" rel="external">AWS Cloudfront</a></h2><p>Cloudfront é a CDN do Amazon Web Services e, como é costume do AWS, possui um <a href="https://aws.amazon.com/cloudfront/pricing/" title="Preço da Cloudfront" target="_blank" rel="external">preços atrativos</a> e <em>free tier</em> generoso. Já que esse site é <a href="/2016/06/hexo-aws-blog-s3-static-webhosting/" title="hospedado no AWS S3">hospedado no AWS S3</a>, utilizar o Cloudfront é natural.<blockquote><p>O Github Pages já possui uma CDN servindo seus sites. Embora não haja muito controle sobre como seu conteúdo é armazenado (<em>cache</em>) e distribuído, o serviço é totalmente grátis para projetos não comerciais.</p>
+</blockquote></p>
+<h3 id="Criando-uma-distribuicao"><a href="#Criando-uma-distribuicao" class="headerlink" title="Criando uma distribuição"></a>Criando uma distribuição</h3><p>Para criar um nova distribuição acesse o <a href="https://console.aws.amazon.com/cloudfront/" title="Console Cloudfront" target="_blank" rel="external">console</a> AWS e clique no serviço Cloudfront. Na tela que se abre clique no botão azul <code>Create Distribution</code>. Na tela seguinte será perguntado se você deseja criar uma CDN Web ou uma CDN RTMP, selecionamos o botão <code>Get Start</code> na sessão <code>Web</code>. A tela seguinte solicita as configurações da CDN, vou explicá-la por sessão.</p>
+<h4 id="Origin-Settings"><a href="#Origin-Settings" class="headerlink" title="Origin Settings"></a>Origin Settings</h4><div class="figure right" style="width:85%;"><a class="fancybox" href="origin-settings.png" title="Configurações da Origem" data-fancybox-group="cdn"><img class="fig-img" src="origin-settings.png" style="width:85%;" alt="Configurações da Origem"></a><span class="caption">Configurações da Origem</span></div><div style="clear:both;"></div>
+<p>A Cloudfront não precisa ser usada em conjunto com AWS S3, mas sim com qualquer servidor web. Nessa sessão colocaremos as informações da origem, ou seja o seu servidor de conteúdo que geralmente é um servidor web ou no meu caso o bucket S3. </p>
+<p>No primeiro campo, <code>Origin Domain Name</code>, coloque o endereço do seu conteúdo, não o seu domínio pessoal mas sim o endereço servidor onde seu conteúdo está armazenado. Pode ser um nome ou um endereço IP disponibilizado pelo seu provedor. No caso de utilizar o AWS S3, o correto é colocar o <a href="http://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html" title="VirtualHosting" target="_blank" rel="external">endereço (<em>endpoint</em>)</a> do bucket. </p>
+<blockquote><p>O primeiro campo é traiçoeiro, ao clicar nele o console irá oferecer-lhe uma lista de seus buckets S3. <span class="highlight-text danger">Não utilize essa facilidade!</span><br>Use o endpoint do seu bucket, dessa forma a CDN irá buscar o conteúdo via HTTP e não como objetos do S3 na rede interna da AWS. Isso evita erros nas URL não terminadas em “/“. </p>
+</blockquote> 
+<p>O campo <code>Origin Path</code> pode deixar em branco a não ser que seu conteúdo esteja dentro de algum diretório, por exemplo <a href="http://www.exemplo.com/blog" target="_blank" rel="external">http://www.exemplo.com/blog</a> - nesse caso o path é <code>/blog</code>. </p>
+<p>O campo <code>Origin Id</code> é um apelido para a origem, um identificador. O ID é interessante quando a distribuição possui diversas origens e através do ID fica fácil diferenciá-las, como esse não é o caso vamos deixar em branco. E por fim, os campos <code>Origin Custom Headers</code> devem ficar em branco para os fins deste artigo. Detalhes sobre sua utilidade estão fora do escopo deste artigo.</p>
+<h4 id="Default-Cache-Behavior-Settings"><a href="#Default-Cache-Behavior-Settings" class="headerlink" title="Default Cache Behavior Settings"></a>Default Cache Behavior Settings</h4><div class="figure right" style="width:85%;"><a class="fancybox" href="default-settings.png" title="Configurações de Cache" data-fancybox-group="cdn"><img class="fig-img" src="default-settings.png" style="width:85%;" alt="Configurações de Cache"></a><span class="caption">Configurações de Cache</span></div><div style="clear:both;"></div>
+<p>Nesta sessão as opções padrão estão boas para a maioria dos blogs estáticos. Sugiro <span class="highlight-text yellow">apenas mudar para `yes` a opção</span> assinalada em vermelho. A Cloudfront é capaz de servir o conteúdo compactado com gzip, para clientes que aceitam essa opção - praticamente a totalidade dos navegadores atualmente - isso economiza banda e acelera ainda mais o download do seu conteúdo. No futuro essas configurações podem ser modificadas para atender as necessidades que surgirem, por exemplo o uso de HTTPS.</p>
+<h4 id="Distribution-Settings"><a href="#Distribution-Settings" class="headerlink" title="Distribution Settings"></a>Distribution Settings</h4><div class="figure right" style="width:85%;"><a class="fancybox" href="distribution-settings.png" title="Configurações da Distribuição" data-fancybox-group="cdn"><img class="fig-img" src="distribution-settings.png" style="width:85%;" alt="Configurações da Distribuição"></a><span class="caption">Configurações da Distribuição</span></div><div style="clear:both;"></div>
+<blockquote class="pullquote right"><p>A opção padrão oferece melhor performance em todo o globo utilizando todos os servidores de borda disponíveis. É também a opção potencialmente mais cara.</p>
+</blockquote>O campo `Price Class` permite escolher algumas combinações de *Edge Locations* onde essa distribuição estará ativa. Os *Edge Locations* são as localidades dos servidores da CDN. No momento desta publicação [há servidores][edge] nos EUA, Europa, Asia e América do Sul. Entretanto as combinações disponíveis para configuração não incluem América do Sul. (não se preocupe, a América do Sul está incluída em todas combinações através da opção região USA).
+
+<blockquote class="pullquote left"><p>Após configurar a CDN você deverá alterar a configuração do seu DNS para apontar os CNAMES aqui definidos para o <em>endpoint</em> da CDN.</p>
+</blockquote>O campo <code>Alternate Domain Names</code> deve conter o nome de domínio registrado para servir o conteúdo.  No meu caso esse campo foi preenchido com <code>benito.com.br</code>, <code>www.benito.com.br</code> e  <code>blog.benito.com.br</code>. (no momento em que escrevo apenas os dois primeiros estão funcionando)<br><br>Nesse momento vamos manter os campos SSL como padrão e alterar o campo <code>Default Root Object</code> para <code>index.html</code>.(ou o nome do seu arquivo index padrão)<br><br>Finalize a configuração clicando no botão <code>Create Distribution</code>.<br><br><div class="figure right" style="width:85%;"><a class="fancybox" href="distribution.png" title="Distribuição criada" data-fancybox-group="cdn"><img class="fig-img" src="distribution.png" style="width:85%;" alt="Distribuição criada"></a><span class="caption">Distribuição criada</span></div><div style="clear:both;"></div>
+<p>Anote o endereço destacado em vermelho na sua distribuição, vá até seu DNS server e configure o CNAME apropriado de seu domínio apontando para este endereço. No meu caso o endereço <code>www.benito.com.br</code> e <code>blog.benito.com.br</code> são CNAMES para essa distribuição, já o [domínio APEX] <code>benito.com.br</code> não pode ser do tipo CNAME e necessita tratamento especial, esta função depende de seu servidor DNS.</p>
+<p>Perceba que sua distribuição está ativa e a do exemplo acima desativada, isso porque ela foi criada apenas para escrever esse artigo. Note ainda que ela está <code>in progress</code>, isso significa que os <a href="https://aws.amazon.com/cloudfront/details/" title="CF edge locations" target="_blank" rel="external">servidores de borda</a> ainda estão buscando seu conteúdo e preparando o cache. Pegue um café e relaxe, esse processo leva entre 15 e 30 minutos. Quando o processo terminar, o estado será <code>Deployed</code> e seu conteúdo estará sendo servido corretamente pela Cloudfront. </p>
+<h3 id="Endpoint-S3-nao-aceita-HTTPS"><a href="#Endpoint-S3-nao-aceita-HTTPS" class="headerlink" title="Endpoint S3 não aceita HTTPS"></a>Endpoint S3 não aceita HTTPS</h3><p>Esse é um ponto que me causou alguns problemas até eu descobrir o que estava errado. O <em>endpoint</em> do bucket S3 só pode ser acessado por HTTP e não por HTTPS. Já a distribuição Cloudfront pode servir tanto HTTP quanto HTTPS e, por padrão, repassa as requisições à origem no mesmo protocolo que recebe. Dessa forma se alguém acessar o site através do HTTPS, a CF irá requisitar o conteúdo no S3 através de HTTPS resultando em um erro. </p>
+<p>Para corrigir basta desabilitar o HTTPS na origem, essa opção não está disponível no momento em que se cria a distribuição. Para acessá-la, na tela da imagem anterior clique no ID da distribuição. Na tela que se abre clique na aba <code>Origin</code> e selecione a origem depois clique no botão <code>Edit</code>. Altere as opções conforme destaque na imagem abaixo e salve clicando em <code>Yes, edit</code></p>
+<div class="figure right" style="width:85%;"><a class="fancybox" href="edit-origin.png" title="Edição da origem" data-fancybox-group="cdn"><img class="fig-img" src="edit-origin.png" style="width:85%;" alt="Edição da origem"></a><span class="caption">Edição da origem</span></div><div style="clear:both;"></div>
+<h2 id="Conclusao"><a href="#Conclusao" class="headerlink" title="Conclusão"></a>Conclusão</h2><p>Utilizar um CDN para servir o conteúdo de um blog estático é uma boa estratégia já que todo o conteúdo pode ser armazenado em cache por algum período. Assim a CDN não só acelera o download do site mas também provê disponibilidade e redundância de servidores diminuindo o tráfego direto destinado ao seu provedor. O custo de uma CDN pode ser, inclusive com opções grátis no mercado, e os benefícios são muitos. A estrutura da Cloudfront é excelente para nós brasileiros pois possui servidores de borda no Rio de Janeiro e em São Paulo com latências baixíssimas para nossos leitores no Brasil.</p>
+<p>Espero que esse artigo ajude você a por seu site em velocidade de dobra com a AWS Cloudfront. Vida longa e próspera!</p>
+
+            
+        </div>
+    </div>
+    <div id="post-footer" class="post-footer main-content-wrap">
+        
+            <div class="post-footer-tags">
+                <span class="text-color-light text-small">ETIQUETADO em</span><br/>
+                
+    <a class="tag tag--primary tag--small t-link" href="/tags/aws/">AWS</a>
+
+            </div>
+        
+        <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/hexo-aws-blog-s3-static-webhosting/" data-tooltip="Hexo+Aws=Blog! - S3 static webhosting">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+        
+            
+                <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+            
+        
+    </div>
+</article>
+
+
+
+                <footer id="footer" class="main-content-wrap">
+    <span class="copyrights">
+        Copyrights &copy; 2016 JrBenito. All Rights Reserved.
+    </span>
+</footer>
+
+            </div>
+            
+                <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+                    <div class="post-actions-wrap">
+    <nav>
+        <ul class="post-actions post-action-nav">
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--disabled">
+                
+                    <i class="fa fa-angle-left"></i>
+                    <span class="hide-xs hide-sm text-small icon-ml">ANTERIOR</span>
+                </a>
+            </li>
+            <li class="post-action">
+                
+                    <a class="post-action-btn btn btn--default tooltip--top" href="/2016/06/hexo-aws-blog-s3-static-webhosting/" data-tooltip="Hexo+Aws=Blog! - S3 static webhosting">
+                
+                    <span class="hide-xs hide-sm text-small icon-mr">PRÓXIMO</span>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <ul class="post-actions post-action-share">
+        <li class="post-action hide-lg hide-md hide-sm">
+            <a class="post-action-btn btn btn--default btn-open-shareoptions"  href="#btn-open-shareoptions">
+                <i class="fa fa-share-alt"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/">
+                <i class="fa fa-google-plus"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/">
+                <i class="fa fa-facebook-official"></i>
+            </a>
+        </li>
+        <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/">
+                <i class="fa fa-twitter"></i>
+            </a>
+        </li>
+        
+            <li class="post-action">
+                <a class="post-action-btn btn btn--default" href="#disqus_thread">
+                    <i class="fa fa-comment-o"></i>
+                </a>
+            </li>
+        
+        <li class="post-action">
+            
+                <a class="post-action-btn btn btn--default" href="#">
+            
+                <i class="fa fa-list"></i>
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+                </div>
+                <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+    <ul class="share-options">
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/">
+                <i class="fa fa-google-plus"></i><span class="">Partilhar no Google Plus</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/">
+                <i class="fa fa-facebook-official"></i><span>SPartilhar no Facebook</span>
+            </a>
+        </li>
+        <li class="share-option">
+            <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/">
+                <i class="fa fa-twitter"></i><span>Partilhar no Twitter</span>
+            </a>
+        </li>
+    </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+            
+        </div>
+        
+
+
+    
+
+<div id="about">
+    <div id="about-card">
+        <div id="about-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="about-card-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=110"/>
+        
+            <h4 id="about-card-name">JrBenito</h4>
+        
+            <h5 id="about-card-bio"><p>Formado em Ciência da Computação trabalha com sistemas embarcados Linux e Android. Fotógrafo amador e apaixonado por mergulho também pratica corrida. Sua maior aventura é ser pai.</p>
+</h5>
+        
+        
+            <h5 id="about-card-job">
+                <i class="fa fa-briefcase"></i>
+                <br/>
+                <p>Engenheiro de Sistemas / Samsung</p>
+
+            </h5>
+        
+        
+            <h5 id="about-card-location">
+                <i class="fa fa-map-marker"></i>
+                <br/>
+                Campinas / Brasil
+            </h5>
+        
+    </div>
+</div>
+
+        
+<div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
+    </body>
+    <!--SCRIPTS-->
+<script src="/assets/js/scrip-tu4ziscb5jrkjxubeugdgizktyuugflfq5jvgz4agzzmwifuq01g1lmq8giw.min.js"></script>
+<!--SCRIPTS END-->
+
+    
+        <script>
+             var disqus_config = function () {
+                 this.page.url = 'https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/';
+                 
+                    this.page.identifier = '2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/';
+                                  
+             };
+            (function() {
+                var d = document, s = d.createElement('script');
+                var disqus_shortname = 'blogdobenito';
+                s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        </script>
+    
+
+
+
+</html>

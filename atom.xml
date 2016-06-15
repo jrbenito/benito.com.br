@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.benito.com.br/"/>
-  <updated>2016-06-14T19:40:21.976Z</updated>
+  <updated>2016-06-15T05:00:41.000Z</updated>
   <id>https://www.benito.com.br/</id>
   
   <author>
@@ -16,11 +16,58 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>CDN - Colocando o Blog em velocidade dobra</title>
+    <link href="https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/"/>
+    <id>https://www.benito.com.br/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/</id>
+    <published>2016-06-15T05:00:41.000Z</published>
+    <updated>2016-06-15T05:00:41.000Z</updated>
+    
+    <content type="html">&lt;p&gt;Uma &lt;em&gt;Content Delivery Network&lt;/em&gt; ou simplesmente CDN, é um serviço que provê cache do seu conteúdo armazenado em pontos estratégicos ao redor do globo. Esses pontos, estão, idealmente, mais próximos do cliente que solicita o conteúdo, portanto, a latência de acesso ao CDN é menor que até seu servidor.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;O principal objetivo da CDN é diminuir a latência aumentando a velocidade do site, porém as CDN adicionam ainda, disponibilidade e redundância que os provedores mais básicos (&lt;em&gt;e baratos&lt;/em&gt;) não conseguem entregar.&lt;/p&gt;
+&lt;h2 id=&quot;AWS-Cloudfront&quot;&gt;&lt;a href=&quot;#AWS-Cloudfront&quot; class=&quot;headerlink&quot; title=&quot;AWS Cloudfront&quot;&gt;&lt;/a&gt;&lt;a href=&quot;https://aws.amazon.com/cloudfront/&quot; title=&quot;Cloudfront page&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;AWS Cloudfront&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Cloudfront é a CDN do Amazon Web Services e, como é costume do AWS, possui um &lt;a href=&quot;https://aws.amazon.com/cloudfront/pricing/&quot; title=&quot;Preço da Cloudfront&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;preços atrativos&lt;/a&gt; e &lt;em&gt;free tier&lt;/em&gt; generoso. Já que esse site é &lt;a href=&quot;/2016/06/hexo-aws-blog-s3-static-webhosting/&quot; title=&quot;hospedado no AWS S3&quot;&gt;hospedado no AWS S3&lt;/a&gt;, utilizar o Cloudfront é natural.&lt;blockquote&gt;&lt;p&gt;O Github Pages já possui uma CDN servindo seus sites. Embora não haja muito controle sobre como seu conteúdo é armazenado (&lt;em&gt;cache&lt;/em&gt;) e distribuído, o serviço é totalmente grátis para projetos não comerciais.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;/p&gt;
+&lt;h3 id=&quot;Criando-uma-distribuicao&quot;&gt;&lt;a href=&quot;#Criando-uma-distribuicao&quot; class=&quot;headerlink&quot; title=&quot;Criando uma distribuição&quot;&gt;&lt;/a&gt;Criando uma distribuição&lt;/h3&gt;&lt;p&gt;Para criar um nova distribuição acesse o &lt;a href=&quot;https://console.aws.amazon.com/cloudfront/&quot; title=&quot;Console Cloudfront&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;console&lt;/a&gt; AWS e clique no serviço Cloudfront. Na tela que se abre clique no botão azul &lt;code&gt;Create Distribution&lt;/code&gt;. Na tela seguinte será perguntado se você deseja criar uma CDN Web ou uma CDN RTMP, selecionamos o botão &lt;code&gt;Get Start&lt;/code&gt; na sessão &lt;code&gt;Web&lt;/code&gt;. A tela seguinte solicita as configurações da CDN, vou explicá-la por sessão.&lt;/p&gt;
+&lt;h4 id=&quot;Origin-Settings&quot;&gt;&lt;a href=&quot;#Origin-Settings&quot; class=&quot;headerlink&quot; title=&quot;Origin Settings&quot;&gt;&lt;/a&gt;Origin Settings&lt;/h4&gt;&lt;div class=&quot;figure right&quot; style=&quot;width:85%;&quot;&gt;&lt;a class=&quot;fancybox&quot; href=&quot;origin-settings.png&quot; title=&quot;Configurações da Origem&quot; data-fancybox-group=&quot;cdn&quot;&gt;&lt;img class=&quot;fig-img&quot; src=&quot;origin-settings.png&quot; style=&quot;width:85%;&quot; alt=&quot;Configurações da Origem&quot;&gt;&lt;/a&gt;&lt;span class=&quot;caption&quot;&gt;Configurações da Origem&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+&lt;p&gt;A Cloudfront não precisa ser usada em conjunto com AWS S3, mas sim com qualquer servidor web. Nessa sessão colocaremos as informações da origem, ou seja o seu servidor de conteúdo que geralmente é um servidor web ou no meu caso o bucket S3. &lt;/p&gt;
+&lt;p&gt;No primeiro campo, &lt;code&gt;Origin Domain Name&lt;/code&gt;, coloque o endereço do seu conteúdo, não o seu domínio pessoal mas sim o endereço servidor onde seu conteúdo está armazenado. Pode ser um nome ou um endereço IP disponibilizado pelo seu provedor. No caso de utilizar o AWS S3, o correto é colocar o &lt;a href=&quot;http://docs.aws.amazon.com/AmazonS3/latest/dev/VirtualHosting.html&quot; title=&quot;VirtualHosting&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;endereço (&lt;em&gt;endpoint&lt;/em&gt;)&lt;/a&gt; do bucket. &lt;/p&gt;
+&lt;blockquote&gt;&lt;p&gt;O primeiro campo é traiçoeiro, ao clicar nele o console irá oferecer-lhe uma lista de seus buckets S3. &lt;span class=&quot;highlight-text danger&quot;&gt;Não utilize essa facilidade!&lt;/span&gt;&lt;br&gt;Use o endpoint do seu bucket, dessa forma a CDN irá buscar o conteúdo via HTTP e não como objetos do S3 na rede interna da AWS. Isso evita erros nas URL não terminadas em “/“. &lt;/p&gt;
+&lt;/blockquote&gt; 
+&lt;p&gt;O campo &lt;code&gt;Origin Path&lt;/code&gt; pode deixar em branco a não ser que seu conteúdo esteja dentro de algum diretório, por exemplo &lt;a href=&quot;http://www.exemplo.com/blog&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;http://www.exemplo.com/blog&lt;/a&gt; - nesse caso o path é &lt;code&gt;/blog&lt;/code&gt;. &lt;/p&gt;
+&lt;p&gt;O campo &lt;code&gt;Origin Id&lt;/code&gt; é um apelido para a origem, um identificador. O ID é interessante quando a distribuição possui diversas origens e através do ID fica fácil diferenciá-las, como esse não é o caso vamos deixar em branco. E por fim, os campos &lt;code&gt;Origin Custom Headers&lt;/code&gt; devem ficar em branco para os fins deste artigo. Detalhes sobre sua utilidade estão fora do escopo deste artigo.&lt;/p&gt;
+&lt;h4 id=&quot;Default-Cache-Behavior-Settings&quot;&gt;&lt;a href=&quot;#Default-Cache-Behavior-Settings&quot; class=&quot;headerlink&quot; title=&quot;Default Cache Behavior Settings&quot;&gt;&lt;/a&gt;Default Cache Behavior Settings&lt;/h4&gt;&lt;div class=&quot;figure right&quot; style=&quot;width:85%;&quot;&gt;&lt;a class=&quot;fancybox&quot; href=&quot;default-settings.png&quot; title=&quot;Configurações de Cache&quot; data-fancybox-group=&quot;cdn&quot;&gt;&lt;img class=&quot;fig-img&quot; src=&quot;default-settings.png&quot; style=&quot;width:85%;&quot; alt=&quot;Configurações de Cache&quot;&gt;&lt;/a&gt;&lt;span class=&quot;caption&quot;&gt;Configurações de Cache&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+&lt;p&gt;Nesta sessão as opções padrão estão boas para a maioria dos blogs estáticos. Sugiro &lt;span class=&quot;highlight-text yellow&quot;&gt;apenas mudar para `yes` a opção&lt;/span&gt; assinalada em vermelho. A Cloudfront é capaz de servir o conteúdo compactado com gzip, para clientes que aceitam essa opção - praticamente a totalidade dos navegadores atualmente - isso economiza banda e acelera ainda mais o download do seu conteúdo. No futuro essas configurações podem ser modificadas para atender as necessidades que surgirem, por exemplo o uso de HTTPS.&lt;/p&gt;
+&lt;h4 id=&quot;Distribution-Settings&quot;&gt;&lt;a href=&quot;#Distribution-Settings&quot; class=&quot;headerlink&quot; title=&quot;Distribution Settings&quot;&gt;&lt;/a&gt;Distribution Settings&lt;/h4&gt;&lt;div class=&quot;figure right&quot; style=&quot;width:85%;&quot;&gt;&lt;a class=&quot;fancybox&quot; href=&quot;distribution-settings.png&quot; title=&quot;Configurações da Distribuição&quot; data-fancybox-group=&quot;cdn&quot;&gt;&lt;img class=&quot;fig-img&quot; src=&quot;distribution-settings.png&quot; style=&quot;width:85%;&quot; alt=&quot;Configurações da Distribuição&quot;&gt;&lt;/a&gt;&lt;span class=&quot;caption&quot;&gt;Configurações da Distribuição&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+&lt;blockquote class=&quot;pullquote right&quot;&gt;&lt;p&gt;A opção padrão oferece melhor performance em todo o globo utilizando todos os servidores de borda disponíveis. É também a opção potencialmente mais cara.&lt;/p&gt;
+&lt;/blockquote&gt;O campo `Price Class` permite escolher algumas combinações de *Edge Locations* onde essa distribuição estará ativa. Os *Edge Locations* são as localidades dos servidores da CDN. No momento desta publicação [há servidores][edge] nos EUA, Europa, Asia e América do Sul. Entretanto as combinações disponíveis para configuração não incluem América do Sul. (não se preocupe, a América do Sul está incluída em todas combinações através da opção região USA).
+
+&lt;blockquote class=&quot;pullquote left&quot;&gt;&lt;p&gt;Após configurar a CDN você deverá alterar a configuração do seu DNS para apontar os CNAMES aqui definidos para o &lt;em&gt;endpoint&lt;/em&gt; da CDN.&lt;/p&gt;
+&lt;/blockquote&gt;O campo &lt;code&gt;Alternate Domain Names&lt;/code&gt; deve conter o nome de domínio registrado para servir o conteúdo.  No meu caso esse campo foi preenchido com &lt;code&gt;benito.com.br&lt;/code&gt;, &lt;code&gt;www.benito.com.br&lt;/code&gt; e  &lt;code&gt;blog.benito.com.br&lt;/code&gt;. (no momento em que escrevo apenas os dois primeiros estão funcionando)&lt;br&gt;&lt;br&gt;Nesse momento vamos manter os campos SSL como padrão e alterar o campo &lt;code&gt;Default Root Object&lt;/code&gt; para &lt;code&gt;index.html&lt;/code&gt;.(ou o nome do seu arquivo index padrão)&lt;br&gt;&lt;br&gt;Finalize a configuração clicando no botão &lt;code&gt;Create Distribution&lt;/code&gt;.&lt;br&gt;&lt;br&gt;&lt;div class=&quot;figure right&quot; style=&quot;width:85%;&quot;&gt;&lt;a class=&quot;fancybox&quot; href=&quot;distribution.png&quot; title=&quot;Distribuição criada&quot; data-fancybox-group=&quot;cdn&quot;&gt;&lt;img class=&quot;fig-img&quot; src=&quot;distribution.png&quot; style=&quot;width:85%;&quot; alt=&quot;Distribuição criada&quot;&gt;&lt;/a&gt;&lt;span class=&quot;caption&quot;&gt;Distribuição criada&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+&lt;p&gt;Anote o endereço destacado em vermelho na sua distribuição, vá até seu DNS server e configure o CNAME apropriado de seu domínio apontando para este endereço. No meu caso o endereço &lt;code&gt;www.benito.com.br&lt;/code&gt; e &lt;code&gt;blog.benito.com.br&lt;/code&gt; são CNAMES para essa distribuição, já o [domínio APEX] &lt;code&gt;benito.com.br&lt;/code&gt; não pode ser do tipo CNAME e necessita tratamento especial, esta função depende de seu servidor DNS.&lt;/p&gt;
+&lt;p&gt;Perceba que sua distribuição está ativa e a do exemplo acima desativada, isso porque ela foi criada apenas para escrever esse artigo. Note ainda que ela está &lt;code&gt;in progress&lt;/code&gt;, isso significa que os &lt;a href=&quot;https://aws.amazon.com/cloudfront/details/&quot; title=&quot;CF edge locations&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;servidores de borda&lt;/a&gt; ainda estão buscando seu conteúdo e preparando o cache. Pegue um café e relaxe, esse processo leva entre 15 e 30 minutos. Quando o processo terminar, o estado será &lt;code&gt;Deployed&lt;/code&gt; e seu conteúdo estará sendo servido corretamente pela Cloudfront. &lt;/p&gt;
+&lt;h3 id=&quot;Endpoint-S3-nao-aceita-HTTPS&quot;&gt;&lt;a href=&quot;#Endpoint-S3-nao-aceita-HTTPS&quot; class=&quot;headerlink&quot; title=&quot;Endpoint S3 não aceita HTTPS&quot;&gt;&lt;/a&gt;Endpoint S3 não aceita HTTPS&lt;/h3&gt;&lt;p&gt;Esse é um ponto que me causou alguns problemas até eu descobrir o que estava errado. O &lt;em&gt;endpoint&lt;/em&gt; do bucket S3 só pode ser acessado por HTTP e não por HTTPS. Já a distribuição Cloudfront pode servir tanto HTTP quanto HTTPS e, por padrão, repassa as requisições à origem no mesmo protocolo que recebe. Dessa forma se alguém acessar o site através do HTTPS, a CF irá requisitar o conteúdo no S3 através de HTTPS resultando em um erro. &lt;/p&gt;
+&lt;p&gt;Para corrigir basta desabilitar o HTTPS na origem, essa opção não está disponível no momento em que se cria a distribuição. Para acessá-la, na tela da imagem anterior clique no ID da distribuição. Na tela que se abre clique na aba &lt;code&gt;Origin&lt;/code&gt; e selecione a origem depois clique no botão &lt;code&gt;Edit&lt;/code&gt;. Altere as opções conforme destaque na imagem abaixo e salve clicando em &lt;code&gt;Yes, edit&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;figure right&quot; style=&quot;width:85%;&quot;&gt;&lt;a class=&quot;fancybox&quot; href=&quot;edit-origin.png&quot; title=&quot;Edição da origem&quot; data-fancybox-group=&quot;cdn&quot;&gt;&lt;img class=&quot;fig-img&quot; src=&quot;edit-origin.png&quot; style=&quot;width:85%;&quot; alt=&quot;Edição da origem&quot;&gt;&lt;/a&gt;&lt;span class=&quot;caption&quot;&gt;Edição da origem&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;clear:both;&quot;&gt;&lt;/div&gt;
+&lt;h2 id=&quot;Conclusao&quot;&gt;&lt;a href=&quot;#Conclusao&quot; class=&quot;headerlink&quot; title=&quot;Conclusão&quot;&gt;&lt;/a&gt;Conclusão&lt;/h2&gt;&lt;p&gt;Utilizar um CDN para servir o conteúdo de um blog estático é uma boa estratégia já que todo o conteúdo pode ser armazenado em cache por algum período. Assim a CDN não só acelera o download do site mas também provê disponibilidade e redundância de servidores diminuindo o tráfego direto destinado ao seu provedor. O custo de uma CDN pode ser, inclusive com opções grátis no mercado, e os benefícios são muitos. A estrutura da Cloudfront é excelente para nós brasileiros pois possui servidores de borda no Rio de Janeiro e em São Paulo com latências baixíssimas para nossos leitores no Brasil.&lt;/p&gt;
+&lt;p&gt;Espero que esse artigo ajude você a por seu site em velocidade de dobra com a AWS Cloudfront. Vida longa e próspera!&lt;/p&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Uma &lt;em&gt;Content Delivery Network&lt;/em&gt; ou simplesmente CDN, é um serviço que provê cache do seu conteúdo armazenado em pontos estratégicos ao redor do globo. Esses pontos, estão, idealmente, mais próximos do cliente que solicita o conteúdo, portanto, a latência de acesso ao CDN é menor que até seu servidor.&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="AWS" scheme="https://www.benito.com.br/tags/aws/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Hexo+Aws=Blog! - S3 static webhosting</title>
     <link href="https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/"/>
     <id>https://www.benito.com.br/2016/06/hexo-aws-blog-s3-static-webhosting/</id>
     <published>2016-06-09T02:50:58.000Z</published>
-    <updated>2016-06-14T19:40:21.976Z</updated>
+    <updated>2016-06-15T03:00:58.000Z</updated>
     
     <content type="html">&lt;p&gt;Chegou a hora de publicar, o comando &lt;code&gt;hexo server&lt;/code&gt; abre um mini servidor para o blog mas não é feito para rodar em produção. No &lt;a href=&quot;/2016/05/hexo-aws-blog/&quot; title=&quot;primeiro artigo&quot;&gt;primeiro artigo&lt;/a&gt; ficou claro que procuramos uma solução onde não precisemos nos preocupar com servidores ou coisas como distribuição de carga. Procura-se um &lt;em&gt;static web-hosting&lt;/em&gt;.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&quot;Github-Pages&quot;&gt;&lt;a href=&quot;#Github-Pages&quot; class=&quot;headerlink&quot; title=&quot;Github Pages&quot;&gt;&lt;/a&gt;Github Pages&lt;/h2&gt;&lt;p&gt;Um serviço gratuito e com boa qualidade é oferecido pelo &lt;a href=&quot;https://pages.github.com&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Github Pages&lt;/a&gt;. Sua configuração é muito simples e para quem já está acostumado com o Git o setup pode ser feito em questão de minutos. O &lt;em&gt;&lt;a href=&quot;https://hexo.io/docs/deployment.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;plugin&lt;/a&gt;&lt;/em&gt; ‘hexo-deployer-git` automatiza o processo de upload (o termo correto aqui é &lt;em&gt;commit&lt;/em&gt;) tornando a manutenção do blog muito simples. Porém o Github pages não dá muito controle sobre como seu conteúdo é servido e sua CDN não permite invalidar o conteúdo do cache.&lt;/p&gt;
@@ -51,7 +98,7 @@
 &lt;h2 id=&quot;Upload&quot;&gt;&lt;a href=&quot;#Upload&quot; class=&quot;headerlink&quot; title=&quot;Upload&quot;&gt;&lt;/a&gt;Upload&lt;/h2&gt;&lt;p&gt;Para subir suas páginas HTML no bucket, utilize o método que mais lhe convir. Nesse momento sugiro o próprio S3 Console; clique no botão azul &lt;em&gt;upload&lt;/em&gt;, agora arraste o arquivos da pasta &lt;code&gt;public&lt;/code&gt; do seu Hexo para área cinza demarcada no S3 Console. Espere tudo o upload terminar e teste acessando o &lt;em&gt;endpoint&lt;/em&gt; do seu bucket digitando &lt;code&gt;http://&amp;lt;endpoint&amp;gt;&lt;/code&gt; no seu navegador.&lt;/p&gt;
 &lt;p&gt;Depois instalaremos um &lt;a href=&quot;https://www.npmjs.com/package/hexo-deployer-s3-cloudfront&quot; title=&quot;hexo-deployer-s3-cloudfront&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;plugin&lt;/a&gt; para fazer o upload diretamente do Hexo.&lt;/p&gt;
 &lt;h1 id=&quot;Conclusao&quot;&gt;&lt;a href=&quot;#Conclusao&quot; class=&quot;headerlink&quot; title=&quot;Conclusão&quot;&gt;&lt;/a&gt;Conclusão&lt;/h1&gt;&lt;p&gt;Pronto! Apesar do post extenso, executar os passos descritos não levará mais que 15 minutos e seu site já está no ar. Não esqueça de verificar o valor do armazenamento S3 na região que você escolheu e simular o custo mensal na &lt;a href=&quot;https://calculator.s3.amazonaws.com/index.html&quot; title=&quot;calculadora de custos AWS&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;calculadora AWS&lt;/a&gt;. Vale lembrar que Amazon oferece um &lt;em&gt;free tier&lt;/em&gt; generoso durante um ano para novos clientes.&lt;/p&gt;
-&lt;p&gt;Ah! Quase esqueço, se você tem um domínio e deseja servir o blog deste domínio precisa apontar um &lt;code&gt;CNAME&lt;/code&gt; para o &lt;em&gt;endpoint&lt;/em&gt; da amazon. Explicarei com mais detalhes quando configurarmos a CDN. Até lá.&lt;/p&gt;
+&lt;p&gt;Ah! Quase esqueço, se você tem um domínio e deseja servir o blog deste domínio precisa apontar um &lt;code&gt;CNAME&lt;/code&gt; para o &lt;em&gt;endpoint&lt;/em&gt; do seu S3 bucket. Explicarei com mais detalhes quando &lt;a href=&quot;/2016/06/configurando-uma-cdn-para-acelerar-o-acesso-ao-blog/&quot; title=&quot;configurarmos a CDN&quot;&gt;configurarmos a CDN&lt;/a&gt;. Até lá.&lt;/p&gt;
 </content>
     
     <summary type="html">
@@ -61,9 +108,9 @@
     </summary>
     
     
-      <category term="Hexo" scheme="https://www.benito.com.br/tags/hexo/"/>
-    
       <category term="AWS" scheme="https://www.benito.com.br/tags/aws/"/>
+    
+      <category term="Hexo" scheme="https://www.benito.com.br/tags/hexo/"/>
     
       <category term="Nodejs" scheme="https://www.benito.com.br/tags/nodejs/"/>
     
@@ -220,9 +267,9 @@
     </summary>
     
     
-      <category term="Hexo" scheme="https://www.benito.com.br/tags/hexo/"/>
-    
       <category term="AWS" scheme="https://www.benito.com.br/tags/aws/"/>
+    
+      <category term="Hexo" scheme="https://www.benito.com.br/tags/hexo/"/>
     
       <category term="Nodejs" scheme="https://www.benito.com.br/tags/nodejs/"/>
     
@@ -233,7 +280,7 @@
     <link href="https://www.benito.com.br/2016/05/hexo-aws-blog/"/>
     <id>https://www.benito.com.br/2016/05/hexo-aws-blog/</id>
     <published>2016-05-06T23:00:00.000Z</published>
-    <updated>2016-06-14T19:40:21.976Z</updated>
+    <updated>2016-06-15T05:22:28.940Z</updated>
     
     <content type="html">&lt;h1 id=&quot;Introducao&quot;&gt;&lt;a href=&quot;#Introducao&quot; class=&quot;headerlink&quot; title=&quot;Introdução&quot;&gt;&lt;/a&gt;Introdução&lt;/h1&gt;&lt;p&gt;Recentemente meu irmão iniciou um &lt;a href=&quot;http://counsellor.life&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;projeto&lt;/a&gt; para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um esboço do trabalho e estava hospedando junto ao site de um amigo apenas para teste. Começamos a conversar sobre qual domínio registrar, qual hospedagem contratar, qual tamanho da demanda e claro: preço! &lt;/p&gt;
 &lt;p&gt;Já há algum tempo que eu venho maturando a ideia de iniciar um blog com o objetivo de documentar meus projetos pessoais, compartilhar informação e manter organizado aquele conhecimento resultado de horas na Internet tentando resolver algum problema (geralmente simples). A discussão sobre o projeto para minha cunhada foi a faísca para que eu mergulhasse em uma pesquisa sobre sites, hospedagem, custos, tecnologias e acabasse por escrever esse primeiro post.&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
@@ -262,9 +309,9 @@
     </summary>
     
     
-      <category term="Hexo" scheme="https://www.benito.com.br/tags/hexo/"/>
-    
       <category term="AWS" scheme="https://www.benito.com.br/tags/aws/"/>
+    
+      <category term="Hexo" scheme="https://www.benito.com.br/tags/hexo/"/>
     
   </entry>
   
