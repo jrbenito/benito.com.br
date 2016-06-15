@@ -1,5 +1,6 @@
 title: Hexo+Aws=Blog! - S3 static webhosting
 date: 2016-06-08 23:50:58
+updated: 2016-06-15 00:00:58
 tags: 
    - AWS
    - Hexo
@@ -93,7 +94,7 @@ Depois instalaremos um [plugin][plg] para fazer o upload diretamente do Hexo.
 
 Pronto! Apesar do post extenso, executar os passos descritos não levará mais que 15 minutos e seu site já está no ar. Não esqueça de verificar o valor do armazenamento S3 na região que você escolheu e simular o custo mensal na [calculadora AWS][awscalc]. Vale lembrar que Amazon oferece um *free tier* generoso durante um ano para novos clientes.
 
-Ah! Quase esqueço, se você tem um domínio e deseja servir o blog deste domínio precisa apontar um `CNAME` para o *endpoint* da amazon. Explicarei com mais detalhes quando configurarmos a CDN. Até lá.
+Ah! Quase esqueço, se você tem um domínio e deseja servir o blog deste domínio precisa apontar um `CNAME` para o *endpoint* do seu S3 bucket. Explicarei com mais detalhes quando {% post_link configurando-uma-cdn-para-acelerar-o-acesso-ao-blog configurarmos a CDN %}. Até lá.
 
 [gh]: https://pages.github.com
 [hdg]: https://hexo.io/docs/deployment.html
