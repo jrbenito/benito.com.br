@@ -8,6 +8,7 @@ git:
   depth: 1
 before_install:
 - npm install -g hexo
+- npm install -g grunt-cli
 - npm install
 install:
 - hexo generate
