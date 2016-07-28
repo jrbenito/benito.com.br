@@ -1,3 +1,5 @@
+var path = require('path'), SEP = path.sep;
+
 module.exports = function(grunt) {
 	// AWS Credentials from environment vars
 	var awsKeyId = process.env.AWS_KEY;
@@ -5,6 +7,15 @@ module.exports = function(grunt) {
 	// buckets for upload
 	var devBucket = 'teste.benito.com.br';
 	var prodBucket = 'my-wonderful-production-bucket';
+
+	// production list of files
+	var weekCache = 'css|js';
+        var yearCache = 'jpg|jpeg|png|gif|ico|eot|otf|ttf|woff|woff2';
+        var prodFiles = [
+		{expand: true, cwd: 'public', src: ['**/*.!('+weekCache+'|'+yearCache+')'], dest: '/'},
+		{expand: true, cwd: 'public', src: ['**/*.@('+weekCache+')'], dest: '/', stream: true, params: {CacheControl: 'max-age=604800, public'}}, // enable stream to allow large files
+		{expand: true, cwd: 'public', src: ['**/*.@('+yearCache+')'], dest: '/', stream: true, params: {CacheControl: 'max-age=31536000, public'}},
+	];
 
 	grunt.config.set('aws_s3', {
 		options: {
@@ -28,11 +39,9 @@ module.exports = function(grunt) {
 			options: {
 				bucket: devBucket,
 				differential: false, // Only uploads the files that have changed
-				gzipRename: 'ext' // when uploading a gz file, keep the original extension
+				gzipRename: 'ext'    // when uploading a gz file, keep the original extension
 			},
-			files: [
-				{expand: true, cwd: 'public', src: ['**'], dest: '/'},
-			]
+			files: prodFiles
 		},
 		clean_dev: {
 			options: {
@@ -41,20 +50,14 @@ module.exports = function(grunt) {
 			},
 			files: [
 				{dest: '/', action: 'delete'},
-				//{dest: 'assets/', exclude: "**/*.tgz", action: 'delete'}, // will not delete the tgz
-				//{dest: 'assets/large/', exclude: "**/*copy*", flipExclude: true, action: 'delete'}, // will delete everything that has copy in the name
 			]
 		},
 		prod: {
 			options: {
 				bucket: prodBucket,
+                                gzipRename: 'ext' // when uploading a gz file, keep the original extension
 			},
-			files: [
-				{expand: true, cwd: 'public', src: ['*'], dest: '/'},
-//				{expand: true, cwd: assetsPublic, src: ['**'], dest: 'assets/', stream: true, params: {CacheControl: 'max-age=604800, public'}}, // enable stream to allow large files
-//				{expand: true, cwd: 'public', src: ['icon'+ SEP +'**','images'+ SEP +'**'], dest: '/', params: {CacheControl: 'max-age=31536000, public'}},
-				// CacheControl only applied to the assets and images folder
-			]
+			files: prodFiles
 		},
 		clean_prod: {
 			options: {
@@ -63,8 +66,6 @@ module.exports = function(grunt) {
 			},
 			files: [
 				{dest: '/', action: 'delete'},
-				//{dest: 'assets/', exclude: "**/*.tgz", action: 'delete'}, // will not delete the tgz
-				//{dest: 'assets/large/', exclude: "**/*copy*", flipExclude: true, action: 'delete'}, // will delete everything that has copy in the name
 			]
 		}
 	});
