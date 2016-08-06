@@ -9,8 +9,10 @@ module.exports = function(grunt) {
 	var prodBucket = 'my-wonderful-production-bucket';
 
 	// production list of files
-	var weekCache = 'css|js';
-        var yearCache = 'jpg|jpeg|png|gif|ico|eot|otf|ttf|woff|woff2';
+	// I did not find another globbing to do this so I ended up with the solution 
+	// proposed at http://stackoverflow.com/a/38679870/2726840
+	var weekCache = '*(*.)css|*(*.)js';
+        var yearCache = '*(*.)jpg|*(*.)jpeg|*(*.)png|*(*.)gif|*(*.)ico|*(*.)eot|*(*.)otf|*(*.)ttf|*(*.)woff|*(*.)woff2|*(*.)svg';
         var prodFiles = [
 		{expand: true, cwd: 'public', src: ['**/*.!('+weekCache+'|'+yearCache+')'], dest: '/'},
 		{expand: true, cwd: 'public', src: ['**/*.@('+weekCache+')'], dest: '/', stream: true, params: {CacheControl: 'max-age=604800, public'}}, // enable stream to allow large files
@@ -39,7 +41,8 @@ module.exports = function(grunt) {
 			options: {
 				bucket: devBucket,
 				differential: false, // Only uploads the files that have changed
-				gzipRename: 'ext'    // when uploading a gz file, keep the original extension
+				gzipRename: 'ext',    // when uploading a gz file, keep the original extension
+				//debug: true
 			},
 			files: prodFiles
 		},
