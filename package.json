@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "grunt": "^1.0.1",
+    "grunt-aws": "^0.6.2",
     "grunt-aws-s3": "^0.14.5",
     "include-all": "^0.1.6"
   }
