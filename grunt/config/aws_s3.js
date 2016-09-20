@@ -6,7 +6,7 @@ module.exports = function(grunt) {
 	var awsSecretKey = process.env.AWS_SECRET;
 	// buckets for upload
 	var devBucket = 'teste.benito.com.br';
-	var prodBucket = 'my-wonderful-production-bucket';
+	var prodBucket = 'benito.com.br';
 
 	// production list of files
 	// I did not find another globbing to do this so I ended up with the solution 
@@ -58,7 +58,8 @@ module.exports = function(grunt) {
 		prod: {
 			options: {
 				bucket: prodBucket,
-                                gzipRename: 'ext' // when uploading a gz file, keep the original extension
+                                gzipRename: 'ext', // when uploading a gz file, keep the original extension
+                                differential: true
 			},
 			files: prodFiles
 		},

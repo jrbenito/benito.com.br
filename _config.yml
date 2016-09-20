@@ -90,11 +90,11 @@ robotstxt:
 # Deployment
 ## Docs: http://hexo.io/docs/deployment.html
 deploy:
-        #  - type: s3-cloudfront
-        #    bucket: benito.com.br
-        #    cf_distribution: E1HPFWB9H7S21C
-        #    region: us-east-1
-        #    headers: {CacheControl: 'max-age=604800, public'}
+#  - type: s3-cloudfront
+#    bucket: benito.com.br
+#    cf_distribution: E1HPFWB9H7S21C
+#    region: us-east-1
+#    headers: {CacheControl: 'max-age=604800, public'}
   - type: git
     repo: git@github.com:jrbenito/benito.com.br.git
     branch: conteudo
