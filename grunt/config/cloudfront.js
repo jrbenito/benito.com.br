@@ -6,15 +6,12 @@ module.exports = function(grunt) {
 	var devDistribution = 'my dev cloudfron distribution ID';
 	var prodDistribution = 'E1HPFWB9H7S21C';
 
-	// production list of files
-	
-
 	grunt.config.set('cloudfront', {
 		options: {
 			accessKeyId: awsKeyId, // Use the variables
 			secretAccessKey: awsSecretKey, // You can also use env variables
 			distributionId: prodDistribution,
-			invalidations: ['/*']
+			invalidations: ['/*'], // all files or populated after s3 upload 
 		},
 		invalidate: {}
 	});
