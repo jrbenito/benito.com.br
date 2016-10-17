@@ -9,7 +9,12 @@ git:
 before_install:
 - npm install -g hexo-cli
 - npm install -g grunt-cli
+- npm install -g bower
 - npm install
+- cd themes/tranquilpeak/
+- npm install
+- grunt buildProd
+- cd ../../
 install:
 - hexo generate
 before_script:
