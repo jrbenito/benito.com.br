@@ -1,9 +1,15 @@
 language: node_js
 node_js:
   - "4.4.3"
+# whitelist
 branches:
   only:
-  - development
+      - development
+      - test-site-development
+# blacklist
+  except:
+      - master
+      - conteudo
 git:
   depth: 1
 before_install:
@@ -23,8 +29,8 @@ before_script:
 - sed -i'' "s~git@github.com:jrbenito/benito.com.br.git~https://${GH_TOKEN}:x-oauth-basic@github.com/jrbenito/benito.com.br.git~" _config.yml
 - git clone https://github.com/jrbenito/benito.com.br.git .deploy_git -b conteudo
 script:
-- grunt s3-prod-deploy
-- hexo deploy --silent
+- grunt aws_s3:clean_dev
+- grunt aws_s3:dev
 after_success:
 - grunt sns
 env:
