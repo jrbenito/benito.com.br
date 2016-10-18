@@ -1,15 +1,8 @@
 prose:
   rooturl: 'source'
-  siteurl: 'https://blog.benito.com.br/'
   media: 'source/assets'
-  ignore:
-    - index.html
-    - meetups.html
-    - _config.yml
-    - /_layouts
-    - /_includes
   metadata:
-    _posts:
+    source/_posts:
       - name: "date"
         field:
           element: "text"
