@@ -26,8 +26,6 @@ install:
 before_script:
 - git config --global user.name 'Josenivaldo Benito Jr'
 - git config --global user.email 'jrbenito@benito.qsl.br'
-- sed -i'' "s~git@github.com:jrbenito/benito.com.br.git~https://${GH_TOKEN}:x-oauth-basic@github.com/jrbenito/benito.com.br.git~" _config.yml
-- git clone https://github.com/jrbenito/benito.com.br.git .deploy_git -b conteudo
 script:
 - grunt aws_s3:clean_dev
 - grunt aws_s3:dev
