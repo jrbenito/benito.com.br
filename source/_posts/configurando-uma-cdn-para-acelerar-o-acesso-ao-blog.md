@@ -11,9 +11,7 @@ keywords:
    - Static website
    - CDN
 ---
-Uma *Content Delivery Network* ou simplesmente CDN, é um serviço que provê cache do seu conteúdo armazenado em pontos estratégicos ao redor do globo. Esses pontos, estão, idealmente, mais próximos do cliente que solicita o conteúdo, portanto, a latência de acesso ao CDN é menor que até seu servidor.
-
-ZUEI
+Uma *Content Delivery Network* ou simplesmente CDN, é um serviço que provê cache do seu conteúdo armazenado em pontos estratégicos ao redor do globo. Esses pontos, estão, idealmente, mais próximos do cliente que solicita o conteúdo, portanto, a latência de acesso ao CDN é menor que até seu servidor. 
 <!-- more -->
 
 O principal objetivo da CDN é diminuir a latência aumentando a velocidade do site, porém as CDN adicionam ainda, disponibilidade e redundância que os provedores mais básicos (*e baratos*) não conseguem entregar.
