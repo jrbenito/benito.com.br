@@ -1,7 +1,7 @@
 ---
 date: '2016-10-19 16:06 -0200'
 updated: '[object Object]'
-published: false
+published: true
 title: Meu primeiro post com prose.io
 ---
 ## Um novo post usando o Prose.io
