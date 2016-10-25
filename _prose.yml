@@ -22,8 +22,18 @@ prose:
           element: "multiselect"
           label: "Tags"
           alterable: true
+      - name: "categories"
+        field:
+          element: "multiselect"
+          label: "categories"
+          alterable: true
       - name: "keywords"
         field:
           element: "multiselect"
           label: "Keywords"
           alterable: true
+      - name: "comments"
+        field:
+          element: "checkbox"
+          label: "Enable Comments"
+          value: true
