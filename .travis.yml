@@ -19,6 +19,7 @@ before_install:
 - npm install
 - cd themes/tranquilpeak/
 - npm install
+- bower install
 - grunt buildProd
 - cd ../../
 install:
