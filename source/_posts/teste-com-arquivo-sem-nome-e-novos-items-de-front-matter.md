@@ -1,7 +1,7 @@
 ---
 date: '2016-10-25 20:00 -0200'
-updated: '2016-10-25 20:00 -0200'
-comments: false
+updated: '2016-10-25 20:13 -0200'
+comments: true
 published: true
 title: Teste com arquivo sem nome e novos items de front-matter
 ---
