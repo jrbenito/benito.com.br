@@ -11,7 +11,7 @@ prose:
       - name: "updated"
         field:
           element: "text"
-          label: "Date (YYYY-MM-DD HH:MM:SS)"
+          label: "Updated (YYYY-MM-DD HH:MM:SS)"
           value: CURRENT_DATETIME
       - name: "title"
         field:
