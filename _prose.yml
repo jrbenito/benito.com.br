@@ -8,10 +8,6 @@ prose:
           element: "text"
           label: "Date (YYYY-MM-DD HH:MM:SS)"
           value: CURRENT_DATETIME
-      - name: "updated"
-        filed:
-          element: "button"
-          label: "Use updated timestamp at front matter?"
       - name: "title"
         field:
           element: "text"
