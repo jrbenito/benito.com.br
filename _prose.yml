@@ -12,8 +12,8 @@ prose:
         filed:
           element: "button"
           label: "Use updated timestamp at front matter?"
-          on: "CURRENT_DATETIME"
-          off: ""
+          1: "CURRENT_DATETIME"
+          0: ""
       - name: "title"
         field:
           element: "text"
