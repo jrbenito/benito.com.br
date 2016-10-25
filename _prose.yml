@@ -8,6 +8,11 @@ prose:
           element: "text"
           label: "Date (YYYY-MM-DD HH:MM:SS)"
           value: CURRENT_DATETIME
+      - name: "updated"
+        field:
+          element: "text"
+          label: "Date (YYYY-MM-DD HH:MM:SS)"
+          value: CURRENT_DATETIME
       - name: "title"
         field:
           element: "text"
@@ -16,4 +21,9 @@ prose:
         field:
           element: "multiselect"
           label: "Tags"
+          alterable: true
+      - name: "keywords"
+        field:
+          element: "multiselect"
+          label: "Keywords"
           alterable: true
