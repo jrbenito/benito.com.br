@@ -1,0 +1,134 @@
+---
+date: '2017-01-25 16:31 -0200'
+updated: '2017-01-25 16:31 -0200'
+comments: true
+published: true
+title: Receptor IR TV Panasonic com defeito
+tags:
+   - eletrônica
+keywords:
+   - panasonic
+   - controle remoto
+   - infravermelho
+   - PCB
+---
+# O problema
+Possuo uma TV Plasma da Panasonic, o modelo é TC-P50UT20B que, ao que parece, é uma tropicalização da TX-50VT20B.
+Eu gosto de TVs de Plasma graças à profundidade do preto que estas telas oferecem, mas confesso que gostava mais
+da minha antiga TX-P50V20B (a versão não 3D e não - muito - tropicalizada). Bom mas isso é história para outro
+post.
+
+Da noite para o dia essa TV parou de ligar pelo controle remoto. Claro que troquei as pilhas do controle remoto
+sem sucesso. Também testei com um controle universal sem o menor sucesso. Para finalizar o diagnóstico eu apontei
+o controle remoto para a câmera do celular e é possível ver o LED IR (infravermelho) piscar. Se não é o controle
+remoto só pode ser a TV...
+
+## Aprendendo com a experiência (ruim) de outros
+Seguindo o caminho padrão recorri ao [oráculo](https://www.google.com.br "Google") e encontrei alguns relatos de
+pessoas com problemas similares em modelos de outras marcas. Os relatos eram sempre de que a TV parava de responder
+a qualquer controle remoto mas que funcionava perfeitamente ao ser comandada pelos botões no painel ou via algum
+aplicativo de celular (se a mesma for uma SmartTV e possuir esse tipo de aplicativo). Esse é exatamente o sintoma
+que a minha Pana vinha apresentando.
+
+## Minha experiência (ruim) com assistências técnicas
+Com todas as informações em mãos eu abri um chamado na Panasonic perguntando se haveria algum procedimento para
+fazer o _reset_ da TV uma vez que o procedimento descrito no manual faz uso do controle remoto - justamente o que
+não está funcionando. Relatei em meu chamado que já havia testado o controle remoto, trocado pilhas e usado um outro
+controle remoto e que esse não era o real motivo. No dia seguinte eu recebi uma reposta da Panasonic aconselhando-me
+a verificar as pilhas do controle remoto e testá-lo com a câmera do celular... Mas não foi exatamente isso que escrevi
+no meu chamado? Ao que parece existe uma doença epidêmica que acomete canais de suporte técnico; tal doença
+apresenta sintomas como ignorar o que é escrito pelo consumidor e responde-lo com respostas genéricas de algum
+manual. Em casos mais graves pode forçar o suporte a não responder. Contente-se se seu suporte reponder mesmo
+que seja repetindo exatamente o que você descreveu.
+
+Liguei em três assistências técnicas autorizadas, a primeira disse que o modelo era velho e que não teria peça
+condenando minha TV ao descarte. A segunda assistência ouviu todo meu relato e negou-me falar diretamente com o
+técnico, disse que o procedimento era eu levar a TV até eles e em até 7 dias eles me passavam um diagnóstico e
+orçamento. Insisti dizendo que a assistência ficava a 35Km da minha cidade e que eu gostaria de falar com um
+técnico para saber se havia possibilidade de eu levar apenas a peça defeituosa ou ele simplesmente encomendar a
+placa de IR e eu levar a TV só para trocar. Nada! A moça que me atendeu parecia estar falando com um E.T. que
+apareceu falando coisas que ela não entendia e queria a todo custo burlar o processo que ela seguia de forma
+tão correta. A terceira assistência foi quase como a segunda, mas a moça não pensou que eu fosse um "quebra
+protocolo" e, percebendo que eu entendia um pouco daquilo que falava, disse: "Olha, essas TVs não têm mais
+peça de reposição no mercado. O que fazemos é mandar a placa para um __laboratório__ e eles verificam se há
+como trocar os componentes". A palavra _laboratório_ foi o que me chamou a atenção para o fato de que eu
+mesmo poderia vericicar o que estava errado na placa de IR. Afinal de contas ali não tem nenhum CI elaborado,
+mas sim compontens simples como resistores, capacitores e sensor de IR (óbvio ddddduuuuhhhhh!).
+
+# Desmontando a Pana
+Desmontar a TV não foi complicado, por sorte eu tive auxílio de uma parafusadeira pois tirar os 20 parafusos que
+prendem a tampa trazeira ao frame da TV seria um trabalho ingrato de se fazer na unha. Durante a retirada da
+tampa me deparei com um módulo estranho, olhado as inscrições no mesmo descobri tratar-se de um módulo bluetooth.
+Porque diabos essa TV tem um módulo Bluetooh que não aparece em menu nenhum muito menos em seu manual permanece um
+mistério ainda por ser solucionado. O fato do módulo não ter certificação da Anatel causa-me a impressão de que é
+uma das funcionalidades capadas durante a tropicalização do modelo - mas porque colocar o módulo lá se ele não está
+funcionado? Bom, deixa isso para lá, a TV atende minhas necessidades sem eu saber para que isso está ali.
+
+Retirada a tampa traseira e o misterioso módulo bluetooth, a placa IR está a um parafuso de sair. A mesma placa é
+compartilhada por outras duas funções: o LED de ligado/stand-by e o sensor de iluminação usado pela TV para calcular
+o brilho aplicado ao painel quando o _ECO Mode_ está ativado. A placa possui a identifcação XXXXXXXXXXXXXXXXXXX, que
+usei para pesquisar na Internet e descobrir que a placa toda custa US$ 10,00 no [eBay](https://ebay.com "eBay") mas
+que ninguém no Brasil tem a essa placa para vender. De fato a participação de mercado da Panasonic no Brasil não é
+algo que salte aos olhos e quando falamos em TVs de plasma a base instalada é ainda menor. Se não tem usuário não
+tem mercado para peças certo?
+
+## Desvendando o circuito
+Sabendo que existe placa semelhante para venda fora do país eu fiquei mais tranquilo de tentar arrumá-la eu mesmo e,
+se no pior dos casos eu destruir a PCB, posso então encomendar outra e por a TV para funcionar. Mas para mexer na
+placa eu preciso entender o circuito. Meu amigo Alexandre do [Tabajara Labs](www.tabalabs.com.br/ "Tabajara") pegou
+a foto da placa abaixo e desvendou parte do circuito para mim. Mas torturando um pouco mais o Google eu consegui
+encontrar o manual de serviço de uma TV que compartilha a mesma placa de sensores, o circuito está abaixo com a parte
+do IR em destaque.
+
+## Procurando o culpado
+Utilizando um multimetro e com a placa IR conectada na TV eu comecei a medir as tensões. Primeiro a entrada Vcc que
+deveria estar normal já que o LED de power/stand-by brilha normalmente. Como esperado, o Vcc apresentava tensão de 
+3.3V mas, no pino Vcc do sensor de IR havia apenas 0,72V aproximadamente. Isso indica que algo, o sensor ou algum
+componente visinho, está baixando essa tensão. Pensei que o sensor poderia estar em curto ou algo parecido, mas esses
+sensores são bastante robustos e pelo circuito ele não está condenado a nenhum trabalho forçado no seu limite de
+atuação. Foi aí que reparei nos capacitores de desacoplamente que ficam próximos ao sensor, eles são instalados entre
+Vcc e GND. Meu grande amigo Alex sugeriu que um deles ou ambos poderiam estar entrando em curto circuito devido a fadiga.
+
+Para testar essa possibilidade eu desliguei a TV e retirei a placa depois descarreguei os capacitores para evitar danos
+ao multimetro. Colocando o multimetro na função ohmímetro e medindo os terminais dos capacitores esse deve apresentar
+resistência zero Ohm e ir aumentando, preferencialmente até indicar resistência infinita (acima da escala de medição).
+Porém eu obtive a leitura de aproximadamente 7,5O Ohms, isso significa que um ou ambos capacitores está com problemas
+(no circuito eles estão conectados juntos em ambas extremidades, isso impossibilita saber qual deles está com problema)
+, esse valor de resistência é muito baixo e, aliado ao resistor de 47 Ohms que existe entre a entrada Vcc da placa e o 
+pino Vcc do sensor, forma um divisor resistivo entregando uma tensão mais baixa para o sensor. Calculando o a tensão
+resultante desse divisor para Ventrada=3,3V, R1=47 e R2=7,5 temos Vsaída=0,45V, mais baixa um pouco que aquela que eu
+efetivamente verifiquei com o circuito ligado, talvez porque a resistência dos capacitores aumente um pouco quando eles
+estão energizados ou por erro de medida do meu multimetro. O valor de R2 para que a saída seja de 0,72V teria que ser
+de aproximadamente 13 Ohms. 
+
+## Reparando a placa
+Se os culpados são os capacitores, qual deles? Ambos? Um palpite baseado na experiência diz que o capacitor de menor
+tensão (6,3V) tem mais chances de sofrer danos nesse circuito que o outro que suporta tensão de 50V. Utilizando um 
+ferro de solda eu retirei o capacitor de placa e repeti a medida de resitência nele fora do circuito e obtive
+aproximados 6 Ohms. De fato este capacitor está danificado. Medi também o capacitor que ficou no circuito e obitve
+vários kilo-Ohms na leitura. Voltando a teoria do divisor de resistivo, com R1=47 e R2 agora valendo quase 1 Mega-Ohm,
+teriamos praticamente os 3,3V no pino Vcc do sensor.
+
+Como eu não tinha um capacitor similar para substituir aquele que foi retirado eu resolvi testar a placa sem ele já
+que sua função de desacoplamente não deve interferir (muito) no funcionamento do sensor de IR, principalmente não vai
+interferir nas minhas medidas de tensão no pino Vcc do sensor. Ao ligar a placa de volta na TV o circuito apresentou 
+ 3.3V no pino Vcc do sensor. Apontei o controle remoto e este funcionou perfeitamente. O sensor voltou a funcionar.
+
+Montei a TV sem o capacitor até que eu providencie um novo. Não queria ficar sem TV por mais tempo e já estava de saco
+cheio de ter meu sofá tomado pela grande tela de 50" que inviabilizava qualquer um de sentar ali. E nem vamos falar
+no que poderia acontecer se alguém acidentalmente derrubasse o potinho de parafusos que estava ao lado da tela no braço
+do sofá.
+
+# Conclusão
+Apesar do controle remoto não ser imprescindível ao funcionamento da TV, o problema causa alguns inconvenintes pois os
+botões do painel não forncem acesso a todos os menus da TV e muitas configurações ficam impossíveis. O problema mostrou-se
+muito mais simples do que o preconizado pelas assistências técnicas que, no caso de uma delas, praticamente condenou a
+TV ao descarte. Como em quase todos os problemas da vida, a fase de preparação e pesquisa tomou mais tempo que a execução;
+eu gastei algumas horas vasculhando a Internet por manuais e informações dessa TV, mais algumas horas discutindo o circuito
+com amigos e pouco mais de 2 minutos para retirar a peça problemática e testar o circuito. E também como quase sempre
+acontece, valeu a pena cada informação absorvida no processo.
+
+Para mim o mais importante nesse tipo de situação é escapar da armadilha da obsolecência programada que nos impele a comprar
+produtos novos e jogar produtos que poderiam ter vida útil extendida com reparos simples. Espero que essas informações
+possam ajudar outros aventureiros a salvar suas TVs e outros brinquedos.
+
