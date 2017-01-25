@@ -1,7 +1,7 @@
 ---
 date: '2017-01-25 16:31 -0200'
 updated: '2017-01-25 16:31 -0200'
-comments: true
+comments: false 
 published: true
 title: Receptor IR TV Panasonic com defeito
 tags:
