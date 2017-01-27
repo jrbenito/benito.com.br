@@ -18,9 +18,11 @@ Possuo uma TV Plasma da Panasonic, o modelo é TC-P50UT20B que, ao que parece, �
 
 Da noite para o dia essa TV parou de ligar pelo controle remoto. Claro que troquei as pilhas do controle remoto sem sucesso. Também testei com um controle universal sem o menor sucesso. Para finalizar o diagnóstico eu apontei o controle remoto para a câmera do celular e é possível ver o LED IR (infravermelho) piscar. Se não é o controle remoto só pode ser a TV...
 
+
 ## Aprendendo com a experiência (ruim) de outros ##
 
 Seguindo o caminho padrão recorri ao [oráculo](https://www.google.com.br "Google") e encontrei alguns relatos de pessoas com problemas similares em modelos de outras marcas. Os relatos eram sempre de que a TV parava de responder a qualquer controle remoto mas que funcionava perfeitamente ao ser comandada pelos botões no painel ou via algum aplicativo de celular (se a mesma for uma SmartTV e possuir esse tipo de aplicativo). Esse é exatamente o sintoma que a minha Pana vinha apresentando.
+
 
 ## Minha experiência (ruim) com assistências técnicas ##
 
@@ -44,7 +46,7 @@ Sabendo que existe placa semelhante para venda, eu fiquei mais tranquilo de tent
 
 ## Procurando o culpado ##
 
-Utilizando um multimetro e com a placa IR conectada na TV eu comecei a medir as tensões. Primeiro a entrada Vcc, provavelmente normal pois o LED da TV brilha normalmente. Como esperado, o Vcc apresentava tensão de 3.3V mas, no pino Vcc do sensor de IR (círculo azul nas imagens) havia aproximadamente 0,72V. Isso indica que algo, o sensor ou algum componente vizinho, está drrubando a tensão Vcc. Pensei que o sensor poderia estar em curto ou algo parecido, mas esses sensores são bastante robustos e pelo circuito ele não está condenado a nenhum trabalho forçado. Foi aí que reparei nos capacitores de desacoplamento que ficam próximos ao sensor (destaques amarelo e vermelho no verso da placa). Meu grande amigo Alex sugeriu que um deles ou ambos poderiam estar em curto circuito devido a fadiga.
+Utilizando um multimetro e com a placa IR conectada na TV eu comecei a medir as tensões. Primeiro a entrada Vcc, provavelmente normal pois o LED da TV brilha normalmente. Como esperado, o Vcc apresentava tensão de 3.3V mas, no pino Vcc do sensor de IR (círculo azul nas imagens) havia aproximadamente 0,72V. Isso indica que algo, o sensor ou algum componente vizinho, está derrubando a tensão Vcc. Pensei que o sensor poderia estar em curto ou algo parecido, mas esses sensores são bastante robustos e pelo circuito ele não está condenado a nenhum trabalho forçado. Foi aí que reparei nos capacitores de desacoplamento que ficam próximos ao sensor (destaques amarelo e vermelho no verso da placa). Meu grande amigo Alex sugeriu que um deles ou ambos poderiam estar em curto circuito devido a fadiga.
 
 {% image fancybox clear fig-50 center group:pcb pcb-frente.jpg "Frente PCB: O Sr. Foco não pode comparecer. Destaques: Vcc sensor e R2542" %}{% image fancybox fig-50 group:pcb pcb-verso.jpg "Verso PCB: destaques para R2517, C2512 e C2521" %}
 
