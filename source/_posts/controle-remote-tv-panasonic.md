@@ -1,6 +1,6 @@
 ---
-date: '2017-01-25 16:31 -0200'
-updated: '2017-01-25 16:31 -0200'
+date: '2017-01-27 18:20 -0200'
+updated: '2017-01-27 18:20 -0200'
 comments: false 
 published: true
 title: Receptor IR TV Panasonic com defeito
@@ -11,8 +11,10 @@ keywords:
    - controle remoto
    - infravermelho
    - PCB
-thumbnailImagePosition: center
 ---
+
+**Importante:** _O autor não se responsabiliza por consequências causadas em decorrência deste artigo. Só mexa em aparelhos eletro-eletrônicos se for qualificado para tal._
+
 # O problema #
 
 Possuo uma TV Plasma da Panasonic, o modelo é TC-P50UT20B que, ao que parece, é uma tropicalização da TX-50VT20B. Eu gosto de TVs de Plasma graças à profundidade do preto que estas telas oferecem, mas confesso que gostava mais da minha antiga TX-P50V20B (a versão não 3D e não - muito -tropicalizada). Bom mas isso é história para outro post.
@@ -36,14 +38,12 @@ Liguei em três assistências técnicas autorizadas, a primeira disse que o mode
 
 Desmontar a TV não foi complicado, por sorte eu tive auxílio de uma parafusadeira pois tirar os 20 parafusos que prendem a tampa traseira ao frame da TV seria um trabalho ingrato de se fazer na unha. Durante a retirada da tampa me deparei com um módulo estranho, olhado as inscrições no mesmo descobri tratar-se de um módulo bluetooth. Porque diabos essa TV tem um módulo Bluetooh que não aparece em menu nenhum, muito menos em seu manual, permanece um mistério ainda por ser desvendado.{% image nocaption fancybox fig-50 tv-aberta.jpg tv-aberta-375.jpg "TV aberta ocupando meu sofá" %} O fato do módulo não ter certificação da Anatel causa-me a impressão de que é uma das funcionalidades capadas durante a tropicalização do modelo - mas porque colocar o módulo lá se ele não está funcionado? Bom, deixa isso para lá, a TV atende minhas necessidades sem que eu saiba para que isso está ali.
 
-{% image clear fancybox fig-50 tv-aberta.jpg "TV aberta ocupando meu sofá" %}
-
 Retirados a tampa traseira e o misterioso módulo bluetooth, a placa IR está a um parafuso de sair. A mesma placa é compartilhada por outras duas funções: o LED de ligado/stand-by e o sensor de iluminação usado pela TV para calcular o brilho aplicado ao painel quando o _ECO Mode_ está ativado. A placa possui a identifcação TNPA5602, que usei para pesquisar na Internet e descobrir que a placa toda custa US$ 10,00 no [eBay](https://ebay.com "eBay") mas que ninguém no Brasil tem a essa placa para vender. De fato a participação de mercado da Panasonic no Brasil não é algo que salte aos olhos e quando falamos em TVs de plasma a base instalada é ainda menor. Se não tem usuário não tem mercado para peças certo?
 
 
 ## Desvendando o circuito ##
 
-Sabendo que existe placa semelhante para venda, eu fiquei mais tranquilo de tentar arrumá-la e, em caso de desastre, posso então encomendar outra. Mas para mexer na placa eu preciso entender o circuito. Meu amigo Alexandre do [Tabajara Labs](www.tabalabs.com.br/ "Tabajara") pegou uma foto da placa e desvendou parte do circuito para mim. Mas torturando um pouco mais o Google eu consegui encontrar o manual de serviço de uma TV que compartilha a mesma placa, o circuito está abaixo com a parte do IR em destaque.
+Sabendo que existe placa semelhante para venda, eu fiquei mais tranquilo de tentar arrumá-la e, em caso de desastre, posso encomendar outra. Mas para mexer na placa eu preciso entender o circuito. Meu amigo Alexandre do [Tabajara Labs](www.tabalabs.com.br/ "Tabajara") pegou uma foto da placa e desvendou parte do circuito para mim. Mas torturando um pouco mais o Google eu consegui encontrar o manual de serviço de uma TV que compartilha a mesma placa, o circuito está abaixo com a parte do IR em destaque.
 
 <p></p>
 
@@ -64,16 +64,14 @@ Para testar essa possibilidade eu desliguei a TV e retirei a placa depois descar
 
 ## Reparando a placa ##
 
-Se os culpados são os capacitores, qual deles? Ambos? Um palpite baseado na experiência diz que o capacitor de menor tensão (6,3V) tem mais chances de sofrer danos nesse circuito que o outro que suporta tensão de 50V. Utilizando um ferro de solda eu retirei o capacitor de placa e repeti a medida de resitência nele fora do circuito e obtive aproximados 6 Ohms. De fato este capacitor está danificado. Medi também o capacitor que ficou no circuito e obitve vários kilo-Ohms na leitura. Voltando a teoria do divisor de resistivo, com R1=47 e R2 agora valendo quase 1 Mega-Ohm, teriamos praticamente os 3,3V no pino Vcc do sensor.
+Se os culpados são os capacitores, qual deles? Ambos? Um palpite baseado na experiência diz que o capacitor de menor tensão (6,3V) tem mais chances de sofrer danos nesse circuito. Utilizando um ferro de solda eu retirei o capacitor C2512 (circulado em amarelo) e repeti a medida de resitência nele fora do circuito. Obtive aproximados 6 Ohms, de fato este capacitor estava danificado. Medi também o capacitor que ficou no circuito e obitve vários kilo-Ohms na leitura. Voltando a teoria do divisor de resistivo, com R1=47 e R2 agora valendo quase 1 Mega-Ohm, teriamos praticamente os 3,3V no pino Vcc do sensor. Testei a placa sem o capacitor de volta na TV. O circuito apresentou 3.3V no pino Vcc do sensor, apontei o controle remoto e este funcionou perfeitamente; a TV estava de volta à ativa.
 
-Como eu não tinha um capacitor similar para substituir aquele que foi retirado eu resolvi testar a placa sem ele já que sua função de desacoplamente não deve interferir (muito) no funcionamento do sensor de IR, principalmente não vai interferir nas minhas medidas de tensão no pino Vcc do sensor. Ao ligar a placa de volta na TV o circuito apresentou 3.3V no pino Vcc do sensor. Apontei o controle remoto e este funcionou perfeitamente. O sensor voltou a funcionar.
-
-Montei a TV sem o capacitor até que eu providencie um novo. Não queria ficar sem TV por mais tempo e já estava de saco cheio de ter meu sofá tomado pela grande tela de 50" que inviabilizava qualquer um de sentar ali. E nem vamos falar no que poderia acontecer se alguém acidentalmente derrubasse o potinho de parafusos que estava ao lado da tela no braço do sofá.
+Montei a TV sem o capacitor, como sua função é apenas de desacoplamento, sua falta não irá interferir (muito) no funcionamento do sensor IR. Não queria ficar sem TV por mais tempo e já estava de saco cheio de ter meu sofá tomado pela grande tela de 50" que inviabilizava qualquer um de sentar ali. E nem vamos falar no que poderia acontecer se alguém acidentalmente derrubasse o potinho de parafusos que estava ao lado, no braço do sofá. Quando eu precisar comprar uns componentes eu aproveito e coloco esse capacitor na lista.
 
 
 # Conclusão #
 
-Apesar do controle remoto não ser imprescindível ao funcionamento da TV, o problema causa alguns inconvenintes pois os botões do painel não forncem acesso a todos os menus da TV e muitas configurações ficam impossíveis. O problema mostrou-se muito mais simples do que o preconizado pelas assistências técnicas que, no caso de uma delas, praticamente condenou a TV ao descarte. Como em quase todos os problemas da vida, a fase de preparação e pesquisa tomou mais tempo que a execução; eu gastei algumas horas vasculhando a Internet por manuais e informações dessa TV, mais algumas horas discutindo o circuito com amigos e pouco mais de 2 minutos para retirar a peça problemática e testar o circuito. E também como quase sempre acontece, valeu a pena cada informação absorvida no processo.
+Apesar do controle remoto não ser imprescindível ao funcionamento da TV, o problema causa alguns inconvenintes pois os botões do painel não forncem acesso a todos os menus da TV; muitas configurações ficam impossíveis. O problema mostrou-se muito mais simples do que o preconizado pelas assistências técnicas que, no caso de uma delas, praticamente condenou a TV ao descarte. Como em quase todos os problemas da vida, a fase de preparação e pesquisa tomou mais tempo que a execução; eu gastei algumas horas vasculhando a Internet por manuais e informações dessa TV, mais algumas horas discutindo o circuito com amigos e pouco mais de 2 minutos para retirar a peça problemática e testar o circuito. Como quase sempre acontece, valeu a pena cada informação absorvida no processo.
 
-Para mim o mais importante nesse tipo de situação é escapar da armadilha da obsolecência programada que nos impele a comprar produtos novos e jogar produtos que poderiam ter vida útil extendida com reparos simples. Espero que essas informações possam ajudar outros aventureiros a salvar suas TVs e outros brinquedos.
+Para mim o mais importante nesse tipo de situação é escapar da armadilha da obsolecência programada que nos impele a comprar produtos novos e jogar fora produtos que poderiam ter vida útil extendida.
 
