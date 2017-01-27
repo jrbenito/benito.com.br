@@ -11,7 +11,7 @@ keywords:
    - controle remoto
    - infravermelho
    - PCB
-thumbnailImagePosition: left
+thumbnailImagePosition: center
 ---
 # O problema #
 
@@ -34,7 +34,9 @@ Liguei em três assistências técnicas autorizadas, a primeira disse que o mode
 
 # Desmontando a Pana #
 
-Desmontar a TV não foi complicado, por sorte eu tive auxílio de uma parafusadeira pois tirar os 20 parafusos que prendem a tampa traseira ao frame da TV seria um trabalho ingrato de se fazer na unha. Durante a retirada da tampa me deparei com um módulo estranho, olhado as inscrições no mesmo descobri tratar-se de um módulo bluetooth. Porque diabos essa TV tem um módulo Bluetooh que não aparece em menu nenhum, muito menos em seu manual, permanece um mistério ainda por ser desvendado.{% image fancybox fig-50 tv-aberta.jpg "TV aberta ocupando meu sofá" %}O fato do módulo não ter certificação da Anatel causa-me a impressão de que é uma das funcionalidades capadas durante a tropicalização do modelo - mas porque colocar o módulo lá se ele não está funcionado? Bom, deixa isso para lá, a TV atende minhas necessidades sem que eu saiba para que isso está ali. 
+Desmontar a TV não foi complicado, por sorte eu tive auxílio de uma parafusadeira pois tirar os 20 parafusos que prendem a tampa traseira ao frame da TV seria um trabalho ingrato de se fazer na unha. Durante a retirada da tampa me deparei com um módulo estranho, olhado as inscrições no mesmo descobri tratar-se de um módulo bluetooth. Porque diabos essa TV tem um módulo Bluetooh que não aparece em menu nenhum, muito menos em seu manual, permanece um mistério ainda por ser desvendado.{% image nocaption fancybox fig-50 tv-aberta.jpg tv-aberta-375.jpg "TV aberta ocupando meu sofá" %} O fato do módulo não ter certificação da Anatel causa-me a impressão de que é uma das funcionalidades capadas durante a tropicalização do modelo - mas porque colocar o módulo lá se ele não está funcionado? Bom, deixa isso para lá, a TV atende minhas necessidades sem que eu saiba para que isso está ali.
+
+{% image clear fancybox fig-50 tv-aberta.jpg "TV aberta ocupando meu sofá" %}
 
 Retirados a tampa traseira e o misterioso módulo bluetooth, a placa IR está a um parafuso de sair. A mesma placa é compartilhada por outras duas funções: o LED de ligado/stand-by e o sensor de iluminação usado pela TV para calcular o brilho aplicado ao painel quando o _ECO Mode_ está ativado. A placa possui a identifcação TNPA5602, que usei para pesquisar na Internet e descobrir que a placa toda custa US$ 10,00 no [eBay](https://ebay.com "eBay") mas que ninguém no Brasil tem a essa placa para vender. De fato a participação de mercado da Panasonic no Brasil não é algo que salte aos olhos e quando falamos em TVs de plasma a base instalada é ainda menor. Se não tem usuário não tem mercado para peças certo?
 
@@ -45,7 +47,7 @@ Sabendo que existe placa semelhante para venda, eu fiquei mais tranquilo de tent
 
 <p></p>
 
-{% image fancybox center clear group:pcb esquematico.jpg "Esquemático: destaque para o circuito do receptor infravermelho" %}
+{% image fancybox center clear group:pcb esquematico.jpg esquematico-375.jpg "Esquemático: destaque para o circuito do receptor infravermelho" %}
 
 
 ## Procurando o culpado ##
@@ -54,8 +56,8 @@ Utilizando um multimetro e com a placa IR conectada na TV eu comecei a medir as 
 
 <p></p>
 
-{% image fancybox fig-50 group:pcb pcb-frente.jpg "Frente PCB - destaques para Vcc sensor e R2542. O Sr. Foco não pode comparecer" %}
-{% image fancybox fig-50 clear group:pcb pcb-verso.jpg "Verso PCB - destaques para R2517, C2512 e C2521" %}
+{% image fancybox fig-50 group:pcb pcb-frente.jpg pcb-frente-375.jpg "Frente PCB - destaques para Vcc sensor e R2542. O Sr. Foco não pode comparecer" %}
+{% image fancybox fig-50 clear group:pcb pcb-verso.jpg pcb-verso-375.jpg "Verso PCB - destaques para R2517, C2512 e C2521" %}
 
 Para testar essa possibilidade eu desliguei a TV e retirei a placa depois descarreguei os capacitores para evitar danos ao multimetro. Colocando o multimetro na função ohmímetro e medindo os terminais dos capacitores esse deve apresentar resistência zero Ohm e ir aumentando, preferencialmente até indicar resistência infinita (acima da escala de medição). Porém eu obtive a leitura de aproximadamente 7,5O Ohms, isso significa que um ou ambos capacitores está com problemas, esse valor de resistência é muito baixo. Aliado ao resistor (R2517) de 47 Ohms (destaque marrom) entre Vcc da alimentação e o pino Vcc do sensor, forma-se um divisor resistivo entregando uma tensão mais baixa para o sensor. Calculando a tensão resultante desse divisor para Ventrada=3,3V, R1=47 e R2=7,5 temos Vsaída=0,45V, mais baixa um pouco que aquela que eu efetivamente verifiquei com o circuito ligado, talvez porque a resistência dos capacitores aumente um pouco quando eles estão energizados ou por erro de medida do meu multimetro. Curiosidade: o valor de R2 para que a saída seja de 0,72V teria que ser de aproximadamente 13 Ohms.
 
