@@ -32,7 +32,7 @@ Desmontar a TV não foi complicado, por sorte eu tive auxílio de uma parafusade
 
 ## Desvendando o circuito
 Sabendo que existe placa semelhante para venda, eu fiquei mais tranquilo de tentar arrumá-la e, em caso de desastre, posso então encomendar outra. Mas para mexer na placa eu preciso entender o circuito. Meu amigo Alexandre do [Tabajara Labs](www.tabalabs.com.br/ "Tabajara") pegou uma foto da placa e desvendou parte do circuito para mim. Mas torturando um pouco mais o Google eu consegui encontrar o manual de serviço de uma TV que compartilha a mesma placa, o circuito está abaixo com a parte do IR em destaque.
-{% image fancybox center clear fig-50 esquematico.jpg "Esquemático: destaque para o circuito do receptor infravermelho" %}
+{% image center clear esquematico.jpg "Esquemático: destaque para o circuito do receptor infravermelho" %}
 
 ## Procurando o culpado
 Utilizando um multimetro e com a placa IR conectada na TV eu comecei a medir as tensões. Primeiro a entrada Vcc que deveria estar normal já que o LED de power/stand-by brilha normalmente. Como esperado, o Vcc apresentava tensão de 3.3V mas, no pino Vcc do sensor de IR havia apenas 0,72V aproximadamente. Isso indica que algo, o sensor ou algum componente visinho, está baixando essa tensão. Pensei que o sensor poderia estar em curto ou algo parecido, mas esses sensores são bastante robustos e pelo circuito ele não está condenado a nenhum trabalho forçado no seu limite de atuação. Foi aí que reparei nos capacitores de desacoplamente que ficam próximos ao sensor, eles são instalados entre Vcc e GND. Meu grande amigo Alex sugeriu que um deles ou ambos poderiam estar entrando em curto circuito devido a fadiga.
