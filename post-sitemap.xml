@@ -8,7 +8,15 @@
 
     <url>
         <loc>https://www.benito.com.br/2016/05/hexo-aws-blog/</loc>
-        <lastmod>2016-10-25T23:09:32.547Z</lastmod>
+        <lastmod>2017-01-30T12:29:17.188Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://www.benito.com.br/2017/01/controle-remote-tv-panasonic/</loc>
+        <lastmod>2017-01-30T04:07:00.000Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
