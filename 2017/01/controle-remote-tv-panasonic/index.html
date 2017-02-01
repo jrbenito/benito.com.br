@@ -29,7 +29,7 @@ O problemaPossuo uma TV Plasma da">
 <meta property="og:image" content="https://www.benito.com.br/esquematico-375.jpg">
 <meta property="og:image" content="https://www.benito.com.br/pcb-frente-375.jpg">
 <meta property="og:image" content="https://www.benito.com.br/pcb-verso-375.jpg">
-<meta property="og:updated_time" content="2017-01-31T15:10:00.000Z">
+<meta property="og:updated_time" content="2017-02-01T12:40:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Receptor IR TV Panasonic com defeito">
 <meta name="twitter:description" content="Importante: O autor não se responsabiliza por consequências causadas em decorrência deste artigo. Só mexa em aparelhos eletro-eletrônicos se for qualificado para tal.
@@ -46,7 +46,7 @@ O problemaPossuo uma TV Plasma da">
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-zjcl7urvekpsuzeg0qbybgjfxhdguymu97zdq2yevsbrhtmzcm3swywcisi3.min.css">
+    <link rel="stylesheet" href="/assets/css/style-mxnl6o0e6mqijuordjmc0o2mzfng0vtf9oixyvn5fmqruzhtgjzw1lwdweat.min.css">
     <!--STYLES END-->
     
     <script type="text/javascript">
@@ -268,7 +268,7 @@ O problemaPossuo uma TV Plasma da">
 <p>Liguei em três assistências técnicas autorizadas, a primeira disse que o modelo era velho e que não teria peça condenando minha TV ao descarte. A segunda assistência ouviu todo meu relato e negou-me falar diretamente com o técnico, disse que o procedimento era eu levar a TV até eles e em até 7 dias eles me passavam um diagnóstico e orçamento. Insisti dizendo que a assistência ficava a 35 km da minha cidade e que eu gostaria de falar com um técnico para saber se havia possibilidade de eu levar apenas a peça defeituosa ou ele simplesmente encomendar a placa de IR e eu levar a TV só para trocar. Nada! A moça que me atendeu parecia estar falando com um E.T. que apareceu falando coisas que ela não entendia e queria a todo custo burlar o processo que ela seguia de forma tão correta. A terceira assistência foi quase como a segunda, mas a moça não pensou que eu fosse um “quebra protocolo” e, percebendo que eu entendia um pouco daquilo que falava, disse: “Olha, essas TVs não têm mais peça de reposição no mercado. O que fazemos é mandar a placa para um <strong>laboratório</strong> e eles verificam se há como trocar os componentes”. A palavra <em>laboratório</em> foi o que me chamou a atenção para o fato de que eu mesmo poderia verificar o que estava errado na placa de IR. Afinal de contas ali não tem nenhum CI elaborado, mas sim componentes simples como resistores, capacitores e sensor de IR (óbvio ddddduuuuhhhhh!).</p>
 <h2 id="Desmontando-a-Pana"><a href="#Desmontando-a-Pana" class="headerlink" title="Desmontando a Pana"></a>Desmontando a Pana</h2><p>Desmontar a TV não foi complicado, por sorte eu tive auxílio de uma parafusadeira pois tirar os 20 parafusos que prendem a tampa traseira ao corpo da TV seria um trabalho ingrato de se fazer na unha. Durante a retirada da tampa me deparei com um módulo estranho, olhado as inscrições no mesmo descobri tratar-se de um módulo <em>Bluetooth</em>. Porque diabos essa TV tem um módulo <em>Bluetooh</em> que não aparece em menu nenhum, muito menos em seu manual, permanece um mistério ainda por ser desvendado.<div class="figure nocaption fig-50" style="width:;"><a class="fancybox" href="tv-aberta.jpg" title="TV aberta ocupando meu sofá" data-fancybox-group=""><img class="fig-img" src="tv-aberta-375.jpg" alt="TV aberta ocupando meu sofá"></a></div> O fato do módulo não ter certificação da Anatel causa-me a impressão de que é uma das funcionalidades capadas durante a tropicalização do modelo - mas porque colocar o módulo lá se ele não está funcionado? Bom, deixa isso para lá, a TV atende minhas necessidades sem que eu saiba para que isso está ali.</p>
 <p>Retirados a tampa traseira e o misterioso módulo <em>Bluetooth</em>, a placa IR está a um parafuso de sair. A mesma placa é compartilhada por outras duas funções: o LED de ligado/espera e o sensor de iluminação usado pela TV para calcular o brilho aplicado ao painel quando o <em>ECO Mode</em> está ativado. A placa possui a identificação TNPA5602, que usei para pesquisar na Internet e descobrir que a placa toda custa US$ 10,00 no <a href="https://ebay.com" title="eBay" target="_blank" rel="external">eBay</a> mas que ninguém no Brasil tem a essa placa para vender. De fato a participação de mercado da Panasonic no Brasil não é algo que salte aos olhos e quando falamos em TVs de plasma a base instalada é ainda menor. Se não tem usuário não tem mercado para peças certo?</p>
-<h3 id="Desvendando-o-circuito"><a href="#Desvendando-o-circuito" class="headerlink" title="Desvendando o circuito"></a>Desvendando o circuito</h3><p>Sabendo que existe placa semelhante para venda, eu fiquei mais tranquilo de tentar arrumá-la e, em caso de desastre, posso encomendar outra. Mas para mexer na placa eu preciso entender o circuito. Meu amigo Alexandre do <a href="www.tabalabs.com.br/" title="Tabajara">Tabajara Labs</a> pegou uma foto da placa e desvendou parte do circuito para mim. Mas torturando um pouco mais o Google, o Pedro - outro amigo, conseguiu encontrar o manual de serviço de uma TV que compartilha a mesma placa. O circuito está abaixo com a parte do infravermelho em destaque.</p>
+<h3 id="Desvendando-o-circuito"><a href="#Desvendando-o-circuito" class="headerlink" title="Desvendando o circuito"></a>Desvendando o circuito</h3><p>Sabendo que existe placa semelhante para venda, eu fiquei mais tranquilo de tentar arrumá-la e, em caso de desastre, posso encomendar outra. Mas para mexer na placa eu preciso entender o circuito. Meu amigo Alexandre do <a href="http://www.tabalabs.com.br/" title="Tabajara" target="_blank" rel="external">Tabajara Labs</a> pegou uma foto da placa e desvendou parte do circuito para mim. Mas torturando um pouco mais o Google, o Pedro - outro amigo, conseguiu encontrar o manual de serviço de uma TV que compartilha a mesma placa. O circuito está abaixo com a parte do infravermelho em destaque.</p>
 <p></p>
 
 <div class="figure center" style="width:;"><a class="fancybox" href="esquematico.jpg" title="Esquemático: destaque para o circuito do receptor infravermelho" data-fancybox-group="pcb"><img class="fig-img" src="esquematico-375.jpg" alt="Esquemático: destaque para o circuito do receptor infravermelho"></a><span class="caption">Esquemático: destaque para o circuito do receptor infravermelho</span></div><div style="clear:both;"></div>
@@ -660,7 +660,7 @@ O problemaPossuo uma TV Plasma da">
         
 <div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-8aicl6dhebdfr7s2ggqdka0sr3jzriaqfpuv5zqmrvutvpkplqbpfagz6gmh.min.js"></script>
+<script src="/assets/js/script-jmjjazgwytzkt5sa0njgkcukt5wblb0thxf1nkryhybaanlgqifnxvz33lce.min.js"></script>
 <!--SCRIPTS END-->
 
     
