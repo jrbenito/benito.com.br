@@ -1,6 +1,6 @@
 ---
 date: '2017-01-30 00:07 -0200'
-updated: '2017-01-31 11:10 -0200'
+updated: '2017-02-01 08:40 -0200'
 comments: true
 published: true
 title: Receptor IR TV Panasonic com defeito
@@ -43,7 +43,7 @@ Retirados a tampa traseira e o misterioso módulo _Bluetooth_, a placa IR está 
 
 ### Desvendando o circuito ###
 
-Sabendo que existe placa semelhante para venda, eu fiquei mais tranquilo de tentar arrumá-la e, em caso de desastre, posso encomendar outra. Mas para mexer na placa eu preciso entender o circuito. Meu amigo Alexandre do [Tabajara Labs](www.tabalabs.com.br/ "Tabajara") pegou uma foto da placa e desvendou parte do circuito para mim. Mas torturando um pouco mais o Google, o Pedro - outro amigo, conseguiu encontrar o manual de serviço de uma TV que compartilha a mesma placa. O circuito está abaixo com a parte do infravermelho em destaque.
+Sabendo que existe placa semelhante para venda, eu fiquei mais tranquilo de tentar arrumá-la e, em caso de desastre, posso encomendar outra. Mas para mexer na placa eu preciso entender o circuito. Meu amigo Alexandre do [Tabajara Labs](http://www.tabalabs.com.br/ "Tabajara") pegou uma foto da placa e desvendou parte do circuito para mim. Mas torturando um pouco mais o Google, o Pedro - outro amigo, conseguiu encontrar o manual de serviço de uma TV que compartilha a mesma placa. O circuito está abaixo com a parte do infravermelho em destaque.
 
 <p></p>
 
