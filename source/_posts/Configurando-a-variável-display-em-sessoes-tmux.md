@@ -1,6 +1,6 @@
 ---
 title: "Variável DISPLAY em sessões tmux"
-date: 2017-01-10 12:00:05
+date: 2017-02-10 11:40:00
 tags:
     - linux
     - tmux
