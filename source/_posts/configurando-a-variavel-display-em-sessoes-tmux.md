@@ -41,6 +41,7 @@ tcp        0      0 127.0.0.1:6010          0.0.0.0:*               LISTEN      
 
 Usamos o `netstat` para listar as portas TCP, filtramos com `grep` pelas portas que estão em estado `LISTEN` e que pertencem ao usuário corrente (`id -u`). Como geralmente acessamos os terminais localmente ou via SSH[^1], estamos interessados apenas no `localhost` ou IP `127.0.0.1`. Mais um filtro com `grep` para pegar apenas os IPs `localhost` e pronto. Tudo isso colocado em uma função `bash` que pode ser convenientemente chamada para acertar a variável `$DISPLAY` sempre que necessário.
 
+
 {% gist 259e4030dce480e8a3e7d24e219175aa %}
 
 O código da função é simples mas note que usei um `sort` para ordenar a saída pelo PID e um `tail` para selecionar a última entrada. Esse passo serve apenas para ordenar as sessões concorrentes que possam existir na mesma máquina, pegando sempre o PID mais alto. Isso _garante[^2]_ a seleção do mais recente.
