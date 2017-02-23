@@ -106,7 +106,7 @@ env:
 
 Falta pouco! Com a configuração versionado no repositório é necessário avisar ao Travis que ele deve vigiar tal projeto. No site do Travis procure pelo sinal `+` no canto superior esquerdo da tela, esse é o botão _"Add New Repository"_.
 
-{% image fig-33 group:group-name travis-settings.jpg "Configurações de repositório no Travis" %}
+{% image fancybox fig-50 group:travis travis-settings.jpg "Configurações de repositório no Travis" %}
 
 Nas configurações do repositório (_more options -> settings_), habilite _Build only if .travis.yml is present_ e _Build pushes_ e mantenha desabilitado _Build pull requests_ já que não desejamos que contribuições de qualquer pessoa gerem o site. Nesta mesma página é possível especificar variáveis de ambiente se necessário.
 
