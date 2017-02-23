@@ -12,8 +12,6 @@ keywords:
     - continuos integration
 ---
 A minha opção por gerar esse blog estaticamente através do gerador [Hexo](http://hexo.io), teve como principal motivação a simplicidade do lado do servidor. Nada de instalações complexas do Apache, PHP, Wordpress e servidores rodando 24 horas por dia. Qualquer provedor capaz de servir HTML serve. Essa facilidade não vem de graça, é preciso, além de escrever o conteúdo, "compilá-lo" através do Hexo. Descomplicamos o servidor mas complicamos a geração do conteúdo. Será?
-
-É possível gerar o conteúdo do blog automaticamente?
 <!-- more -->
 
 ## Inspiração
@@ -90,6 +88,13 @@ script:
 - hexo deploy --silent
 after_success:
 - grunt sns
+```
+
+Perceba que a linha 4 do trecho acima utiliza o comando `sed` para substituir a URL do repositório no arquivo de configuração do Hexo. Mais precisamente, esse comando está trocando o acesso de `SSH` para `HTTPS` e acrescentando um _token_ de autorização para poder escrever no repositório no github. Mas de onde vem a variável `GH_TOKEN`? Claro que não se deve versionar informações sensíveis como credenciais de acesso, chaves criptográficas e, pensando nisso, o Travis dispões de mecanismos para configuração de variáveis de ambiente que não precisam estar no arquivo `.travis.yml`. É importante que o comando `hexo deploy` não revele o _token_ nos logs do Travis. Para isso é só usar a opção `--silent`.
+
+Porém, especificar essas variáveis no site do travis inviabiliza o teste local na máquina de desenvolvimento. Para contornar essa situação é possível [criptografar as variáveis](https://docs.travis-ci.com/user/environment-variables/) e armazená-las na configuração[^4].
+
+```
 env:
   global:
   - secure: O5f2zGaXraEVUOIk[...]
@@ -97,8 +102,19 @@ env:
   - secure: A84t9ASnL11WFrqL[...] 
 ```
 
+### Habilitando o repositório no Travis.
 
+Falta pouco! Com a configuração versionado no repositório é necessário avisar ao Travis que ele deve vigiar tal projeto. No site do Travis procure pelo sinal `+` no canto superior esquerdo da tela, esse é o botão _"Add New Repository"_.
+
+{% image fig-33 group:group-name travis-settings.jpg "Configurações de repositório no Travis" %}
+
+Nas configurações do repositório (_more options -> settings_), habilite _Build only if .travis.yml is present_ e _Build pushes_ e mantenha desabilitado _Build pull requests_ já que não desejamos que contribuições de qualquer pessoa gerem o site. Nesta mesma página é possível especificar variáveis de ambiente se necessário.
+
+## Conclusão
+
+Pronto! Todo _commit_ no repositório do blog irá disparar uma geração do site pelo Hexo e, graças aos _plugins_ de entrega e tarefas _Grunt_, o conteúdo produzido é atualizado no servidor.
 
 [^1]: Certamente há muitos outros artigos até melhores no assunto, a ideia é apenas referenciar o conceito já que este não é o foco deste artigo.
 [^2]: [O que são hooks?](https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks)
 [^3]: Os repositório grátis são também **públicos**, é **muito importante** não versionar dados sensíveis como credenciais de acesso, tokens, etc.
+[^4]: O conteúdo foi cortado para as três variáveis afim de poupar espaço. O conteúdo completo está no repositório do blog.
