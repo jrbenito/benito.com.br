@@ -32,15 +32,16 @@ Para que o Travis enxergue o projeto, este precisa estar  versionado em um repos
 
 ## Configurando o Travis
 
-Primeira coisa a fazer é criar uma conta no [Travis-ci](https://travis-ci.org) utilizando as credenciais do Github para autorizá-lo no GH pois, ele precisa instalar _hooks_[^2] nos repositórios de cada projeto a ser compilado.
+Ao criar uma conta no [Travis-ci](https://travis-ci.org) utilizando as credenciais do Github e autorizá-lo, ele instalará _hooks_[^2] nos repositórios de cada projeto ativado.
 
-É necessário instruir o Travis sobre o que fazer no seu projeto. Isso é feito através de um arquivo de configuração versionado no repositório do projeto. O nome desse arquivo deve ser [`.travis.yml`](https://github.com/jrbenito/benito.com.br/blob/development/.travis.yml) e, como a extensão sugere, ele é escrito na linguagem YAML. Vamos entender o arquivo.
+Configura-se o Travis através de um arquivo de configuração versionado no repositório do próprio projeto. O arquivo deve ser nomeado [`.travis.yml`](https://github.com/jrbenito/benito.com.br/blob/development/.travis.yml) e, como a extensão sugere, ele é escrito na linguagem YAML.
+
 ```
 language: node_js
 node_js:
   - "4.4.3"
 ```
-A primeira parte diz ao Travis que este projeto é escrito em [Nodejs](https://nodejs.org/) e a versão utilizada. Seguindo essa parte, há a lista de _branches_ que serão compilados (`#whitelist`) e a lista de _branches_ cujos os _commits_ serão ignorados:
+As primeiras linhas definem a linguagem e a versão do compilador/interpretador utilizado. Depois, há a lista de _branches_ que serão compilados (`#whitelist`) e a lista de _branches_ cujos os _commits_ serão ignorados:
 ```
 # whitelist
 branches:
@@ -53,7 +54,7 @@ branches:
       - conteudo
 ```
 
-Para agilizar a compilação e também para poupar espaço no ambiente do travis, o git é configurado para clonar apenas o último _commit_. Na sessão `before_install` são instalados o Hexo e suas dependências, exatamente como se estivesse preparando uma máquina nova para rodar o Hexo. Pode parecer estranho instalar na sessão _"before_install"_, o motivo para isso é que a geração do site pelo Hexo precisa acontecer na sessão de _install_:
+Na sessão `before_install` são instalados o Hexo e suas dependências, exatamente como se estivesse preparando uma máquina nova para rodar uma instalação nova. Pode parecer estranho instalar na sessão `before_install`, o motivo para isso é que a geração do site pelo Hexo precisa acontecer na sessão `install`:
 
 ```
 git:
@@ -72,7 +73,7 @@ install:
 - hexo generate
 ```
 
-Se a "compilação" do site terminar em sucesso, o Hexo pode ainda rodar um script, geralmente essa sessão é utilizada para rodar testes ou atuar sobre os dados. No caso deste blog, na sessão `before_script`, o git faz o clone do _branch_ `conteudo`. Esse passo serve apenas para manter um histórico do site gerado e é completamente opcional. Porém serve de exemplo para uma parte importante da configuração:
+Caso o comando `hexo generate` termine em sucesso, o Hexo rodará um script; geralmente essa sessão é utilizada para rodar testes ou atuar sobre os dados. No caso deste blog, na sessão `before_script`, o git faz o clone do _branch_ `conteudo`, esse passo serve apenas para manter um histórico do site gerado e é completamente opcional. Um detalhe importante da configuração vem na sessão `script`:
 
 ```
 before_script:
@@ -87,9 +88,9 @@ after_success:
 - grunt sns
 ```
 
-Perceba que a linha 4 do trecho acima utiliza o comando `sed` para substituir a URL do repositório no arquivo de configuração do Hexo. Mais precisamente, esse comando está trocando o acesso de `SSH` para `HTTPS` e acrescentando um _token_ de autorização para poder escrever no repositório no github. Mas de onde vem a variável `GH_TOKEN`? Claro que não se deve versionar informações sensíveis como credenciais de acesso, chaves criptográficas e, pensando nisso, o Travis dispões de mecanismos para configuração de variáveis de ambiente que não precisam estar no arquivo `.travis.yml`. É importante que o comando `hexo deploy` não revele o _token_ nos logs do Travis. Para isso é só usar a opção `--silent`.
+Na linha 4 do trecho acima, o comando `sed` substituirá a URL do repositório no arquivo de configuração do Hexo. Mais precisamente, esse comando está trocando o acesso de `SSH` para `HTTPS` e acrescentando um _token_ de autorização para poder escrever no repositório no github. Mas de onde vem a variável `GH_TOKEN`?[^3] O Travis dispões de dois mecanismos para configuração de variáveis de ambiente. Uma através do site, na configuração do repositório e a segunda através da criptografia da variável e seu conteúdo no arquivo `.travis.yml`.[^5]
 
-Porém, especificar essas variáveis no site do travis inviabiliza o teste local na máquina de desenvolvimento. Para contornar essa situação é possível [criptografar as variáveis](https://docs.travis-ci.com/user/environment-variables/) e armazená-las na configuração[^4].
+Neste exemplo foi utilizado o [método da criptografia](https://docs.travis-ci.com/user/environment-variables/).[^4]
 
 ```
 env:
@@ -115,3 +116,4 @@ Pronto! Todo _commit_ no repositório do blog irá disparar uma geração do sit
 [^2]: [O que são hooks?](https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks)
 [^3]: Os repositório grátis são também **públicos**, é **muito importante** não versionar dados sensíveis como credenciais de acesso, tokens, etc.
 [^4]: O conteúdo foi cortado para as três variáveis afim de poupar espaço. O conteúdo completo está no repositório do blog.
+[^5]: O comando `hexo deploy` escreve a URL do github (e seu _token_) nos registros de compilação do Travis. Para evitar isso é só usar a opção `--silent`.
