@@ -11,27 +11,24 @@ keywords:
     - integração continua
     - continuos integration
 ---
-A minha opção por gerar esse blog estaticamente através do gerador [Hexo](http://hexo.io), teve como principal motivação a simplicidade do lado do servidor. Nada de instalações complexas do Apache, PHP, Wordpress e servidores rodando 24 horas por dia. Qualquer provedor capaz de servir HTML serve. Essa facilidade não vem de graça, é preciso, além de escrever o conteúdo, "compilá-lo" através do Hexo. Descomplicamos o servidor mas complicamos a geração do conteúdo. Será?
+Blogs e sites gerados através de programas como [Hexo](http://hexo.io) ou [Jekyll](https://jekyllrb.com/) trazem uma simplicidade enorme para o servidor e uma mudança de paradigma no que tange a gerência do conteúdo. Porém a simplicidade no servidor vem a um custo: a preparação do conteúdo! É necessário escrever em um editor, salvar o arquivo e "compilar" o site com o gerador e só depois subir no servidor. Será que há como automatizar isso?
 <!-- more -->
 
 ## Inspiração
 
 O serviço [Github Pages](https://pages.github.com/) é muito simples e interessante. Fantástico eu diria! Ao mesmo tempo que é simples, permite usar ferramentas mais complexas como o gerador de sites [Jekyll](https://jekyllrb.com/) que, no caso do Github Pages, a cada _commit_ no repositório do seu projeto, gera as páginas estáticas automaticamente. Isso resolve o problema da geração sem a necessidade de instalações locais.
 
-Se eu pudesse ter um serviço que rodasse o Hexo a cada _commit_ no meu conteúdo igual ao Github faz com Jekyll, meu problema estaria resolvido, basta um _commit_ e a geração do site seria automática. Mas como? [Travis-ci](https://travis-ci.org)!!!
+Infelizmente o serviço do Github limita-se a fornecer o Jekyll, como rodar outros geradores ou mesmo versões customizadas do Jekyll? [Travis-ci](https://travis-ci.org)!!!
 
 ## Integração contínua
 
 O Travis é um serviço de integração contínua. No mundo do desenvolvimento de software isso é como um servidor de compilação que, a cada integração de código feita pelos desenvolvedores (_commit_), executa uma compilação e, possivelmente, testes automáticos. Para entender melhor leia os artigos ["Integração contínua: uma introdução ao assunto"](http://www.devmedia.com.br/integracao-continua-uma-introducao-ao-assunto/28002) e ["O que significa integração contínua?"](https://aws.amazon.com/pt/devops/continuous-integration/).[^1]
 
-Na verdade, se olharmos bem, o Travis sobe uma máquina Linux e roda um script definido no seu projeto para compilar e testar seu código. Então podemos fazê-lo rodar o Hexo? Claro!
+Na verdade, o Travis é uma máquina virtual que roda uma configuração de comandos para compilar e testar o código. Quase qualquer comando do Linux (SO nativo do Travis) pode ser executado sobre o código. Rodar o Hexo ou qualquer outro gerador é possível.
 
+## Versionamento
 
-## Versionando o blog
-
-Todo projeto precisa ser versionado, não há outra maneira. O [git](https://git-scm.com/) é super popular, grátis, poderoso e fácil de usar. Este blog é versionado com git e seu código fonte armazenado em um repositório também grátis[^3] no [github](https://github.com/jrbenito/benito.com.br).
-
-O {% post_link hhexo-aws-blog-hexo-para-leigos-parte-1  esquema de versionamento é simples %}, basta fazer um repositório git com toda a estrutura de diretórios criada pelo Hexo na inicialização do site. Neste blog eu optei por manter o _branch_ `master` apenas com a descrição do projeto (arquivo `Readme.md`) e criar um _branch_ [`development`](https://github.com/jrbenito/benito.com.br/tree/development) para a versão de produção.
+Para que o Travis enxergue o projeto, este precisa estar  versionado em um repositório no Github. Usando o [repositório deste blog](https://github.com/jrbenito/benito.com.br) como exemplo, as informações ficam no _branch_ [`development`](https://github.com/jrbenito/benito.com.br/tree/development). Para mais detalhes leia o {% post_link hhexo-aws-blog-hexo-para-leigos-parte-1 "post" %}.
 
 ## Configurando o Travis
 
@@ -114,7 +111,7 @@ Nas configurações do repositório (_more options -> settings_), habilite _Buil
 
 Pronto! Todo _commit_ no repositório do blog irá disparar uma geração do site pelo Hexo e, graças aos _plugins_ de entrega e tarefas _Grunt_, o conteúdo produzido é atualizado no servidor.
 
-[^1]: Certamente há muitos outros artigos até melhores no assunto, a ideia é apenas referenciar o conceito já que este não é o foco deste artigo.
+[^1]: Há muitos outros artigos mais completos sobre o assunto, a ideia é apenas referenciar o conceito não desviando o foco.
 [^2]: [O que são hooks?](https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks)
 [^3]: Os repositório grátis são também **públicos**, é **muito importante** não versionar dados sensíveis como credenciais de acesso, tokens, etc.
 [^4]: O conteúdo foi cortado para as três variáveis afim de poupar espaço. O conteúdo completo está no repositório do blog.
