@@ -28,7 +28,7 @@ Na verdade, o Travis é uma máquina virtual que roda uma configuração de coma
 
 ## Versionamento
 
-Para que o Travis enxergue o projeto, este precisa estar  versionado em um repositório no Github. Usando o [repositório deste blog](https://github.com/jrbenito/benito.com.br) como exemplo, as informações ficam no _branch_ [`development`](https://github.com/jrbenito/benito.com.br/tree/development). Para mais detalhes leia o {% post_link hhexo-aws-blog-hexo-para-leigos-parte-1 "post" %}.
+Para que o Travis enxergue o projeto, este precisa estar  versionado em um repositório no Github. Usando o [repositório deste blog](https://github.com/jrbenito/benito.com.br) como exemplo, as informações ficam no _branch_ [`development`](https://github.com/jrbenito/benito.com.br/tree/development). Para mais detalhes leia o {% post_link hexo-aws-blog-hexo-para-leigos-parte-1 "post" %}.
 
 ## Configurando o Travis
 
