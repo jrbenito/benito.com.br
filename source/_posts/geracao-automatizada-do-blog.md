@@ -1,7 +1,8 @@
 ---
 title: "Automatizando a geração do blog"
-date: 2017-02-23 19:00:00
+date: 2017-03-23 19:00:00
 updated: 2017-02-23 19:00:00
+comments: false
 tags:
     - Hexo
     - nodejs
