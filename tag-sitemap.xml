@@ -30,22 +30,22 @@
     </url>
 
     <url>
+        <loc>https://www.benito.com.br/tags/nodejs/</loc>
+        <lastmod>2017-03-02T20:21:00.000Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://www.benito.com.br/tags/aws/</loc>
-        <lastmod>2017-03-02T20:21:45.516Z</lastmod>
+        <lastmod>2017-03-02T20:23:16.778Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>
 
     <url>
         <loc>https://www.benito.com.br/tags/hexo/</loc>
-        <lastmod>2017-03-23T22:00:00.000Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://www.benito.com.br/tags/nodejs/</loc>
-        <lastmod>2017-03-23T22:00:00.000Z</lastmod>
+        <lastmod>2017-03-02T20:23:16.778Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

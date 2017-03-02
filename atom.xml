@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.benito.com.br/"/>
-  <updated>2017-03-23T22:00:00.000Z</updated>
+  <updated>2017-03-02T20:21:00.000Z</updated>
   <id>https://www.benito.com.br/</id>
   
   <author>
@@ -19,8 +19,8 @@
     <title>Automatizando a geração do blog</title>
     <link href="https://www.benito.com.br/2017/03/geracao-automatizada-do-blog/"/>
     <id>https://www.benito.com.br/2017/03/geracao-automatizada-do-blog/</id>
-    <published>2017-03-02T22:00:00.000Z</published>
-    <updated>2017-03-23T22:00:00.000Z</updated>
+    <published>2017-03-02T20:21:00.000Z</published>
+    <updated>2017-03-02T20:21:00.000Z</updated>
     
     <content type="html"><![CDATA[<p>Blogs e sites gerados através de programas como <a href="http://hexo.io" target="_blank" rel="external">Hexo</a> ou <a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll</a> trazem uma simplicidade enorme para o servidor e uma mudança de paradigma no que tange a gerência do conteúdo. Porém a simplicidade no servidor vem a um custo: a preparação do conteúdo! É necessário escrever em um editor, salvar o arquivo e “compilar” o site com o gerador e só depois subir no servidor. Será que há como automatizar isso?<br><a id="more"></a></p>
 <h2 id="Inspiracao"><a href="#Inspiracao" class="headerlink" title="Inspiração"></a>Inspiração</h2><p>O serviço <a href="https://pages.github.com/" target="_blank" rel="external">Github Pages</a> é muito simples e interessante. Fantástico eu diria! Ao mesmo tempo que é simples, permite usar ferramentas mais complexas como o gerador de sites <a href="https://jekyllrb.com/" target="_blank" rel="external">Jekyll</a> que, no caso do Github Pages, a cada <em>commit</em> no repositório do seu projeto, gera as páginas estáticas automaticamente. Isso resolve o problema da geração sem a necessidade de instalações locais.</p>
@@ -399,7 +399,7 @@
     <link href="https://www.benito.com.br/2016/05/hexo-aws-blog/"/>
     <id>https://www.benito.com.br/2016/05/hexo-aws-blog/</id>
     <published>2016-05-06T23:00:00.000Z</published>
-    <updated>2017-03-02T20:21:45.516Z</updated>
+    <updated>2017-03-02T20:23:16.778Z</updated>
     
     <content type="html"><![CDATA[<h1 id="Introducao"><a href="#Introducao" class="headerlink" title="Introdução"></a>Introdução</h1><p>Recentemente meu irmão iniciou um <a href="http://counsellor.life" target="_blank" rel="external">projeto</a> para sua esposa; um site com sua apresentação profissional e um fomulário de contato para que seus clientes pudessem encontrá-la. Ele já tinha um esboço do trabalho e estava hospedando junto ao site de um amigo apenas para teste. Começamos a conversar sobre qual domínio registrar, qual hospedagem contratar, qual tamanho da demanda e claro: preço! </p>
 <p>Já há algum tempo que eu venho maturando a ideia de iniciar um blog com o objetivo de documentar meus projetos pessoais, compartilhar informação e manter organizado aquele conhecimento resultado de horas na Internet tentando resolver algum problema (geralmente simples). A discussão sobre o projeto para minha cunhada foi a faísca para que eu mergulhasse em uma pesquisa sobre sites, hospedagem, custos, tecnologias e acabasse por escrever esse primeiro post.<br><a id="more"></a></p>
