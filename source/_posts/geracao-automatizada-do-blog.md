@@ -113,7 +113,7 @@ Nas configurações do repositório (_more options -> settings_), habilite _Buil
 Pronto! Todo _commit_ no repositório do blog irá disparar o Travis e gerar o site. Utilizando o _Grunt_ o conteúdo produzido é atualizado no servidor.
 
 [^1]: Há muitos outros artigos mais completos sobre o assunto, a ideia é apenas referenciar o conceito não desviando o foco.
-[^2]: [O que são hooks?](https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks)
+[^2]: [Git hook](https://git-scm.com/book/gr/v2/Customizing-Git-Git-Hooks) é um mecanismo do git para disparar scripts quando ações acontecem no repositório. Por exemplo, um _commit_.
 [^3]: Os repositório grátis são também **públicos**, é **muito importante** não versionar dados sensíveis como credenciais de acesso, tokens, etc.
 [^4]: O conteúdo das três variáveis foi cortado afim de poupar espaço.
 [^5]: O comando `hexo deploy` escreve a URL do github (e seu _token_) nos registros de compilação do Travis. Para evitar isso é só usar a opção `--silent`.
