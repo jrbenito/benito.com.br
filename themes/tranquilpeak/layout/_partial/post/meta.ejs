@@ -10,4 +10,5 @@
         <span><%= __('post.categorized_in')  %> </span>
         <%- partial('category', {categories: post.categories})%>
     <% } %>
+    <meta itemprop="author" content="<%= (post.author ? post.author : config.author) %>" />
 </div>
