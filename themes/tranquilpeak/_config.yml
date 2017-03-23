@@ -192,3 +192,7 @@ gravatar_email: jrbenito@benito.qsl.br
 fb_admin_ids:
 # Your Facebook app id used to connect your blog with your facebook app account (Facebook Insights). E.g : 9841307
 fb_app_id:
+# Your Opensignal.com App ID, Safari Web Id (if enabled) and subdomain (do not set later if your site is fully HTTPS)
+onesignal_app_id: d3429cdc-ff54-4dba-92c2-c76d635476d0
+onesignal_subdomain: teste-benito
+onesignal_safari_web_id: web.onesignal.auto.245258f0-6c6a-439f-986f-895149dbff04
