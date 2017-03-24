@@ -1,18 +1,18 @@
 (function($) {
   'use strict';
 
-  // Fade out the blog and let drop the Notify card of the author and vice versa
+  // Fade out the blog and let drop the notify card of push notification permission request and vice versa
 
   /**
    * NotifyCard
    * @constructor
    */
   var NotifyCard = function() {
-    this.$openBtn = $("#sidebar, #header").find("a[href*='#Notify']");
-    this.$closeBtn = $('#Notify-btn-close');
+    this.$openBtn = $("#sidebar, #header").find("a[href*='#notify']");
+    this.$closeBtn = $('#notify-btn-close');
     this.$blog = $('#blog');
-    this.$Notify = $('#Notify');
-    this.$NotifyCard = $('#Notify-card');
+    this.$notify = $('#notify');
+    this.$notifyCard = $('#notify-card');
   };
 
   NotifyCard.prototype = {
@@ -43,10 +43,10 @@
       var self = this;
       // Fade out the blog
       self.$blog.fadeOut();
-      // Fade in the Notify card
-      self.$Notify.fadeIn();
-      // Small timeout to drop the Notify card after that
-      // the Notify card fade in and the blog fade out
+      // Fade in the notify card
+      self.$notify.fadeIn();
+      // Small timeout to drop the notify card after that
+      // the notify card fade in and the blog fade out
       setTimeout(function() {
         self.dropNotifyCard();
       }, 300);
@@ -58,15 +58,15 @@
      */
     playBack: function() {
       var self = this;
-      // Lift the Notify card
+      // Lift the notify card
       self.liftNotifyCard();
-      // Fade in the blog after that the Notify card lifted up
+      // Fade in the blog after that the notify card lifted up
       setTimeout(function() {
         self.$blog.fadeIn();
       }, 500);
-      // Fade out the Notify card after that the Notify card lifted up
+      // Fade out the notify card after that the notify card lifted up
       setTimeout(function() {
-        self.$Notify.fadeOut();
+        self.$notify.fadeOut();
       }, 500);
     },
 
@@ -76,20 +76,20 @@
      */
     dropNotifyCard: function() {
       var self = this;
-      var NotifyCardHeight = self.$NotifyCard.innerHeight();
+      var notifyCardHeight = self.$notifyCard.innerHeight();
       // default offset from top
-      var offsetTop = ($(window).height() / 2) - (NotifyCardHeight / 2) + NotifyCardHeight;
+      var offsetTop = ($(window).height() / 2) - (notifyCardHeight / 2) + notifyCardHeight;
       // if card is longer than the window
       // scroll is enable
       // and re-define offsetTop
-      if (NotifyCardHeight + 30 > $(window).height()) {
-        offsetTop = NotifyCardHeight;
+      if (notifyCardHeight + 30 > $(window).height()) {
+        offsetTop = notifyCardHeight;
       }
-      self.$NotifyCard
+      self.$notifyCard
         .css('top', '0px')
-        .css('top', '-' + NotifyCardHeight + 'px')
+        .css('top', '-' + notifyCardHeight + 'px')
         .show(500, function() {
-          self.$NotifyCard.animate({
+          self.$notifyCard.animate({
             top: '+=' + offsetTop + 'px'
           });
         });
@@ -101,23 +101,23 @@
      */
     liftNotifyCard: function() {
       var self = this;
-      var NotifyCardHeight = self.$NotifyCard.innerHeight();
+      var notifyCardHeight = self.$notifyCard.innerHeight();
       // default offset from top
-      var offsetTop = ($(window).height() / 2) - (NotifyCardHeight / 2) + NotifyCardHeight;
-      if (NotifyCardHeight + 30 > $(window).height()) {
-        offsetTop = NotifyCardHeight;
+      var offsetTop = ($(window).height() / 2) - (notifyCardHeight / 2) + notifyCardHeight;
+      if (notifyCardHeight + 30 > $(window).height()) {
+        offsetTop = notifyCardHeight;
       }
-      self.$NotifyCard.animate({
+      self.$notifyCard.animate({
         top: '-=' + offsetTop + 'px'
       }, 500, function() {
-        self.$NotifyCard.hide();
-        self.$NotifyCard.removeAttr('style');
+        self.$notifyCard.hide();
+        self.$notifyCard.removeAttr('style');
       });
     }
   };
 
   $(document).ready(function() {
-    var NotifyCard = new NotifyCard();
-    NotifyCard.run();
+    var notifyCard = new NotifyCard();
+    notifyCard.run();
   });
 })(jQuery);
