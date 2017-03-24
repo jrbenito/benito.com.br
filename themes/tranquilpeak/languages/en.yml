@@ -18,6 +18,7 @@ global:
     google_plus: "Google Plus"
     linkedin: "LinkedIn"
     mail: "Mail"
+    push_notification: "Push notification"
     rss: "RSS"
     share_on_google_plus: "Share on Google Plus"
     share_on_facebook: "Share on Facebook"
