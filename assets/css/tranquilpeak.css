@@ -633,6 +633,90 @@ blockquote {
       -moz-transform: translate3d(75px, 0, 0);
       transform: translate3d(75px, 0, 0); } }
 
+#notify {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(17, 26, 35, 0);
+  text-align: center;
+  line-height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  z-index: 30; }
+  #notify #notify-card {
+    position: relative;
+    top: -1000px;
+    display: block;
+    background: white;
+    max-width: 400px;
+    margin: 15px auto;
+    border-radius: 3px;
+    padding: 30px 0;
+    -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5); }
+    #notify #notify-card #notify-btn-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      color: #9eabb3;
+      cursor: pointer; }
+      #notify #notify-card #notify-btn-close:hover {
+        color: #738691; }
+    #notify #notify-card #notify-card-picture {
+      margin-bottom: 15px; }
+    #notify #notify-card #notify-card-name {
+      margin-top: 0;
+      margin-bottom: 20px; }
+    #notify #notify-card #notify-card-bio {
+      padding: 0 30px;
+      margin: 0 0 30px 0; }
+    #notify #notify-card #notify-card-job,
+    #notify #notify-card #notify-card-location {
+      display: inline-block;
+      vertical-align: top; }
+    #notify #notify-card #notify-card-job,
+    #notify #notify-card #notify-card-location,
+    #notify #notify-card #notify-card-bio {
+      font-size: 1.6rem;
+      line-height: 1.9em;
+      font-weight: 400;
+      color: #5d686f; }
+
+@media only screen and (max-width: 767px) {
+  #notify #notify-card {
+    width: 90%; }
+    #notify #notify-card #notify-card-job,
+    #notify #notify-card #notify-card-location {
+      display: block;
+      width: calc(100% - 60px);
+      padding: 0 30px; }
+    #notify #notify-card #notify-card-picture {
+      width: 90px;
+      height: 90px;
+      border-radius: 45px; }
+    #notify #notify-card #notify-card-job {
+      margin-bottom: 15px; } }
+
+@media only screen and (min-width: 768px) {
+  #notify #notify-card {
+    width: 80%; }
+    #notify #notify-card #notify-card-picture {
+      width: 110px;
+      height: 110px;
+      border-radius: 55px; }
+    #notify #notify-card #notify-card-job,
+    #notify #notify-card #notify-card-location {
+      display: inline-block;
+      width: calc((100% / 2) - 48px); }
+    #notify #notify-card #notify-card-job {
+      padding: 0 15px 0 30px; }
+    #notify #notify-card #notify-card-location {
+      padding: 0 30px 0 15px; } }
+
 #sidebar {
   font-family: "Open Sans", sans-serif;
   height: 100%;

@@ -35,7 +35,7 @@
     
     
     <!--STYLES-->
-    <link rel="stylesheet" href="/assets/css/style-oban9vtjjgu1sjy5okhpboob7jqrplddtc5h8ngaqnqj3zxpzqcsxc3f8tb6.min.css">
+    <link rel="stylesheet" href="/assets/css/style-6ir1yzkximn17qdrzoreuesrqqblunpl0stiyeikuji257ud06dmpv0fnuev.min.css">
     <!--STYLES END-->
     
     <script type="text/javascript">
@@ -50,6 +50,73 @@
     </script>
 
     
+    
+  <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async='async'></script>
+  <script>
+    function subscribe() {
+        OneSignal.push(["registerForPushNotifications"]);
+        event.preventDefault();
+        // Hides accept and show cancel
+        document.getElementById("notify-subscribe-link").addEventListener('click', subscribe);
+        document.getElementById("notify-subscribe-link").style.display = 'none';
+        document.getElementById("notify-unsubscribe-link").addEventListener('click', unsubscribe);
+        document.getElementById("notify-unsubscribe-link").style.display = '';
+    }
+
+    function unsubscribe() {
+        OneSignal.push(["setSubscription", false]);
+        // Hides cancel and show accept
+        document.getElementById("notify-subscribe-link").addEventListener('click', subscribe);
+        document.getElementById("notify-subscribe-link").style.display = '';
+        document.getElementById("notify-unsubscribe-link").addEventListener('click', unsubscribe);
+        document.getElementById("notify-unsubscribe-link").style.display = 'none';
+    }
+
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(["init", {
+        appId: '3e1b8400-bb99-45f4-a4ff-41c749b34ae0',
+      
+        safari_web_id: 'web.onesignal.auto.58e6e5b6-6735-4042-a066-08aa34a9c18a',
+      
+          autoRegister: false, /* Set to true to automatically prompt visitors */
+      
+          subdomainName: 'benito.com.br',
+          /*
+                   subdomainName: Use the value you entered in step 1.4: http://imgur.com/a/f6hqN
+                         */
+          httpPermissionRequest: {
+                  enable: true
+                },
+      
+          notifyButton: {
+                    enable: false /* Set to false to hide */
+                }
+        }]);
+    OneSignal.push(function() {
+        // If we're on an unsupported browser, do nothing
+        if (!OneSignal.isPushNotificationsSupported()) {
+            return;
+        }
+        OneSignal.isPushNotificationsEnabled(function(isEnabled) {
+            if (isEnabled) {
+                // The user is subscribed to notifications
+                // Hides accept and show cancel
+                document.getElementById("notify-subscribe-link").addEventListener('click', subscribe);
+                document.getElementById("notify-subscribe-link").style.display = 'none';
+                document.getElementById("notify-unsubscribe-link").addEventListener('click', unsubscribe);
+                document.getElementById("notify-unsubscribe-link").style.display = '';
+            } else {
+                // Hides cancel and show accept
+                document.getElementById("notify-subscribe-link").addEventListener('click', subscribe);
+                document.getElementById("notify-subscribe-link").style.display = '';
+                document.getElementById("notify-unsubscribe-link").addEventListener('click', unsubscribe);
+                document.getElementById("notify-unsubscribe-link").style.display = 'none';
+            }
+        });
+    });
+  </script>
+
+
 </head>
 
     <body>
@@ -216,6 +283,18 @@
                     </a>
             </li>
             
+                <li class="sidebar-button">
+                    
+                        <a  class="sidebar-button-link "
+                             href="#notify"
+                            
+                        >
+                    
+                        <i class="sidebar-button-icon fa fa-lg fa-bell"></i>
+                        <span class="sidebar-button-desc">Notificação web</span>
+                    </a>
+            </li>
+            
         </ul>
         
     </div>
@@ -313,6 +392,38 @@
 
             </div>
         
+        
+    </div>
+</div>
+
+        
+
+
+    
+
+<div id="notify">
+    <div id="notify-card">
+        <div id="notify-btn-close">
+            <i class="fa fa-remove"></i>
+        </div>
+        
+            <img id="notify-card-picture" src="https://www.gravatar.com/avatar/0e66808739df0e320f463af0633fecc5?s=110" alt="Foto do autor"/>
+        
+            <h4 id="notify-card-name">Blog do Benito</h4>
+        
+            <div id="notify-card-text"><p>Gostaria de notificá-lo quando um novo artigo for publicado. Tudo bem? Garanto que você não receberá mais que uma notificação por semana.</p>
+</div>
+
+            <div id="notify-card-buttons">
+                <a href="#" id="notify-subscribe-link" >
+                    <i class="fa fa-check"><p>Sim</p>
+</i>
+                </a>
+                <a href="#" id="notify-unsubscribe-link" >
+                    <i class="fa fa-bell-slash"><p>Cancelar notificações</p>
+</i>
+                </a>
+            </div>
         
     </div>
 </div>
@@ -526,7 +637,7 @@
         
 <div id="cover" style="background-image:url('/assets/images/cover.jpg');"></div>
         <!--SCRIPTS-->
-<script src="/assets/js/script-p3i2815ddsjfltmi7ape5y8i2w18vdfdog9cvrmnr5fa0bxwmtrqexekjzrg.min.js"></script>
+<script src="/assets/js/script-uslpqpj9dklnrga57xtaziy2kwgisyaioqksdvbve9j6rlzvhdendow2rbjo.min.js"></script>
 <!--SCRIPTS END-->
 
 
