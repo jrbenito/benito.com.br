@@ -95,6 +95,8 @@ deploy:
 #    cf_distribution: E1HPFWB9H7S21C
 #    region: us-east-1
 #    headers: {CacheControl: 'max-age=604800, public'}
-  - type: git
-    repo: git@github.com:jrbenito/benito.com.br.git
-    branch: conteudo
+#  - type: git
+#    repo: git@github.com:jrbenito/benito.com.br.git
+#    branch: conteudo
+  - type: onesignal
+    app_id: d3429cdc-ff54-4dba-92c2-c76d635476d0 
