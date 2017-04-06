@@ -1,5 +1,5 @@
 {
-  "name": "Blog do Benito",
+  "name": "hexo-site",
   "version": "0.1.0",
   "private": true,
   "hexo": {
@@ -8,6 +8,7 @@
   "dependencies": {
     "hexo": "^3.1.0",
     "hexo-deployer-git": "^0.1.0",
+    "hexo-deployer-onesignal": "^0.5.1",
     "hexo-footnotes": "^1.0.1",
     "hexo-generator-archive": "^0.1.2",
     "hexo-generator-category": "^0.1.2",

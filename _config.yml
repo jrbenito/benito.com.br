@@ -100,3 +100,4 @@ deploy:
     branch: conteudo
   - type: onesignal
     app_id: 3e1b8400-bb99-45f4-a4ff-41c749b34ae0
+    app_send_delay: 25
