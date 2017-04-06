@@ -1,9 +1,9 @@
 {
-  "name": "hexo-site",
+  "name": "Blog do Benito",
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.2.0"
+    "version": "3.3.0"
   },
   "dependencies": {
     "hexo": "^3.1.0",
